@@ -136,6 +136,10 @@
   .hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
 
   /* ‚îÄ‚îÄ About ‚îÄ‚îÄ */
+  .about-intro { margin-bottom: 2rem; }
+  .about-intro .about-identity { font-family: var(--font-ui); font-size: 1.05rem; color: var(--text-dim); margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+  .about-intro .about-identity strong { color: var(--text); font-weight: 500; }
+  .about-summary { font-family: var(--font-ui); font-size: 1.25rem; font-weight: 400; color: var(--text); line-height: 1.45; margin-bottom: 2rem; letter-spacing: -0.015em; }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
   .about-text p { margin-bottom: 1.3rem; }
   .about-side {
@@ -377,12 +381,12 @@
 <section class="hero" id="hero-section">
   <div class="container hero-content reveal">
     <h1 id="hero-heading">I build security tools<br>that actually work.</h1>
-    <div class="hero-status"><span class="dot"></span>Available for UK security engineering roles</div>
+    <div class="hero-status"><span class="dot"></span>Available for security engineering roles</div>
     <p class="hero-tagline">Cybersecurity Engineer. MSc Cyber Security, University of Aberdeen. Former OKX.AI pioneer. MIT Media Lab contributor.</p>
     <div class="hero-meta">
-      <span>‚, è Aberdeen, Scotland, UK</span>
-      <span>‚, è <a href="https://github.com/Gideon145">github/Gideon145</a></span>
-      <span>‚, è <a href="mailto:opukemegideon@gmail.com">opukemegideon@gmail.com</a></span>
+      <span>ÔøΩ, ÔøΩ Aberdeen, Scotland, UK</span>
+      <span>ÔøΩ, ÔøΩ <a href="https://github.com/Gideon145">github/Gideon145</a></span>
+      <span>ÔøΩ, ÔøΩ <a href="mailto:opukemegideon@gmail.com">opukemegideon@gmail.com</a></span>
     </div>
   </div>
 </section>
@@ -395,11 +399,16 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>I am a cybersecurity engineer based in Aberdeen, Scotland, currently completing my MSc in Cyber Security at the University of Aberdeen ‚Äî a research institution founded in 1495 with five centuries of academic tradition behind it. I build detection and response tooling that ships to production environments, not just proof-of-concept repositories.</p>
+        <div class="about-intro">
+          <div class="about-identity"><strong>Gideon Opukeme</strong>, Cybersecurity Engineer, Aberdeen, Scotland</div>
+          <div class="about-summary">Cybersecurity engineer with hands-on experience building detection systems, AI security tooling, and on-chain security infrastructure.</div>
+        </div>
+        <p>I am a cybersecurity engineer based in Aberdeen, Scotland, currently completing my MSc in Cyber Security at the University of Aberdeen, a research institution founded in 1495 with five centuries of academic tradition behind it. I build detection and response tooling that ships to production environments, not just proof-of-concept repositories.</p>
         <p>My technical focus spans three interconnected domains. First, AI and LLM security ‚Äî I have built prompt injection firewalls, genetic algorithm fuzzers that discover novel jailbreak techniques, and autonomous SOC analysts that ingest raw logs and map findings to the MITRE ATT&CK framework. Second, threat detection engineering ‚Äî I write Sigma rules that run inside Splunk, Microsoft Sentinel, IBM QRadar, and CrowdStrike Falcon, and I have authored original YARA and Snort signatures for malware detection. Third, blockchain protocol security ‚Äî I have shipped audited smart contracts, designed multi-agent oracle systems, and built economic security primitives for decentralised finance.</p>
         <p>Before dedicating myself to cybersecurity full-time, I was one of the earliest developers on OKX.AI, the world's first agent-to-agent economic marketplace ‚Äî a platform where autonomous AI agents discover each other, negotiate contracts, stream payments, and settle disputes on-chain without human intermediation. I deployed six autonomous security agents on the platform and won its inaugural global hackathon with Parry Protocol, a delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. I also contributed payment protocol infrastructure at the MIT Media Lab, working on the financial rails that enable agent-to-agent commerce at scale.</p>
         <p>My open-source work has been accepted into production security infrastructure. My Mirai botnet C2 detection rules were merged into SigmaHQ (10,900+ GitHub stars), the industry-standard detection rule repository used by SOC teams worldwide. My Argus smart contracts passed a ChainGPT security audit with a perfect score of five out of five, across all Circle primitive categories, and the platform has served 350+ users across more than 1,400 scans. I also built TrustGuard, an ELO-based reputation and risk scoring system for autonomous agents. The core reviewer described it as a 'genuinely different angle' from existing approaches, and it passed all eleven adversarial test scenarios on first submission.</p>
-        <p>I hold the Google Cybersecurity Certificate and Fortinet NSE 1 through 3 certifications. I am actively seeking security engineering roles in the United Kingdom where I can apply my skills in detection engineering, AI security, and threat intelligence to protect real systems and real users.</p>
+        <p>I hold the Google Cybersecurity Certificate and Fortinet NSE 1 through 3 certifications. I am actively seeking security engineering roles where I can apply my skills in detection engineering, AI security, and threat intelligence to protect real systems and real users.</p>
+        <p>When I'm not building security tools, I'm cooking or creating something.</p>
       </div>
       <div class="about-side reveal">
         <div class="label">Location</div>
@@ -696,7 +705,7 @@
     div.innerHTML =
       '<div class="pm-meta">' +
         '<div class="pm-date">' + pm.date + '</div>' +
-        '<div class="pm-severity">‚, è HIGH SEVERITY</div>' +
+        '<div class="pm-severity">ÔøΩ, ÔøΩ HIGH SEVERITY</div>' +
       '</div>' +
       '<h4>' + pm.title + '</h4>' +
       '<p>' + pm.summary + '</p>' +
