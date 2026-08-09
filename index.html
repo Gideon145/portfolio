@@ -166,14 +166,15 @@
   .company-item {
     display: flex; align-items: center; gap: 0.6rem;
     font-family: var(--font-mono); font-size: 0.73rem;
-    padding: 0.45rem 0.9rem; color: var(--text-dim);
+    padding: 0.5rem 0.9rem; color: var(--text-dim);
     border: 1px solid var(--border);
-    background: rgba(255,255,255,0.03);
+    background: rgba(30,30,36,0.6);
     transition: border-color 0.2s, color 0.2s, background 0.2s;
   }
   .company-item:hover { border-color: rgba(196,149,106,0.3); color: var(--text); background: rgba(255,255,255,0.06); }
   .company-logo {
     height: 28px; max-width: 100px; object-fit: contain; flex-shrink: 0;
+    mix-blend-mode: multiply; opacity: 0.9;
   }
 
   /* ── Recognition ── */
