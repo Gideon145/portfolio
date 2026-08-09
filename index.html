@@ -485,8 +485,8 @@
 </footer>
 
 <!-- ═══════════════════════════════════════════════════════
-     INTERACTIVE BACKGROUND
-     Distance-based pointer trail + section-aware network graph
+     AMBIENT BACKGROUND
+     Autonomous network graph. No mouse tracking. No trails.
      ═══════════════════════════════════════════════════════ -->
 <script>
 (function() {
@@ -495,35 +495,23 @@
   let W, H, scrollY = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
   const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
-  const isTouch = window.matchMedia('(hover: none)').matches;
 
   if (isReduced) { canvas.style.opacity = '0.35'; }
 
   // ── Nodes ──
-  const N = isMobile ? 45 : 100;
+  const N = isMobile ? 50 : 110;
   const nodes = [];
   for (let i = 0; i < N; i++) {
     nodes.push({
       x: Math.random(), y: Math.random(),
-      vx: (Math.random() - 0.5) * 0.00035,
-      vy: (Math.random() - 0.5) * 0.00035,
+      vx: (Math.random() - 0.5) * 0.0003,
+      vy: (Math.random() - 0.5) * 0.0003,
       homeX: Math.random(), homeY: Math.random(),
-      size: Math.random() * 2.2 + 0.7,
+      size: Math.random() * 2 + 0.6,
       phase: Math.random() * Math.PI * 2,
-      freq: 0.0004 + Math.random() * 0.001,
+      speed: 0.0003 + Math.random() * 0.0008,
     });
   }
-
-  // ── Pointer trail (distance-based emission) ──
-  const MOTES_MAX = isMobile ? 40 : 160;
-  const EMIT_STEP = 8;
-  const motes = [];
-  let moteIndex = 0;
-  let emitterX = -200, emitterY = -200;
-  let prevEmitterX = -200, prevEmitterY = -200;
-  let emitAccum = 0;
-  let idleTimer = 0;
-  let mouseIn = false;
 
   function resize() {
     W = canvas.width = window.innerWidth * dpr;
@@ -535,44 +523,12 @@
   setTimeout(resize, 100);
   setTimeout(resize, 500);
   window.addEventListener('resize', resize);
-
-  document.addEventListener('mousemove', e => {
-    mouseIn = true;
-    prevEmitterX = emitterX;
-    prevEmitterY = emitterY;
-    emitterX = e.clientX;
-    emitterY = e.clientY;
-  });
-  document.addEventListener('mouseleave', () => { mouseIn = false; });
   window.addEventListener('scroll', () => { scrollY = window.scrollY; });
-
-  document.addEventListener('touchmove', e => {
-    if (!e.touches.length) return;
-    mouseIn = true;
-    prevEmitterX = emitterX;
-    prevEmitterY = emitterY;
-    emitterX = e.touches[0].clientX;
-    emitterY = e.touches[0].clientY;
-  }, { passive: true });
-  document.addEventListener('touchend', () => { mouseIn = false; });
-
-  function spawnMote(x, y, angle, life) {
-    const i = moteIndex;
-    moteIndex = (i + 1) % MOTES_MAX;
-    motes[i] = {
-      x, y,
-      vx: -0.09 * Math.cos(angle) + (Math.random() - 0.5) * 0.19,
-      vy: -0.09 * Math.sin(angle) + (Math.random() - 0.5) * 0.19,
-      life: life || (1.45 + Math.random() * 1.3),
-      maxLife: life || (1.45 + Math.random() * 1.3),
-      phase: Math.random() * Math.PI * 2,
-    };
-  }
 
   let bgState = 'hero-section';
   function updateBgState() {
     const sections = document.querySelectorAll('section[id]');
-    let current = 'hero';
+    let current = 'hero-section';
     sections.forEach(s => {
       const rect = s.getBoundingClientRect();
       if (rect.top < window.innerHeight * 0.5) current = s.getAttribute('id');
@@ -595,56 +551,47 @@
     const sf = Math.min(scrollY / 2000, 1);
     const ww = window.innerWidth;
     const wh = window.innerHeight;
-    const mx = emitterX / ww;
-    const my = emitterY / wh;
-    pulsePhase += dt * 0.35;
+    pulsePhase += dt * 0.3;
 
-    // ── Grid ──
-    const gridAlpha = bgState === 'hero-section' ? 0.03 + sf * 0.02 : 0.05 + sf * 0.04;
+    // ── Grid (blueprint, scroll-responsive) ──
+    const gridAlpha = bgState === 'hero-section' ? 0.025 + sf * 0.02 : 0.04 + sf * 0.04;
     ctx.strokeStyle = 'rgba(196,149,106,' + gridAlpha + ')';
-    ctx.lineWidth = 0.4 * dpr;
-    const gs = 80 * dpr;
+    ctx.lineWidth = 0.35 * dpr;
+    const gs = 100 * dpr;
     for (let y = gs; y < H; y += gs) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
     for (let x = gs; x < W; x += gs) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
 
-    // ── Update nodes ──
-    const cursorInfluence = isTouch ? 0.00004 : 0.00015;
-    const connThreshold = bgState === 'work' ? 0.24 : bgState === 'hero-section' ? 0.16 : 0.2;
+    // ── Update nodes (autonomous drift, no cursor) ──
+    const connThreshold = bgState === 'work' ? 0.22 : bgState === 'hero-section' ? 0.14 : 0.18;
 
     nodes.forEach(n => {
+      // Drift toward home with organic noise
       const dxHome = n.homeX - n.x;
       const dyHome = n.homeY - n.y;
-      n.x += n.vx + dxHome * 0.00008 + Math.sin(now * 0.0005 + n.phase) * 0.00012;
-      n.y += n.vy + dyHome * 0.00008 + Math.cos(now * 0.0006 + n.phase) * 0.00012;
+      n.x += n.vx + dxHome * 0.00006 + Math.sin(now * n.speed + n.phase) * 0.0001;
+      n.y += n.vy + dyHome * 0.00006 + Math.cos(now * n.speed * 1.3 + n.phase) * 0.0001;
 
-      if (mouseIn) {
-        const dxc = mx - n.x;
-        const dyc = my - n.y;
-        const distC = Math.sqrt(dxc * dxc + dyc * dyc) + 0.001;
-        const force = cursorInfluence / (distC * distC + 0.02);
-        n.x += dxc * force;
-        n.y += dyc * force;
-      }
-
+      // Wrap at edges
       if (n.x < -0.05) n.x = 1.05; if (n.x > 1.05) n.x = -0.05;
       if (n.y < -0.05) n.y = 1.05; if (n.y > 1.05) n.y = -0.05;
 
-      n.homeX += (Math.random() - 0.5) * 0.00004;
-      n.homeY += (Math.random() - 0.5) * 0.00004;
+      // Home positions wander very slowly
+      n.homeX += (Math.random() - 0.5) * 0.00003;
+      n.homeY += (Math.random() - 0.5) * 0.00003;
       n.homeX = Math.max(0.05, Math.min(0.95, n.homeX));
       n.homeY = Math.max(0.05, Math.min(0.95, n.homeY));
     });
 
-    // ── Connections ──
+    // ── Connections (section-responsive density) ──
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const dx = nodes[i].x - nodes[j].x;
         const dy = nodes[i].y - nodes[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < connThreshold) {
-          const la = (1 - dist / connThreshold) * (0.1 + sf * 0.09 + Math.sin(pulsePhase + i * 0.3) * 0.02);
+          const la = (1 - dist / connThreshold) * (0.08 + sf * 0.07 + Math.sin(pulsePhase + i * 0.25) * 0.015);
           ctx.strokeStyle = 'rgba(196,149,106,' + la + ')';
-          ctx.lineWidth = 0.5 * dpr;
+          ctx.lineWidth = 0.45 * dpr;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x * ww * dpr, nodes[i].y * wh * dpr);
           ctx.lineTo(nodes[j].x * ww * dpr, nodes[j].y * wh * dpr);
@@ -653,62 +600,20 @@
       }
     }
 
-    // ── Nodes ──
+    // ── Nodes (subtle, ambient) ──
     nodes.forEach(n => {
-      const distToCursor = Math.sqrt((n.x - mx) ** 2 + (n.y - my) ** 2);
-      const cursorBoost = mouseIn ? Math.max(0, 1 - distToCursor / 0.18) * 0.22 : 0;
-      const alpha = (0.32 + Math.sin(n.phase + scrollY * 0.001) * 0.14 + cursorBoost);
+      const alpha = 0.28 + Math.sin(n.phase + scrollY * 0.0008) * 0.12;
       ctx.fillStyle = 'rgba(196,149,106,' + alpha + ')';
       ctx.beginPath();
       ctx.arc(n.x * ww * dpr, n.y * wh * dpr, n.size * dpr, 0, Math.PI * 2);
       ctx.fill();
-      ctx.strokeStyle = 'rgba(196,149,106,' + (alpha * 0.35) + ')';
-      ctx.lineWidth = 0.35 * dpr;
+      // Faint halo ring
+      ctx.strokeStyle = 'rgba(196,149,106,' + (alpha * 0.3) + ')';
+      ctx.lineWidth = 0.3 * dpr;
       ctx.beginPath();
-      ctx.arc(n.x * ww * dpr, n.y * wh * dpr, n.size * 3.5 * dpr, 0, Math.PI * 2);
+      ctx.arc(n.x * ww * dpr, n.y * wh * dpr, n.size * 3 * dpr, 0, Math.PI * 2);
       ctx.stroke();
     });
-
-    // ── Pointer trail (distance-based emission) ──
-    if (mouseIn && !isTouch) {
-      const dx = emitterX - prevEmitterX;
-      const dy = emitterY - prevEmitterY;
-      const moved = Math.sqrt(dx * dx + dy * dy);
-      const angle = Math.atan2(dy, dx);
-      emitAccum += moved;
-      let guard = 0;
-      while (emitAccum >= EMIT_STEP && guard++ < 14) {
-        emitAccum -= EMIT_STEP;
-        const t = moved > 0.001 ? Math.min(1, (guard - 1) * EMIT_STEP / moved) : 0;
-        spawnMote(prevEmitterX + dx * t, prevEmitterY + dy * t, angle, 1.5 + Math.random() * 1.3);
-      }
-      idleTimer += dt;
-      if (idleTimer > 0.42 && moved < 0.5) {
-        idleTimer = 0;
-        spawnMote(emitterX + (Math.random() - 0.5) * 8, emitterY + (Math.random() - 0.5) * 8, Math.random() * Math.PI * 2, 2.1 + Math.random() * 1.3);
-      }
-    }
-
-    // Update & draw motes
-    for (let i = 0; i < MOTES_MAX; i++) {
-      const m = motes[i];
-      if (!m || m.life <= 0) continue;
-      m.life -= dt;
-      if (m.life <= 0) { motes[i] = null; continue; }
-      m.vx += Math.sin(now * 0.0013 + m.phase) * 0.17 * dt;
-      m.vy += (Math.cos(now * 0.0011 + m.phase * 1.7) * 0.14 - 0.022) * dt;
-      m.vx *= (1 - 0.5 * dt);
-      m.vy *= (1 - 0.5 * dt);
-      m.x += m.vx * dt * 60;
-      m.y += m.vy * dt * 60;
-      const progress = 1 - m.life / m.maxLife;
-      const alpha = progress < 0.12 ? progress / 0.12 * 0.22 : (1 - (progress - 0.12) / 0.88) * 0.22;
-      const size = (1.5 + progress * 4.5) * dpr;
-      ctx.fillStyle = 'rgba(196,149,106,' + alpha + ')';
-      ctx.beginPath();
-      ctx.arc(m.x * dpr, m.y * dpr, size, 0, Math.PI * 2);
-      ctx.fill();
-    }
 
     updateBgState();
     requestAnimationFrame(draw);
@@ -717,13 +622,13 @@
   // Reduced motion: static composed frame
   if (isReduced) {
     ctx.clearRect(0, 0, W, H);
-    ctx.strokeStyle = 'rgba(196,149,106,0.04)';
+    ctx.strokeStyle = 'rgba(196,149,106,0.035)';
     ctx.lineWidth = 0.3 * dpr;
-    const gs = 80 * dpr;
+    const gs = 100 * dpr;
     for (let y = gs; y < H; y += gs) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
     for (let x = gs; x < W; x += gs) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
-    for (let i = 0; i < 20; i++) {
-      ctx.fillStyle = 'rgba(196,149,106,0.2)';
+    for (let i = 0; i < 16; i++) {
+      ctx.fillStyle = 'rgba(196,149,106,0.18)';
       ctx.beginPath();
       ctx.arc((0.1 + Math.random() * 0.8) * W, (0.1 + Math.random() * 0.8) * H, (1 + Math.random()) * dpr, 0, Math.PI * 2);
       ctx.fill();
