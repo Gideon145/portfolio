@@ -11,7 +11,7 @@ const portfolioData = {
   social: {
     github: "https://github.com/Gideon145",
     linkedin: "https://linkedin.com/in/gideon-opukeme-755723238",
-    x: "https://x.com/og_xavierrr",
+    instagram: "https://instagram.com/og_xix",
   },
 
   // ── Hero ──
@@ -103,11 +103,39 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
   // ── Postmortems ──
   postmortems: [
     {
-      title: "Levi Strauss Data Breach",
+      title: "Levi Strauss & Co., Vishing Attack",
       date: "August 2026",
-      summary: "Social engineering attack compromised 3 employees via vishing. Corporate files exfiltrated from a $9.35B company. Part of a 200+ company campaign.",
-      findings: "Attackers used phone-based impersonation of IT help-desk. No malware — just a phone call. Detection requires behavioral monitoring of remote access tools, not signature-based AV.",
-      url: "https://github.com/Gideon145/breach-postmortems",
+      summary: "Social engineering attack compromised 3 employees through voice phishing (vishing). Attackers impersonated internal IT help desk to manipulate staff into granting remote access to corporate systems, then exfiltrated sensitive files. Part of a coordinated campaign targeting over 200 companies. No malware deployed — the entire attack chain was a phone call.",
+      findings: "Detection requires behavioural monitoring of remote access tools (anomalous RDP, TeamViewer, AnyDesk sessions based on timing, source IP, and correlation with inbound calls), outbound data transfer monitoring for unusual exfiltration patterns, and vishing-specific employee awareness training that covers help-desk impersonation scenarios rather than generic phishing education.",
+      url: "https://github.com/Gideon145/breach-postmortems/blob/main/levi-strauss-2026.md",
+    },
+    {
+      title: "MGM Resorts, Social Engineering by Scattered Spider",
+      date: "September 2023",
+      summary: "The ALPHV/Scattered Spider ransomware group compromised MGM Resorts through a ten-minute social engineering call to the IT help desk, impersonating an employee found on LinkedIn. The attackers reset Okta credentials and MFA, deployed ransomware across MGM's Las Vegas properties, and caused an estimated $100 million in losses over ten days of system outages affecting hotel check-ins, casino operations, and guest services across twelve properties.",
+      findings: "A single phone call to IT support bypassed millions in security infrastructure. Key gaps: help desk authentication relied on publicly discoverable information, no callback verification for credential resets, and insufficient network segmentation between IT systems and casino operations. Detection opportunities exist in monitoring for unusual Okta administrative actions following help desk calls, anomalous MFA reset patterns, and lateral movement from IT support networks to production systems.",
+      url: "https://github.com/Gideon145/breach-postmortems/blob/main/mgm-resorts-2023.md",
+    },
+    {
+      title: "Okta, Lapsus$ Support System Compromise",
+      date: "October 2023",
+      summary: "The Lapsus$ extortion group compromised Okta's customer support system after gaining access to a service account stored in a support engineer's personal device that had been breached earlier. The attackers accessed HAR files containing session tokens and credentials from Okta's customer support sessions, pivoting to compromise downstream customers. Okta initially downplayed the incident, claiming only 2.5% of customers were affected; forensic analysis later revealed the attacker had access for over two weeks before detection.",
+      findings: "The breach exposed a critical architectural weakness: identity providers are single points of failure for their entire customer base. Key failures included storing session data (HAR files) without encryption, a two-week detection gap, and initial incident communications that understated the blast radius. Detection rules should monitor for unusual HAR file access patterns, anomalous support tool administrative actions outside business hours, and token replay across geographically impossible time intervals.",
+      url: "https://github.com/Gideon145/breach-postmortems/blob/main/okta-2023.md",
+    },
+    {
+      title: "23andMe, Credential Stuffing & Genetic Data Exposure",
+      date: "October 2023",
+      summary: "Attackers accessed 6.9 million 23andMe user accounts through credential stuffing, using username/password pairs leaked from other breaches. The attack exploited the DNA Relatives feature, which automatically shares profile data and genetic information with opted-in relatives — meaning compromising one account exposed data from hundreds of connected profiles through the social graph. Targeted specific ethnic groups (Ashkenazi Jewish, Chinese) with account lists sold on dark web forums.",
+      findings: "This breach demonstrates that credential stuffing is not a solved problem, even for a company handling humanity's most sensitive data (genetic information). 23andMe had no mandatory multi-factor authentication at the time of the attack. The DNA Relatives feature created a amplification effect where one compromised account exposed data from hundreds of genetically related individuals who had never been directly attacked. Post-incident, 23andMe mandated MFA for all users — a control that should have existed before a breach, not after one.",
+      url: "https://github.com/Gideon145/breach-postmortems/blob/main/23andme-2023.md",
+    },
+    {
+      title: "MOVEit Transfer, Cl0p Zero-Day Supply Chain Attack",
+      date: "May 2023",
+      summary: "The Cl0p ransomware group exploited a zero-day SQL injection vulnerability (CVE-2023-34362) in Progress Software's MOVEit Transfer managed file transfer platform, compromising thousands of organisations worldwide. The attack was a supply chain multiplier: organisations that used MOVEit to exchange files with partners and customers inadvertently exposed those third parties to the same vulnerability. Over 2,000 organisations across healthcare, government, finance, and education were ultimately affected, with an estimated $10+ billion in total downstream impact.",
+      findings: "The MOVEit attack is the defining supply chain incident of the 2020s. A single zero-day in a widely deployed enterprise tool cascaded through thousands of interconnected organisations. Key failures: Progress Software's vulnerability disclosure and patching timeline was inadequate, many organisations were running outdated MOVEit versions, and detection lagged because file transfer platforms generate legitimate high-volume traffic that masks exfiltration. Sigma rules for detecting webshell deployment on MOVEit servers (the human2.aspx and machine.aspx artefacts), anomalous outbound SFTP connections, and unexpected database write operations could have caught this earlier.",
+      url: "https://github.com/Gideon145/breach-postmortems/blob/main/moveit-2023.md",
     },
   ],
 
@@ -136,7 +164,10 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       url: "https://github.com/Gideon145/parry-protocol",
     },
     {
-      label: "OKX.AI Founding Developer & Pioneer",
+      label: "Argus, Top 5 ASP on OKX.AI Marketplace",
+      detail: "Argus ranked among the top five most-sold Autonomous Service Providers on the OKX.AI marketplace, generating $5,700 in total sales from on-chain security audit services. This is real revenue from real users paying for autonomous smart contract audits, not a testnet demo. The 5/5 ChainGPT audit score, 350+ users, and 1,421 completed scans all contributed to this market position.",
+      url: "https://www.okx.ai/agents/5047",
+    },
       detail: "Among the earliest developers building on OKX.AI before its public launch. Deployed six autonomous security agents on the platform during its formative stages: agents that independently discovered counterparties, negotiated service contracts, streamed payments via the platform's native payment channels, and settled disputes entirely on-chain without human intermediation. This was infrastructure work on a platform that went on to define the agent-to-agent economy category.",
       links: [
         { label: "Agent 5047", url: "https://www.okx.ai/agents/5047" },
