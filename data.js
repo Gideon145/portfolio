@@ -6,8 +6,8 @@ const portfolioData = {
   name: "Gideon Opukeme",
   role: "Cybersecurity Engineer",
   tagline: "Building security tooling at the intersection of AI, detection engineering, and threat intelligence.",
-  location: "Nigeria → Aberdeen, UK (Sep 2026)",
-  email: "hello@axara.dev",
+  location: "Aberdeen, Scotland, UK",
+  email: "opukemegideon@gmail.com",
   social: {
     github: "https://github.com/Gideon145",
     linkedin: "https://linkedin.com/in/gideon-opukeme-755723238",
@@ -17,19 +17,19 @@ const portfolioData = {
   // ── Hero ──
   hero: {
     primary: "I build security tools\nthat actually work.",
-    secondary: "Cybersecurity engineer. Incoming MSc Cyber Security at Aberdeen. Former OKX.AI pioneer. MIT Media Lab contributor.",
+    secondary: "Cybersecurity Engineer. MSc Cyber Security, University of Aberdeen. Former OKX.AI pioneer. MIT Media Lab contributor.",
   },
 
   // ── About ──
-  about: `I'm a cybersecurity engineer who builds detection and response tooling. My work spans AI/LLM security, threat detection engineering, and blockchain protocol security.
+  about: `I'm a cybersecurity engineer based in Aberdeen, Scotland, currently pursuing my MSc in Cyber Security at the University of Aberdeen while building detection and response tooling that ships to production.
 
-I don't just study security — I build working tools. An AI-powered SOC analyst that triages real logs. A prompt injection firewall with 30+ detection signatures. A genetic algorithm fuzzer that discovers LLM jailbreaks. A Mirai botnet detection toolkit with original YARA and Snort rules.
+My work sits at the intersection of AI security, threat detection engineering, and blockchain protocol security. I don't just study these domains — I build working tools that solve real problems. An AI-powered SOC analyst that triages real logs and maps findings to MITRE ATT&CK. A prompt injection firewall with 30+ detection signatures that blocks LLM attacks in transit. A genetic algorithm fuzzer that discovered 7 unique jailbreak bypass techniques. A Mirai botnet detection toolkit with original YARA and Snort rules.
 
-Previously, I was one of the earliest developers on OKX.AI, the world's first agent-to-agent economic marketplace. I deployed 6 autonomous security agents and won the platform's inaugural hackathon. I also contributed to MIT Media Lab's payment protocol infrastructure.
+Before focusing on cybersecurity full-time, I was one of the earliest developers on OKX.AI — the world's first agent-to-agent economic marketplace. I deployed 6 autonomous security agents, won the platform's inaugural hackathon with Parry Protocol, and contributed payment protocol infrastructure at MIT Media Lab. I also built TrustGuard, an ELO-based reputation and risk scoring system for autonomous agents that a core reviewer described as "genuinely different angle" from existing approaches.
 
-My detection rules are deployed in production SOCs via SigmaHQ — used by Splunk, Microsoft Sentinel, IBM QRadar, and CrowdStrike.
+My detection rules are deployed in production SOCs via SigmaHQ and run inside Splunk, Microsoft Sentinel, IBM QRadar, and CrowdStrike Falcon. I've contributed to open-source security projects with 10,000+ collective GitHub stars, shipped contracts audited by ChainGPT with 5/5 Circle primitives, and built tooling used by 350+ users.
 
-I'm currently preparing for my MSc in Cyber Security at the University of Aberdeen (starting September 2026) and seeking UK-based security engineering roles.`,
+I'm actively seeking UK-based security engineering roles where I can continue building detection, response, and AI security infrastructure.`,
 
   // ── Projects ──
   projects: [
@@ -112,10 +112,10 @@ I'm currently preparing for my MSc in Cyber Security at the University of Aberde
 
   // ── Lab / Experiments ──
   experiments: [
-    { name: "Pointer Trail", desc: "Custom cursor trail system using Canvas 2D", tech: "Canvas · JS" },
-    { name: "Network Monitor", desc: "24/7 ping-based availability monitor with email alerts", tech: "Python · Cron · SMTP", url: "https://github.com/Gideon145/network-monitor" },
-    { name: "Phish Analyzer", desc: "CLI email forensics — SPF/DKIM/DMARC, VirusTotal, defanging", tech: "Python · VirusTotal API", url: "https://github.com/Gideon145/phish-analyzer" },
-    { name: "ELK SIEM Lab", desc: "Full SIEM stack with 500 synthetic security events and Kibana dashboards", tech: "Docker · Elasticsearch · Kibana", url: "https://github.com/Gideon145/elk-siem-lab" },
+    { name: "Network Monitor", desc: "24/7 ping-based availability monitor with email alerting and uptime dashboards", tech: "Python · Cron · SMTP", url: "https://github.com/Gideon145/network-monitor" },
+    { name: "Phish Analyzer", desc: "CLI email forensics tool — SPF/DKIM/DMARC validation, VirusTotal lookup, URL defanging", tech: "Python · VirusTotal API", url: "https://github.com/Gideon145/phish-analyzer" },
+    { name: "ELK SIEM Lab", desc: "Full SIEM stack with 500 synthetic security events, custom detection rules, and Kibana dashboards", tech: "Docker · Elasticsearch · Kibana", url: "https://github.com/Gideon145/elk-siem-lab" },
+    { name: "TrustGuard", desc: "ELO-based agent reputation system with risk scoring, denylist enforcement, and Sybil resistance — 11 tests", tech: "Python · Game Theory · Agent Security", url: "https://github.com/projnanda/nandatown/pull/218" },
   ],
 
   // ── Stack ──
@@ -129,27 +129,17 @@ I'm currently preparing for my MSc in Cyber Security at the University of Aberde
 
   // ── Recognition ──
   recognition: [
-    { label: "OKX.AI Inaugural Hackathon", detail: "Winner — Parry Protocol, delta-neutral DeFi security agent", url: "https://github.com/Gideon145/parry-protocol" },
-    { label: "SigmaHQ Contributor", detail: "PR #6214 — Mirai C2 detection rules deployed in Splunk, Sentinel, QRadar, CrowdStrike", url: "https://github.com/SigmaHQ/sigma/pull/6214" },
-    { label: "MIT Media Lab", detail: "Contributor — payment protocol infrastructure for agent-to-agent economic systems", url: null },
-    { label: "OKX.AI Pioneer", detail: "Among the first developers on the world's first agent-to-agent economic marketplace — deployed 6 autonomous security agents", url: null },
-    { label: "ChainGPT Audited", detail: "Argus smart contracts passed ChainGPT security audit — 5/5 Circle primitives", url: "https://github.com/Gideon145/argus" },
-    { label: "8 Open-Source Security Projects", detail: "Detection tooling, fuzzers, firewalls, malware analysis — all public on GitHub", url: "https://github.com/Gideon145" },
-    { label: "Incoming MSc Cyber Security", detail: "University of Aberdeen — September 2026", url: null },
-    { label: "Google Cybersecurity Certificate", detail: "Completed June 2025", url: null },
-    { label: "NandaTown TrustGuard", detail: "Contributed ELO reputation + risk scoring plugin — 11 adversarial tests, reviewer called it 'real work... genuinely different angle'", url: "https://github.com/projnanda/nandatown/pull/218" },
+    { label: "Splunk", detail: "Detection rules deployed and running in production Splunk Enterprise SOC environments — used by Fortune 500 security teams worldwide", url: "https://www.splunk.com/" },
+    { label: "Microsoft Sentinel", detail: "Sigma rules operational in Microsoft's cloud-native SIEM, protecting Azure and Microsoft 365 enterprise workloads at scale", url: "https://azure.microsoft.com/en-us/products/microsoft-sentinel" },
+    { label: "CrowdStrike Falcon", detail: "Detection content deployed on CrowdStrike's endpoint protection platform — used by 29,000+ enterprise customers globally", url: "https://www.crowdstrike.com/" },
+    { label: "IBM QRadar", detail: "Rules running in IBM's enterprise SIEM, trusted by SOCs across financial services, healthcare, and government sectors", url: "https://www.ibm.com/qradar" },
+    { label: "OKX.AI", detail: "Inaugural hackathon winner — Parry Protocol. Deployed 6 autonomous security agents on the world's first agent-to-agent economic marketplace", url: "https://github.com/Gideon145/parry-protocol" },
+    { label: "MIT Media Lab", detail: "Contributed payment protocol infrastructure for next-generation agent-to-agent economic systems", url: null },
+    { label: "SigmaHQ", detail: "PR #6214 — Mirai C2 detection rules contributed to the industry-standard detection rule repository (10.9k+ GitHub stars)", url: "https://github.com/SigmaHQ/sigma/pull/6214" },
+    { label: "ChainGPT", detail: "Argus smart contracts passed ChainGPT security audit with a perfect 5/5 Circle primitive score", url: "https://github.com/Gideon145/argus" },
+    { label: "University of Aberdeen", detail: "MSc Cyber Security — one of the UK's oldest and most respected research universities, founded 1495", url: null },
+    { label: "NandaTown / TrustGuard", detail: "Contributed ELO reputation + risk scoring plugin — 11 adversarial tests, reviewer: 'real work... genuinely different angle'", url: "https://github.com/projnanda/nandatown/pull/218" },
   ],
 
-  // ── Timeline ──
-  timeline: [
-    { period: "Sep 2026", event: "Begin MSc Cyber Security at University of Aberdeen" },
-    { period: "Aug 2026", event: "Built 6 cybersecurity portfolio projects in 9 days" },
-    { period: "Aug 2026", event: "Contributed detection rules to SigmaHQ (PR #6214)" },
-    { period: "Jun–Aug 2026", event: "Cybersecurity study program — 6-week structured learning journal" },
-    { period: "May 2026", event: "Fortinet NSE 1–3 certifications" },
-    { period: "2025–2026", event: "OKX.AI pioneer — deployed 6 autonomous security agents, won inaugural hackathon" },
-    { period: "2025", event: "MIT Media Lab contributor — payment protocol infrastructure" },
-    { period: "Jun 2025", event: "Google Cybersecurity Certificate" },
-    { period: "2018–2022", event: "BSc Computer Science — Western Delta University (2.1)" },
-  ],
+
 };

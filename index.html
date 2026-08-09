@@ -109,7 +109,9 @@
     align-items: flex-end; position: relative;
   }
   .hero-content { max-width: 880px; }
-  .hero h1 { margin-bottom: 1.5rem; white-space: pre-line; }
+  .hero h1 { margin-bottom: 1.5rem; white-space: pre-line; font-weight: 700; }
+  .hero h1 .word { display: inline-block; opacity: 0; animation: wordIn 0.7s cubic-bezier(.22,.61,.36,1) forwards; }
+  @keyframes wordIn { from { opacity: 0; transform: translateY(12px); filter: blur(4px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
   .hero-tagline {
     font-size: clamp(1.05rem, 1.4vw, 1.2rem); color: var(--text-dim);
     line-height: 1.6; font-family: var(--font-ui); margin-bottom: 2rem;
@@ -259,14 +261,6 @@
   .stack-group li { font-size: 0.92rem; color: var(--text-dim); padding: 0.22rem 0; }
   .stack-group li::before { content: "— "; color: var(--text-faint); }
 
-  /* ── Timeline ── */
-  .tl-item {
-    display: grid; grid-template-columns: 130px 1fr; gap: 1.75rem;
-    padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.9rem;
-  }
-  .tl-date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-faint); padding-top: 0.15rem; }
-  .tl-event { color: var(--text-dim); }
-
   /* ── Contact ── */
   .contact-links { display: flex; gap: 2.25rem; font-family: var(--font-mono); font-size: 0.85rem; flex-wrap: wrap; }
   .contact-section p { margin-bottom: 1.75rem; }
@@ -311,7 +305,6 @@
     .project { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.75rem 0; }
     .project-body { grid-column: 1; }
     .recognition-list { grid-template-columns: 1fr; }
-    .tl-item { grid-template-columns: 100px 1fr; gap: 1rem; }
     .nav-links { display: none; }
     .nav-links.open {
       display: flex; flex-direction: column; position: absolute;
@@ -337,8 +330,6 @@
     nav { padding: 0.65rem 1rem; }
     .pm-card { padding: 1.25rem; }
     .lab-grid { grid-template-columns: 1fr; }
-    .tl-item { grid-template-columns: 80px 1fr; gap: 0.75rem; font-size: 0.82rem; }
-    .tl-date { font-size: 0.65rem; }
     .recognition-list { gap: 0.4rem; }
     .rec-item { padding: 1rem 0.5rem 1rem 0; }
   }
@@ -372,8 +363,11 @@
   <span class="nav-name">Gideon Opukeme</span>
   <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">Menu</button>
   <div class="nav-links" id="nav-links">
+    <a href="#about">About</a>
+    <a href="#recognition">Recognition</a>
     <a href="#work">Work</a>
     <a href="#postmortems">Postmortems</a>
+    <a href="#lab">Lab</a>
     <a href="#stack">Stack</a>
     <a href="#contact">Contact</a>
   </div>
@@ -382,19 +376,22 @@
 <!-- ════════════════════ Hero ════════════════════ -->
 <section class="hero" id="hero-section">
   <div class="container hero-content reveal">
-    <h1>I build security tools<br>that actually work.</h1>
+    <h1 id="hero-heading">I build security tools<br>that actually work.</h1>
     <div class="hero-status"><span class="dot"></span>Available for UK security engineering roles — late 2026</div>
-    <p class="hero-tagline">Cybersecurity engineer. Incoming MSc Cyber Security at Aberdeen. Former OKX.AI pioneer. MIT Media Lab contributor.</p>
+    <p class="hero-tagline">Cybersecurity Engineer. MSc Cyber Security, University of Aberdeen. Former OKX.AI pioneer. MIT Media Lab contributor.</p>
     <div class="hero-meta">
-      <span>● Nigeria → Aberdeen, UK (Sep 2026)</span>
+      <span>● Aberdeen, Scotland, UK</span>
       <span>● <a href="https://github.com/Gideon145">github/Gideon145</a></span>
-      <span>● <a href="mailto:hello@axara.dev">hello@axara.dev</a></span>
+      <span>● <a href="mailto:opukemegideon@gmail.com">opukemegideon@gmail.com</a></span>
     </div>
   </div>
 </section>
 
 <!-- ════════════════════ About ════════════════════ -->
 <section id="about">
+  <div class="container reveal">
+    <h2>About</h2>
+  </div>
   <div class="container">
     <div class="about-grid">
       <div class="about-text reveal">
@@ -405,7 +402,7 @@
       </div>
       <div class="about-side reveal">
         <div class="label">Location</div>
-        <p style="color:var(--text-dim);margin-bottom:1.25rem;">Nigeria<br>→ Aberdeen, UK (Sep 2026)</p>
+        <p style="color:var(--text-dim);margin-bottom:1.25rem;">Aberdeen<br>Scotland, UK</p>
         <div class="label">Focus</div>
         <p style="color:var(--text-dim);margin-bottom:1.25rem;">AI/LLM Security<br>Detection Engineering<br>Threat Intelligence<br>Protocol Security</p>
         <div class="label">Certifications</div>
@@ -455,14 +452,6 @@
   </div>
 </section>
 
-<!-- ════════════════════ Timeline ════════════════════ -->
-<section id="timeline">
-  <div class="container reveal">
-    <h2>Timeline</h2>
-    <div id="timeline-container"></div>
-  </div>
-</section>
-
 <!-- ════════════════════ Contact ════════════════════ -->
 <section id="contact" class="contact-section">
   <div class="container reveal">
@@ -472,7 +461,7 @@
       <a href="https://github.com/Gideon145">GitHub</a>
       <a href="https://linkedin.com/in/gideon-opukeme-755723238">LinkedIn</a>
       <a href="https://x.com/og_xavierrr">X / Twitter</a>
-      <a href="mailto:hello@axara.dev">hello@axara.dev</a>
+      <a href="mailto:opukemegideon@gmail.com">opukemegideon@gmail.com</a>
     </div>
   </div>
 </section>
@@ -483,7 +472,7 @@
 <footer>
   <div class="container" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:0.5rem;">
     <span>© 2026 Gideon Opukeme</span>
-    <span>Built without frameworks. No AI templates.</span>
+    <span></span>
   </div>
 </footer>
 
@@ -731,14 +720,27 @@
     sc.appendChild(div);
   });
 
-  // ── Timeline ──
-  var tc = document.getElementById('timeline-container');
-  portfolioData.timeline.forEach(function(tl) {
-    var div = document.createElement('div');
-    div.className = 'tl-item reveal';
-    div.innerHTML = '<div class="tl-date">' + tl.period + '</div><div class="tl-event">' + tl.event + '</div>';
-    tc.appendChild(div);
-  });
+  // ── Hero heading word animation ──
+  var heroH1 = document.getElementById('hero-heading');
+  if (heroH1) {
+    var html = heroH1.innerHTML;
+    // Split on spaces and <br> tags, wrapping each word
+    var parts = html.split(/(<br\s*\/?>|\s+)/);
+    var result = '';
+    var delay = 0;
+    for (var i = 0; i < parts.length; i++) {
+      var part = parts[i];
+      if (part.match(/<br\s*\/?>/i)) {
+        result += part;
+      } else if (part.match(/^\s+$/)) {
+        result += ' ';
+      } else if (part.trim()) {
+        result += '<span class=\"word\" style=\"animation-delay:' + (delay * 0.08).toFixed(2) + 's\">' + part + '</span> ';
+        delay++;
+      }
+    }
+    heroH1.innerHTML = result;
+  }
 
   // ── Scroll reveal ──
   var observer = new IntersectionObserver(function(entries) {
