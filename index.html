@@ -147,11 +147,32 @@
     font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-faint);
     line-height: 1.9; padding-top: 0.2rem;
   }
+  .about-avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--surface); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+    font-family: var(--font-ui); font-size: 1.5rem; font-weight: 500;
+    color: var(--accent); letter-spacing: -0.02em;
+    user-select: none;
+  }
   .about-side .label {
     color: var(--text-dim); font-size: 0.62rem; text-transform: uppercase;
     letter-spacing: 0.12em; margin-bottom: 0.5rem;
   }
   .about-side p { font-size: 0.82rem; }
+
+  /* ── Companies ── */
+  .companies-grid {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .company-item {
+    font-family: var(--font-mono); font-size: 0.75rem;
+    padding: 0.5rem 1rem; color: var(--text-dim);
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .company-item:hover { border-color: rgba(196,149,106,0.3); color: var(--text); }
 
   /* ── Recognition ── */
   .recognition-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
@@ -369,6 +390,7 @@
   <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">Menu</button>
   <div class="nav-links" id="nav-links">
     <a href="#about">About</a>
+    <a href="#companies">Companies</a>
     <a href="#recognition">Recognition</a>
     <a href="#work">Work</a>
     <a href="#postmortems">Postmortems</a>
@@ -408,6 +430,7 @@
         <p>My open-source work has been accepted into production infrastructure. My <strong>Mirai botnet C2 detection rules were merged into SigmaHQ</strong> (10,900+ GitHub stars), the industry-standard detection rule repository depended upon by SOC teams worldwide. My <strong>Argus smart contracts passed a ChainGPT security audit</strong> with a perfect five-out-of-five score across all Circle primitive categories, serving 350+ users across more than 1,400 scans. I built <strong>TrustGuard</strong>, an ELO-based reputation and risk scoring system for autonomous agents that a core reviewer called a <strong>"genuinely different angle"</strong> from existing approaches, passing all eleven adversarial test scenarios on first submission. I hold the <strong>Google Cybersecurity Certificate</strong> and <strong>Fortinet NSE 1 through 3</strong> certifications, and I am actively seeking security engineering roles where I can apply my skills in detection engineering, AI security, and threat intelligence to protect real systems and real users.</p>
       </div>
       <div class="about-side reveal">
+        <div class="about-avatar">GO</div>
         <div class="label">Location</div>
         <p style="color:var(--text-dim);margin-bottom:1.25rem;">Aberdeen<br>Scotland, UK</p>
         <div class="label">Focus</div>
@@ -415,6 +438,26 @@
         <div class="label">Certifications</div>
         <p style="color:var(--text-dim);">Google Cybersecurity Certificate<br>Fortinet NSE 1, 2 & 3<br>FCF Cybersecurity<br>Cisco Intro to Cyber</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ Companies ════════════════════ -->
+<section id="companies">
+  <div class="container reveal">
+    <h2>Companies & Platforms</h2>
+    <p style="margin-bottom:2rem;">My detection rules, security tooling, and smart contracts run on infrastructure trusted by the world's largest enterprises.</p>
+    <div class="companies-grid">
+      <div class="company-item">Splunk</div>
+      <div class="company-item">Microsoft Sentinel</div>
+      <div class="company-item">CrowdStrike Falcon</div>
+      <div class="company-item">IBM QRadar</div>
+      <div class="company-item">OKX.AI</div>
+      <div class="company-item">SigmaHQ</div>
+      <div class="company-item">ChainGPT</div>
+      <div class="company-item">MIT Media Lab</div>
+      <div class="company-item">Uniswap</div>
+      <div class="company-item">Circle</div>
     </div>
   </div>
 </section>
