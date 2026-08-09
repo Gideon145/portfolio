@@ -173,12 +173,21 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     {
       label: "Google Cybersecurity Certificate",
       detail: "Earned the Google Cybersecurity Certificate, an industry-recognised professional qualification covering the NIST Cybersecurity Framework, incident detection and response, network security fundamentals, Linux command-line and SQL for security operations, and Python automation for security workflows. Completed June 2025 through Coursera's hands-on lab-based curriculum.",
-      url: "https://www.coursera.org/professional-certificates/google-cybersecurity",
+      url: "https://coursera.org/verify/professional-cert/BFZ93KQRDQC7",
     },
     {
-      label: "Fortinet NSE 1, 2 and 3, Network Security",
-      detail: "Completed all three foundational levels of the Fortinet Network Security Expert certification programme. NSE 1 covers the current threat landscape and cybersecurity fundamentals. NSE 2 introduces Fortinet's security-driven networking architecture and the Security Fabric. NSE 3 provides hands-on training in FortiGate firewall deployment, security policy configuration, and basic network protection. Practical network security administration skills applicable across vendor platforms.",
-      url: "https://www.fortinet.com/training/cybersecurity-professionals",
+      label: "Fortinet, Certified Fundamentals and NSE 3",
+      detail: "Earned the Fortinet Certified Fundamentals (FCF) Cybersecurity certification and the Fortinet NSE 3 Network Security Associate certification, both issued May 2026. FCF validates foundational knowledge of the current threat landscape and Fortinet's security-driven networking approach. NSE 3 demonstrates hands-on proficiency in FortiGate firewall deployment, security policy configuration, and basic network protection. Practical network security administration skills applicable across vendor platforms.",
+      url: "https://www.credly.com/badges/eac34153-313b-4297-8ce6-0e5305df5252/public_url",
+      links: [
+        { label: "FCF Badge", url: "https://www.credly.com/badges/bdec916d-e839-440f-9571-344c2dff0b04/public_url" },
+        { label: "NSE 3 Badge", url: "https://www.credly.com/badges/eac34153-313b-4297-8ce6-0e5305df5252/public_url" },
+      ],
+    },
+    {
+      label: "Cisco, Introduction to Cybersecurity",
+      detail: "Earned the Introduction to Cybersecurity certification from Cisco, issued June 2025. Covers foundational cybersecurity concepts including threat analysis, network security basics, cryptography fundamentals, and security operations principles. Verifiable through Cisco's Credly digital credential platform.",
+      url: "https://www.credly.com/badges/fe94bd0d-1f05-46be-bc9c-7ec157a14a93/public_url",
     },
   ],
 
