@@ -317,6 +317,9 @@
     H = canvas.height = window.innerHeight;
   }
   resize();
+  // Re-resize after layout settles
+  setTimeout(resize, 100);
+  setTimeout(resize, 500);
   window.addEventListener('resize', resize);
 
   document.addEventListener('mousemove', e => {
@@ -329,8 +332,15 @@
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
+    const sf = Math.min(scrollY / 2000, 1);
 
-    // ── Update nodes ──
+    // ── Blueprint grid ──
+    ctx.strokeStyle = `rgba(196,149,106,${0.05 + sf * 0.04})`;
+    ctx.lineWidth = 0.4;
+    for (let y = 80; y < H; y += 80) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+    for (let x = 80; x < W; x += 80) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+
+    // ── Update node positions ──
     nodes.forEach(n => {
       n.x += n.vx + (mouseX - 0.5) * 0.0001;
       n.y += n.vy + (mouseY - 0.5) * 0.0001;
@@ -338,29 +348,16 @@
       if (n.y < 0) n.y = 1; if (n.y > 1) n.y = 0;
     });
 
-    // ── Draw horizontal grid lines (subtle blueprint) ──
-    const gridSpacing = 80;
-    ctx.strokeStyle = `rgba(196,149,106,${0.02 + scrollFactor * 0.02})`;
-    ctx.lineWidth = 0.3;
-    for (let y = gridSpacing; y < H; y += gridSpacing) {
-      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
-    }
-    for (let x = gridSpacing; x < W; x += gridSpacing) {
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
-    }
-
-    // ── Draw connections (thin lines between nearby nodes) ──
-    const scrollFactor = Math.min(scrollY / 2000, 1);
-    ctx.strokeStyle = `rgba(196,149,106,${0.15 + scrollFactor * 0.08})`;
-    ctx.lineWidth = 0.6;
+    // ── Connections ──
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const dx = nodes[i].x - nodes[j].x;
         const dy = nodes[i].y - nodes[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 0.25) {
-          const lineAlpha = (1 - dist / 0.25) * (0.15 + scrollFactor * 0.08);
-          ctx.strokeStyle = `rgba(196,149,106,${lineAlpha})`;
+        if (dist < 0.22) {
+          const la = (1 - dist / 0.22) * (0.12 + sf * 0.08);
+          ctx.strokeStyle = `rgba(196,149,106,${la})`;
+          ctx.lineWidth = 0.5;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x * W, nodes[i].y * H);
           ctx.lineTo(nodes[j].x * W, nodes[j].y * H);
@@ -369,31 +366,23 @@
       }
     }
 
-    // ── Draw nodes ──
+    // ── Nodes ──
     nodes.forEach(n => {
-      const alpha = 0.35 + Math.sin(n.phase + scrollY * 0.001) * 0.15;
+      const alpha = 0.45 + Math.sin(n.phase + scrollY * 0.001) * 0.18;
       ctx.fillStyle = `rgba(196,149,106,${alpha})`;
-      ctx.beginPath();
-      ctx.arc(n.x * W, n.y * H, n.size, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.strokeStyle = `rgba(196,149,106,${alpha * 0.4})`;
+      ctx.beginPath(); ctx.arc(n.x * W, n.y * H, n.size, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = `rgba(196,149,106,${alpha * 0.5})`;
       ctx.lineWidth = 0.4;
-      ctx.beginPath();
-      ctx.arc(n.x * W, n.y * H, n.size * 3, 0, Math.PI * 2);
-      ctx.stroke();
+      ctx.beginPath(); ctx.arc(n.x * W, n.y * H, n.size * 3, 0, Math.PI * 2); ctx.stroke();
     });
 
     // ── Pointer trail ──
     if (!isMobile) {
-      trail.forEach((p, i) => {
-        p.life -= 0.04;
+      trail.forEach(p => {
+        p.life -= 0.03;
         if (p.life <= 0) return;
-        const alpha = p.life * 0.15;
-        const r = (1 - p.life) * 8 + 2;
-        ctx.fillStyle = `rgba(196,149,106,${alpha})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.fillStyle = `rgba(196,149,106,${p.life * 0.12})`;
+        ctx.beginPath(); ctx.arc(p.x, p.y, (1 - p.life) * 6 + 1.5, 0, Math.PI * 2); ctx.fill();
       });
     }
 
