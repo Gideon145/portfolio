@@ -8,7 +8,7 @@
 <style>
   /* ═══════════════════════════════════════════════════════════════
      Portfolio — Gideon Opukeme
-     Technical Studio aesthetic. No gradients. No glass. No glow.
+     Editorial technical studio. No AI templates. No gradients. No glow.
      ═══════════════════════════════════════════════════════════════ */
 
   :root {
@@ -40,22 +40,29 @@
     position: relative;
   }
 
+  /* ── Scroll progress bar ── */
+  #scroll-progress {
+    position: fixed; top: 0; left: 0; height: 1.5px;
+    background: var(--accent); z-index: 200;
+    width: 0%; transition: width 0.1s linear;
+  }
+
   /* ── Background Canvas ── */
   #bg-canvas {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     z-index: 0; pointer-events: none;
-    opacity: 0.7;
+    opacity: 0.72;
   }
   main { position: relative; z-index: 1; }
   section { }
 
   /* ── Typography ── */
   h1, h2, h3, h4 { font-family: var(--font-ui); font-weight: 500; letter-spacing: -0.02em; }
-  h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.1; }
-  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 2rem; color: var(--accent); }
-  h3 { font-size: 1.15rem; font-weight: 500; }
-  p { font-size: 1.05rem; color: var(--text-dim); max-width: 65ch; }
-  a { color: var(--accent); text-decoration: none; transition: opacity 0.15s; }
+  h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.08; }
+  h2 { font-size: clamp(1.5rem, 2.8vw, 2rem); margin-bottom: 2.5rem; color: var(--accent); font-weight: 480; }
+  h3 { font-size: 1.2rem; font-weight: 500; }
+  p { font-size: 1.05rem; color: var(--text-dim); max-width: 65ch; line-height: 1.7; }
+  a { color: var(--accent); text-decoration: none; transition: opacity 0.18s; }
   a:hover { opacity: 0.7; }
   .mono { font-family: var(--font-mono); font-size: 0.82rem; }
   .dim { color: var(--text-dim); }
@@ -63,121 +70,305 @@
 
   /* ── Layout ── */
   .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
-  section { padding: 5rem 0; border-top: 1px solid var(--border); }
+  section { padding: 5.5rem 0; border-top: 1px solid var(--border); }
   section:first-of-type { border-top: none; padding-top: 0; }
 
   /* ── Nav ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 1rem 2rem;
-    background: rgba(13,13,18,0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
+    background: rgba(13,13,18,0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
     display: flex; align-items: center; justify-content: space-between;
     font-family: var(--font-ui);
   }
-  .nav-name { font-size: 0.9rem; font-weight: 500; color: var(--text); }
-  .nav-links { display: flex; gap: 1.5rem; }
-  .nav-links a { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--font-mono); }
-  .nav-links a:hover { color: var(--text); opacity: 1; }
+  .nav-name { font-size: 0.9rem; font-weight: 500; color: var(--text); letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+  .nav-links a {
+    font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.07em; font-family: var(--font-mono); transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); opacity: 1; }
+
+  /* ── Mobile nav toggle ── */
+  .nav-toggle {
+    display: none; background: none; border: none; cursor: pointer;
+    padding: 0.4rem; color: var(--text-dim); font-family: var(--font-mono);
+    font-size: 0.75rem; letter-spacing: 0.06em;
+  }
+  .nav-toggle:hover { color: var(--text); }
 
   /* ── Hero ── */
-  .hero { padding: 8rem 0 4rem; min-height: 70vh; display: flex; align-items: flex-end; }
-  .hero-content { max-width: 800px; }
-  .hero h1 { margin-bottom: 0.5rem; white-space: pre-line; }
-  .hero-tagline { font-size: 1.1rem; color: var(--text-dim); margin-top: 1rem; line-height: 1.5; font-family: var(--font-ui); }
-  .hero-meta { display: flex; gap: 1.5rem; margin-top: 2rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-faint); }
+  .hero {
+    padding: 9rem 0 5rem; min-height: 75vh; display: flex;
+    align-items: flex-end; position: relative;
+  }
+  .hero-content { max-width: 840px; }
+  .hero h1 { margin-bottom: 1.2rem; white-space: pre-line; }
+  .hero-tagline {
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem); color: var(--text-dim);
+    line-height: 1.6; font-family: var(--font-ui); margin-bottom: 2rem;
+  }
+  .hero-status {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: var(--font-mono); font-size: 0.75rem; color: var(--green);
+    margin-bottom: 2rem;
+  }
+  .hero-status .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--green);
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; box-shadow: 0 0 4px var(--green); }
+    50% { opacity: 0.4; box-shadow: 0 0 0px var(--green); }
+  }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 1.5rem; row-gap: 0.5rem;
+    font-family: var(--font-mono); font-size: 0.73rem; color: var(--text-faint);
+  }
   .hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
 
   /* ── About ── */
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-  .about-text p { margin-bottom: 1.2rem; }
-  .about-side { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); line-height: 1.8; }
-  .about-side .label { color: var(--text-dim); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+  .about-text p { margin-bottom: 1.3rem; }
+  .about-side {
+    font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-faint);
+    line-height: 1.9; padding-top: 0.2rem;
+  }
+  .about-side .label {
+    color: var(--text-dim); font-size: 0.62rem; text-transform: uppercase;
+    letter-spacing: 0.12em; margin-bottom: 0.5rem;
+  }
+  .about-side p { font-size: 0.82rem; }
+
+  /* ── Recognition ── */
+  .recognition-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .rec-item {
+    padding: 1.25rem 1.25rem 1.25rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex; flex-direction: column; gap: 0.25rem;
+  }
+  .rec-item .rec-label {
+    font-family: var(--font-ui); font-size: 0.95rem; color: var(--text);
+    font-weight: 500; letter-spacing: -0.01em;
+  }
+  .rec-item .rec-detail {
+    font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .rec-item a { font-size: 0.68rem; font-family: var(--font-mono); }
 
   /* ── Projects ── */
-  .project { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .project {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+    padding: 2.5rem 0; border-bottom: 1px solid var(--border);
+    align-items: start; cursor: default;
+    transition: background 0.25s ease;
+    position: relative;
+  }
   .project:last-child { border-bottom: none; }
-  .project-header { grid-column: 1; }
-  .project-name { font-size: 1.4rem; font-weight: 500; color: var(--text); font-family: var(--font-ui); }
-  .project-tag { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.2rem; }
+  .project:hover { background: rgba(196,149,106,0.015); }
+  .project-header { grid-column: 1; position: relative; }
+  .project-name {
+    font-size: 1.45rem; font-weight: 500; color: var(--text);
+    font-family: var(--font-ui); transition: color 0.2s;
+  }
+  .project:hover .project-name { color: var(--accent); }
+  .project-tag {
+    font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.07em; margin-top: 0.25rem;
+    transition: opacity 0.2s;
+  }
   .project-body { grid-column: 2; }
-  .project-desc { color: var(--text-dim); margin-bottom: 0.75rem; font-size: 0.95rem; }
-  .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
-  .project-tech span { font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.55rem; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }
-  .project-stats { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-faint); margin-bottom: 0.5rem; }
-  .project-link { font-family: var(--font-mono); font-size: 0.7rem; }
-  .project-link a { margin-right: 1rem; }
+  .project-desc { color: var(--text-dim); margin-bottom: 0.8rem; font-size: 0.93rem; line-height: 1.6; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.5rem; }
+  .project-tech span {
+    font-family: var(--font-mono); font-size: 0.66rem; padding: 0.18rem 0.5rem;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text-dim);
+    transition: border-color 0.2s;
+  }
+  .project:hover .project-tech span { border-color: rgba(196,149,106,0.2); }
+  .project-stats {
+    font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-faint);
+    margin-bottom: 0.5rem;
+  }
+  .project-link { font-family: var(--font-mono); font-size: 0.68rem; }
+  .project-link a { margin-right: 1.25rem; }
+  .project-status {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    font-family: var(--font-mono); font-size: 0.62rem; color: var(--green);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem;
+  }
+  .project-status .sdot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); }
 
   /* ── Postmortems ── */
-  .pm-card { padding: 1.75rem; background: var(--surface); border: 1px solid var(--border); margin-bottom: 1rem; }
-  .pm-card .pm-date { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
-  .pm-card h4 { font-size: 1.1rem; margin-bottom: 0.5rem; font-family: var(--font-ui); }
-  .pm-card p { font-size: 0.9rem; }
-  .pm-card .pm-finding { font-family: var(--font-mono); font-size: 0.72rem; color: var(--red); margin-top: 0.75rem; padding: 0.5rem 0.75rem; background: rgba(212,120,110,0.06); border-left: 2px solid var(--red); }
+  .pm-card {
+    padding: 2rem; background: var(--surface); border: 1px solid var(--border);
+    margin-bottom: 1rem; position: relative;
+  }
+  .pm-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%;
+    background: var(--red); opacity: 0.5;
+  }
+  .pm-card .pm-meta {
+    display: flex; gap: 1.5rem; align-items: center; margin-bottom: 0.75rem;
+    font-family: var(--font-mono); font-size: 0.7rem;
+  }
+  .pm-card .pm-date {
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .pm-card .pm-severity {
+    color: var(--red); font-weight: 500;
+  }
+  .pm-card h4 { font-size: 1.15rem; margin-bottom: 0.6rem; font-family: var(--font-ui); font-weight: 500; }
+  .pm-card p { font-size: 0.9rem; margin-bottom: 0.75rem; }
+  .pm-card .pm-section {
+    font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.07em; margin-top: 1rem; margin-bottom: 0.3rem;
+  }
+  .pm-card .pm-finding {
+    font-family: var(--font-mono); font-size: 0.72rem; color: var(--red);
+    margin-top: 0.75rem; padding: 0.6rem 0.85rem;
+    background: rgba(212,120,110,0.05); border-left: 2px solid var(--red);
+    line-height: 1.5;
+  }
 
   /* ── Lab ── */
-  .lab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.75rem; }
-  .lab-item { padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); }
+  .lab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.6rem; }
+  .lab-item {
+    padding: 1.25rem; background: var(--surface); border: 1px solid var(--border);
+    transition: border-color 0.2s;
+  }
+  .lab-item:hover { border-color: rgba(196,149,106,0.2); }
   .lab-item h4 { font-size: 0.95rem; font-family: var(--font-ui); margin-bottom: 0.3rem; }
-  .lab-item p { font-size: 0.82rem; }
-  .lab-item .lab-tech { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-faint); margin-top: 0.5rem; }
+  .lab-item p { font-size: 0.8rem; }
+  .lab-item .lab-tech { font-family: var(--font-mono); font-size: 0.64rem; color: var(--text-faint); margin-top: 0.5rem; }
 
   /* ── Stack ── */
-  .stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-  .stack-group h4 { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; }
+  .stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.75rem; }
+  .stack-group h4 {
+    font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.7rem;
+  }
   .stack-group ul { list-style: none; }
-  .stack-group li { font-size: 0.9rem; color: var(--text-dim); padding: 0.2rem 0; }
+  .stack-group li { font-size: 0.92rem; color: var(--text-dim); padding: 0.22rem 0; }
   .stack-group li::before { content: "— "; color: var(--text-faint); }
 
   /* ── Timeline ── */
-  .tl-item { display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.9rem; }
-  .tl-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-faint); padding-top: 0.15rem; }
+  .tl-item {
+    display: grid; grid-template-columns: 130px 1fr; gap: 1.75rem;
+    padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.9rem;
+  }
+  .tl-date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-faint); padding-top: 0.15rem; }
   .tl-event { color: var(--text-dim); }
 
   /* ── Contact ── */
-  .contact-links { display: flex; gap: 2rem; font-family: var(--font-mono); font-size: 0.85rem; }
-  .contact-section p { margin-bottom: 1.5rem; }
+  .contact-links { display: flex; gap: 2.25rem; font-family: var(--font-mono); font-size: 0.85rem; flex-wrap: wrap; }
+  .contact-section p { margin-bottom: 1.75rem; }
 
   /* ── Footer ── */
-  footer { padding: 2rem 0; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-faint); display: flex; justify-content: space-between; }
-
-  /* ── Scroll reveal ── */
-  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* ── Responsive ── */
-  @media (max-width: 768px) {
-    .container { padding: 0 1.25rem; }
-    section { padding: 3.5rem 0; }
-    .hero { padding: 6rem 0 3rem; min-height: auto; }
-    .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-    .project { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.75rem 0; }
-    .tl-item { grid-template-columns: 90px 1fr; gap: 1rem; }
-    nav { padding: 0.75rem 1.25rem; }
-    .nav-links { gap: 0.75rem; }
-    .nav-links a { font-size: 0.7rem; }
-    .contact-links { flex-direction: column; gap: 0.5rem; }
-    .stack-grid { grid-template-columns: 1fr; }
+  footer {
+    padding: 2rem 0; border-top: 1px solid var(--border);
+    font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-faint);
+    display: flex; justify-content: space-between;
   }
 
+  /* ── Scroll reveal (staggered) ── */
+  .reveal {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 0.65s cubic-bezier(.22,.61,.36,1), transform 0.65s cubic-bezier(.22,.61,.36,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-stagger > * { opacity: 0; transform: translateY(14px); }
+  .reveal-stagger > *.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── Section-aware background states ── */
+  [data-bg-state="hero-section"] #bg-canvas { opacity: 0.55; }
+  [data-bg-state="work"] #bg-canvas { opacity: 0.78; }
+  [data-bg-state="postmortems"] #bg-canvas { opacity: 0.7; }
+
+  /* ═══════════════════════════════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .container { padding: 0 1.5rem; }
+    .project { gap: 1.5rem; }
+    .recognition-list { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 1.2rem; }
+    section { padding: 3.5rem 0; }
+    .hero { padding: 6rem 0 3rem; min-height: auto; }
+    h1 { font-size: clamp(2rem, 8vw, 3rem); }
+    h2 { font-size: 1.3rem; margin-bottom: 1.75rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .project { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.75rem 0; }
+    .project-body { grid-column: 1; }
+    .recognition-list { grid-template-columns: 1fr; }
+    .tl-item { grid-template-columns: 100px 1fr; gap: 1rem; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column; position: absolute;
+      top: 100%; left: 0; right: 0; background: rgba(13,13,18,0.96);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      padding: 0.75rem 1.2rem 1.2rem;
+      border-bottom: 1px solid var(--border); gap: 0.6rem;
+    }
+    .nav-links.open a { padding: 0.5rem 0; font-size: 0.82rem; }
+    .nav-toggle { display: block; }
+    .stack-grid { grid-template-columns: 1fr; }
+    .contact-links { flex-direction: column; gap: 0.5rem; }
+    footer { flex-direction: column; gap: 0.4rem; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 2.75rem 0; }
+    .hero { padding: 5rem 0 2.5rem; }
+    .hero h1 { font-size: 1.9rem; }
+    .hero-tagline { font-size: 0.95rem; }
+    .hero-meta { gap: 0.75rem; font-size: 0.68rem; }
+    .container { padding: 0 1rem; }
+    nav { padding: 0.65rem 1rem; }
+    .pm-card { padding: 1.25rem; }
+    .lab-grid { grid-template-columns: 1fr; }
+    .tl-item { grid-template-columns: 80px 1fr; gap: 0.75rem; font-size: 0.82rem; }
+    .tl-date { font-size: 0.65rem; }
+    .recognition-list { gap: 0.4rem; }
+    .rec-item { padding: 1rem 0.5rem 1rem 0; }
+  }
+
+  /* ── Reduced motion ── */
   @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
+    .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
     html { scroll-behavior: auto; }
+    #bg-canvas { opacity: 0.35; }
+    .hero-status .dot { animation: none; opacity: 1; }
+  }
+
+  /* ── Touch device adjustments ── */
+  @media (hover: none) {
+    .project:hover { background: transparent; }
+    .project:hover .project-name { color: var(--text); }
+    .project:hover .project-tech span { border-color: var(--border); }
+    .lab-item:hover { border-color: var(--border); }
   }
 </style>
 </head>
-<body>
+<body id="top" data-bg-state="hero-section">
 
+<div id="scroll-progress"></div>
 <canvas id="bg-canvas"></canvas>
 
 <main>
 
-<!-- ── Navigation ── -->
+<!-- ════════════════════ Navigation ════════════════════ -->
 <nav>
   <span class="nav-name">Gideon Opukeme</span>
-  <div class="nav-links">
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">Menu</button>
+  <div class="nav-links" id="nav-links">
     <a href="#work">Work</a>
     <a href="#postmortems">Postmortems</a>
     <a href="#stack">Stack</a>
@@ -185,20 +376,21 @@
   </div>
 </nav>
 
-<!-- ── Hero ── -->
-<section class="hero">
+<!-- ════════════════════ Hero ════════════════════ -->
+<section class="hero" id="hero-section">
   <div class="container hero-content reveal">
     <h1>I build security tools<br>that actually work.</h1>
-    <p class="hero-tagline">Cybersecurity engineer. Incoming MSc Cyber Security at Aberdeen.<br>Former OKX.AI pioneer. MIT Media Lab contributor.</p>
+    <div class="hero-status"><span class="dot"></span>Available for UK security engineering roles — late 2026</div>
+    <p class="hero-tagline">Cybersecurity engineer. Incoming MSc Cyber Security at Aberdeen. Former OKX.AI pioneer. MIT Media Lab contributor.</p>
     <div class="hero-meta">
-      <span>● Nigeria → Aberdeen (Sep 2026)</span>
-      <span>● Available for UK roles</span>
+      <span>● Nigeria → Aberdeen, UK (Sep 2026)</span>
       <span>● <a href="https://github.com/Gideon145">github/Gideon145</a></span>
+      <span>● <a href="mailto:hello@axara.dev">hello@axara.dev</a></span>
     </div>
   </div>
 </section>
 
-<!-- ── About ── -->
+<!-- ════════════════════ About ════════════════════ -->
 <section id="about">
   <div class="container">
     <div class="about-grid">
@@ -210,9 +402,9 @@
       </div>
       <div class="about-side reveal">
         <div class="label">Location</div>
-        <p style="color:var(--text-dim);margin-bottom:1rem;">Nigeria<br>→ Aberdeen, UK (Sep 2026)</p>
+        <p style="color:var(--text-dim);margin-bottom:1.25rem;">Nigeria<br>→ Aberdeen, UK (Sep 2026)</p>
         <div class="label">Focus</div>
-        <p style="color:var(--text-dim);margin-bottom:1rem;">AI/LLM Security<br>Detection Engineering<br>Threat Intelligence<br>Protocol Security</p>
+        <p style="color:var(--text-dim);margin-bottom:1.25rem;">AI/LLM Security<br>Detection Engineering<br>Threat Intelligence<br>Protocol Security</p>
         <div class="label">Certifications</div>
         <p style="color:var(--text-dim);">Google Cybersecurity<br>Fortinet NSE 1–3<br>FCF Cybersecurity<br>Cisco Intro to Cyber</p>
       </div>
@@ -220,7 +412,15 @@
   </div>
 </section>
 
-<!-- ── Projects ── -->
+<!-- ════════════════════ Recognition ════════════════════ -->
+<section id="recognition">
+  <div class="container reveal">
+    <h2>Recognition</h2>
+    <div class="recognition-list" id="recognition-container"></div>
+  </div>
+</section>
+
+<!-- ════════════════════ Projects ════════════════════ -->
 <section id="work">
   <div class="container reveal">
     <h2>Work</h2>
@@ -228,7 +428,7 @@
   <div class="container" id="projects-container"></div>
 </section>
 
-<!-- ── Postmortems ── -->
+<!-- ════════════════════ Postmortems ════════════════════ -->
 <section id="postmortems">
   <div class="container reveal">
     <h2>Postmortems</h2>
@@ -236,15 +436,15 @@
   </div>
 </section>
 
-<!-- ── Lab ── -->
+<!-- ════════════════════ Lab ════════════════════ -->
 <section id="lab">
   <div class="container reveal">
-    <h2>Lab & Experiments</h2>
+    <h2>Lab &amp; Experiments</h2>
     <div class="lab-grid" id="lab-container"></div>
   </div>
 </section>
 
-<!-- ── Stack ── -->
+<!-- ════════════════════ Stack ════════════════════ -->
 <section id="stack">
   <div class="container reveal">
     <h2>Stack</h2>
@@ -252,7 +452,7 @@
   </div>
 </section>
 
-<!-- ── Timeline ── -->
+<!-- ════════════════════ Timeline ════════════════════ -->
 <section id="timeline">
   <div class="container reveal">
     <h2>Timeline</h2>
@@ -260,7 +460,7 @@
   </div>
 </section>
 
-<!-- ── Contact ── -->
+<!-- ════════════════════ Contact ════════════════════ -->
 <section id="contact" class="contact-section">
   <div class="container reveal">
     <h2>Contact</h2>
@@ -276,76 +476,163 @@
 
 </main>
 
-<!-- ── Footer ── -->
+<!-- ════════════════════ Footer ════════════════════ -->
 <footer>
-  <div class="container" style="display:flex;justify-content:space-between;width:100%;">
+  <div class="container" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:0.5rem;">
     <span>© 2026 Gideon Opukeme</span>
     <span>Built without frameworks. No AI templates.</span>
   </div>
 </footer>
 
-<!-- ── Interactive Background + Pointer Trail ── -->
+<!-- ═══════════════════════════════════════════════════════
+     INTERACTIVE BACKGROUND
+     Distance-based pointer trail + section-aware network graph
+     ═══════════════════════════════════════════════════════ -->
 <script>
 (function() {
   const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
-  let W, H, mouseX = 0, mouseY = 0, scrollY = 0;
+  let W, H, scrollY = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
   const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const isTouch = window.matchMedia('(hover: none)').matches;
 
-  if (isReduced) { canvas.style.display = 'none'; return; }
+  if (isReduced) { canvas.style.opacity = '0.35'; }
 
-  // ── Nodes: abstract geometric points ──
-  const NODE_COUNT = isMobile ? 40 : 100;
+  // ── Nodes ──
+  const N = isMobile ? 45 : 100;
   const nodes = [];
-  for (let i = 0; i < NODE_COUNT; i++) {
+  for (let i = 0; i < N; i++) {
     nodes.push({
       x: Math.random(), y: Math.random(),
-      vx: (Math.random() - 0.5) * 0.0004,
-      vy: (Math.random() - 0.5) * 0.0004,
-      size: Math.random() * 2 + 0.8,
+      vx: (Math.random() - 0.5) * 0.00035,
+      vy: (Math.random() - 0.5) * 0.00035,
+      homeX: Math.random(), homeY: Math.random(),
+      size: Math.random() * 2.2 + 0.7,
       phase: Math.random() * Math.PI * 2,
+      freq: 0.0004 + Math.random() * 0.001,
     });
   }
 
-  // ── Pointer trail ──
-  const TRAIL_LENGTH = isMobile ? 8 : 16;
-  const trail = [];
+  // ── Pointer trail (distance-based emission) ──
+  const MOTES_MAX = isMobile ? 40 : 160;
+  const EMIT_STEP = 8;
+  const motes = [];
+  let moteIndex = 0;
+  let emitterX = -200, emitterY = -200;
+  let prevEmitterX = -200, prevEmitterY = -200;
+  let emitAccum = 0;
+  let idleTimer = 0;
+  let mouseIn = false;
 
   function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
+    W = canvas.width = window.innerWidth * dpr;
+    H = canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
   }
   resize();
-  // Re-resize after layout settles
   setTimeout(resize, 100);
   setTimeout(resize, 500);
   window.addEventListener('resize', resize);
 
   document.addEventListener('mousemove', e => {
-    mouseX = e.clientX / W;
-    mouseY = e.clientY / H;
-    trail.push({ x: e.clientX, y: e.clientY, life: 1 });
-    if (trail.length > TRAIL_LENGTH) trail.shift();
+    mouseIn = true;
+    prevEmitterX = emitterX;
+    prevEmitterY = emitterY;
+    emitterX = e.clientX;
+    emitterY = e.clientY;
   });
+  document.addEventListener('mouseleave', () => { mouseIn = false; });
   window.addEventListener('scroll', () => { scrollY = window.scrollY; });
 
-  function draw() {
+  document.addEventListener('touchmove', e => {
+    if (!e.touches.length) return;
+    mouseIn = true;
+    prevEmitterX = emitterX;
+    prevEmitterY = emitterY;
+    emitterX = e.touches[0].clientX;
+    emitterY = e.touches[0].clientY;
+  }, { passive: true });
+  document.addEventListener('touchend', () => { mouseIn = false; });
+
+  function spawnMote(x, y, angle, life) {
+    const i = moteIndex;
+    moteIndex = (i + 1) % MOTES_MAX;
+    motes[i] = {
+      x, y,
+      vx: -0.09 * Math.cos(angle) + (Math.random() - 0.5) * 0.19,
+      vy: -0.09 * Math.sin(angle) + (Math.random() - 0.5) * 0.19,
+      life: life || (1.45 + Math.random() * 1.3),
+      maxLife: life || (1.45 + Math.random() * 1.3),
+      phase: Math.random() * Math.PI * 2,
+    };
+  }
+
+  let bgState = 'hero-section';
+  function updateBgState() {
+    const sections = document.querySelectorAll('section[id]');
+    let current = 'hero';
+    sections.forEach(s => {
+      const rect = s.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.5) current = s.getAttribute('id');
+    });
+    if (current !== bgState) {
+      bgState = current;
+      document.body.setAttribute('data-bg-state', bgState);
+    }
+  }
+
+  let lastTime = performance.now();
+  let pulsePhase = 0;
+
+  function draw(now) {
+    const dt = Math.min((now - lastTime) / 1000, 1/30);
+    lastTime = now;
+
     ctx.clearRect(0, 0, W, H);
+
     const sf = Math.min(scrollY / 2000, 1);
+    const ww = window.innerWidth;
+    const wh = window.innerHeight;
+    const mx = emitterX / ww;
+    const my = emitterY / wh;
+    pulsePhase += dt * 0.35;
 
-    // ── Blueprint grid ──
-    ctx.strokeStyle = `rgba(196,149,106,${0.05 + sf * 0.04})`;
-    ctx.lineWidth = 0.4;
-    for (let y = 80; y < H; y += 80) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
-    for (let x = 80; x < W; x += 80) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+    // ── Grid ──
+    const gridAlpha = bgState === 'hero-section' ? 0.03 + sf * 0.02 : 0.05 + sf * 0.04;
+    ctx.strokeStyle = 'rgba(196,149,106,' + gridAlpha + ')';
+    ctx.lineWidth = 0.4 * dpr;
+    const gs = 80 * dpr;
+    for (let y = gs; y < H; y += gs) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+    for (let x = gs; x < W; x += gs) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
 
-    // ── Update node positions ──
+    // ── Update nodes ──
+    const cursorInfluence = isTouch ? 0.00004 : 0.00015;
+    const connThreshold = bgState === 'work' ? 0.24 : bgState === 'hero-section' ? 0.16 : 0.2;
+
     nodes.forEach(n => {
-      n.x += n.vx + (mouseX - 0.5) * 0.0001;
-      n.y += n.vy + (mouseY - 0.5) * 0.0001;
-      if (n.x < 0) n.x = 1; if (n.x > 1) n.x = 0;
-      if (n.y < 0) n.y = 1; if (n.y > 1) n.y = 0;
+      const dxHome = n.homeX - n.x;
+      const dyHome = n.homeY - n.y;
+      n.x += n.vx + dxHome * 0.00008 + Math.sin(now * 0.0005 + n.phase) * 0.00012;
+      n.y += n.vy + dyHome * 0.00008 + Math.cos(now * 0.0006 + n.phase) * 0.00012;
+
+      if (mouseIn) {
+        const dxc = mx - n.x;
+        const dyc = my - n.y;
+        const distC = Math.sqrt(dxc * dxc + dyc * dyc) + 0.001;
+        const force = cursorInfluence / (distC * distC + 0.02);
+        n.x += dxc * force;
+        n.y += dyc * force;
+      }
+
+      if (n.x < -0.05) n.x = 1.05; if (n.x > 1.05) n.x = -0.05;
+      if (n.y < -0.05) n.y = 1.05; if (n.y > 1.05) n.y = -0.05;
+
+      n.homeX += (Math.random() - 0.5) * 0.00004;
+      n.homeY += (Math.random() - 0.5) * 0.00004;
+      n.homeX = Math.max(0.05, Math.min(0.95, n.homeX));
+      n.homeY = Math.max(0.05, Math.min(0.95, n.homeY));
     });
 
     // ── Connections ──
@@ -354,13 +641,13 @@
         const dx = nodes[i].x - nodes[j].x;
         const dy = nodes[i].y - nodes[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 0.22) {
-          const la = (1 - dist / 0.22) * (0.12 + sf * 0.08);
-          ctx.strokeStyle = `rgba(196,149,106,${la})`;
-          ctx.lineWidth = 0.5;
+        if (dist < connThreshold) {
+          const la = (1 - dist / connThreshold) * (0.1 + sf * 0.09 + Math.sin(pulsePhase + i * 0.3) * 0.02);
+          ctx.strokeStyle = 'rgba(196,149,106,' + la + ')';
+          ctx.lineWidth = 0.5 * dpr;
           ctx.beginPath();
-          ctx.moveTo(nodes[i].x * W, nodes[i].y * H);
-          ctx.lineTo(nodes[j].x * W, nodes[j].y * H);
+          ctx.moveTo(nodes[i].x * ww * dpr, nodes[i].y * wh * dpr);
+          ctx.lineTo(nodes[j].x * ww * dpr, nodes[j].y * wh * dpr);
           ctx.stroke();
         }
       }
@@ -368,125 +655,229 @@
 
     // ── Nodes ──
     nodes.forEach(n => {
-      const alpha = 0.45 + Math.sin(n.phase + scrollY * 0.001) * 0.18;
-      ctx.fillStyle = `rgba(196,149,106,${alpha})`;
-      ctx.beginPath(); ctx.arc(n.x * W, n.y * H, n.size, 0, Math.PI * 2); ctx.fill();
-      ctx.strokeStyle = `rgba(196,149,106,${alpha * 0.5})`;
-      ctx.lineWidth = 0.4;
-      ctx.beginPath(); ctx.arc(n.x * W, n.y * H, n.size * 3, 0, Math.PI * 2); ctx.stroke();
+      const distToCursor = Math.sqrt((n.x - mx) ** 2 + (n.y - my) ** 2);
+      const cursorBoost = mouseIn ? Math.max(0, 1 - distToCursor / 0.18) * 0.22 : 0;
+      const alpha = (0.32 + Math.sin(n.phase + scrollY * 0.001) * 0.14 + cursorBoost);
+      ctx.fillStyle = 'rgba(196,149,106,' + alpha + ')';
+      ctx.beginPath();
+      ctx.arc(n.x * ww * dpr, n.y * wh * dpr, n.size * dpr, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(196,149,106,' + (alpha * 0.35) + ')';
+      ctx.lineWidth = 0.35 * dpr;
+      ctx.beginPath();
+      ctx.arc(n.x * ww * dpr, n.y * wh * dpr, n.size * 3.5 * dpr, 0, Math.PI * 2);
+      ctx.stroke();
     });
 
-    // ── Pointer trail ──
-    if (!isMobile) {
-      trail.forEach(p => {
-        p.life -= 0.03;
-        if (p.life <= 0) return;
-        ctx.fillStyle = `rgba(196,149,106,${p.life * 0.12})`;
-        ctx.beginPath(); ctx.arc(p.x, p.y, (1 - p.life) * 6 + 1.5, 0, Math.PI * 2); ctx.fill();
-      });
+    // ── Pointer trail (distance-based emission) ──
+    if (mouseIn && !isTouch) {
+      const dx = emitterX - prevEmitterX;
+      const dy = emitterY - prevEmitterY;
+      const moved = Math.sqrt(dx * dx + dy * dy);
+      const angle = Math.atan2(dy, dx);
+      emitAccum += moved;
+      let guard = 0;
+      while (emitAccum >= EMIT_STEP && guard++ < 14) {
+        emitAccum -= EMIT_STEP;
+        const t = moved > 0.001 ? Math.min(1, (guard - 1) * EMIT_STEP / moved) : 0;
+        spawnMote(prevEmitterX + dx * t, prevEmitterY + dy * t, angle, 1.5 + Math.random() * 1.3);
+      }
+      idleTimer += dt;
+      if (idleTimer > 0.42 && moved < 0.5) {
+        idleTimer = 0;
+        spawnMote(emitterX + (Math.random() - 0.5) * 8, emitterY + (Math.random() - 0.5) * 8, Math.random() * Math.PI * 2, 2.1 + Math.random() * 1.3);
+      }
     }
 
+    // Update & draw motes
+    for (let i = 0; i < MOTES_MAX; i++) {
+      const m = motes[i];
+      if (!m || m.life <= 0) continue;
+      m.life -= dt;
+      if (m.life <= 0) { motes[i] = null; continue; }
+      m.vx += Math.sin(now * 0.0013 + m.phase) * 0.17 * dt;
+      m.vy += (Math.cos(now * 0.0011 + m.phase * 1.7) * 0.14 - 0.022) * dt;
+      m.vx *= (1 - 0.5 * dt);
+      m.vy *= (1 - 0.5 * dt);
+      m.x += m.vx * dt * 60;
+      m.y += m.vy * dt * 60;
+      const progress = 1 - m.life / m.maxLife;
+      const alpha = progress < 0.12 ? progress / 0.12 * 0.22 : (1 - (progress - 0.12) / 0.88) * 0.22;
+      const size = (1.5 + progress * 4.5) * dpr;
+      ctx.fillStyle = 'rgba(196,149,106,' + alpha + ')';
+      ctx.beginPath();
+      ctx.arc(m.x * dpr, m.y * dpr, size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    updateBgState();
     requestAnimationFrame(draw);
   }
 
-  draw();
+  // Reduced motion: static composed frame
+  if (isReduced) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.strokeStyle = 'rgba(196,149,106,0.04)';
+    ctx.lineWidth = 0.3 * dpr;
+    const gs = 80 * dpr;
+    for (let y = gs; y < H; y += gs) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+    for (let x = gs; x < W; x += gs) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+    for (let i = 0; i < 20; i++) {
+      ctx.fillStyle = 'rgba(196,149,106,0.2)';
+      ctx.beginPath();
+      ctx.arc((0.1 + Math.random() * 0.8) * W, (0.1 + Math.random() * 0.8) * H, (1 + Math.random()) * dpr, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    resize();
+    window.addEventListener('resize', resize);
+  } else {
+    requestAnimationFrame(draw);
+  }
 })();
 </script>
 
-<!-- ── Data + Render ── -->
+<!-- ═══════════════════════════════════════════════════════
+     DATA + RENDERING
+     ═══════════════════════════════════════════════════════ -->
 <script src="data.js"></script>
 <script>
-  // ── Render projects ──
-  const pc = document.getElementById('projects-container');
-  portfolioData.projects.forEach(p => {
-    const div = document.createElement('div');
+  // ── Recognition ──
+  var rc = document.getElementById('recognition-container');
+  if (portfolioData.recognition && rc) {
+    portfolioData.recognition.forEach(function(r) {
+      var div = document.createElement('div');
+      div.className = 'rec-item reveal';
+      div.innerHTML =
+        '<div class="rec-label">' + r.label + '</div>' +
+        '<div class="rec-detail">' + r.detail + '</div>' +
+        (r.url ? '<a href="' + r.url + '" target="_blank">View →</a>' : '');
+      rc.appendChild(div);
+    });
+  }
+
+  // ── Projects ──
+  var pc = document.getElementById('projects-container');
+  portfolioData.projects.forEach(function(p, idx) {
+    var div = document.createElement('div');
     div.className = 'project reveal';
-    div.innerHTML = `
-      <div class="project-header">
-        <div class="project-name">${p.name}</div>
-        <div class="project-tag">${p.tag}</div>
-        ${p.stats ? `<div class="project-stats" style="margin-top:0.5rem;">${p.stats}</div>` : ''}
-      </div>
-      <div class="project-body">
-        <div class="project-desc">${p.description}</div>
-        <div class="project-tech">${p.tech.map(t => `<span>${t}</span>`).join('')}</div>
-        <div class="project-link">
-          <a href="${p.url}" target="_blank">GitHub →</a>
-          ${p.live ? `<a href="${p.live}" target="_blank">Live →</a>` : ''}
-        </div>
-      </div>`;
+    div.style.transitionDelay = (idx * 0.06) + 's';
+    var isLive = p.highlight || p.live;
+    div.innerHTML =
+      '<div class="project-header">' +
+        '<div class="project-name">' + p.name + '</div>' +
+        '<div class="project-tag">' + p.tag + '</div>' +
+        (isLive ? '<div class="project-status"><span class="sdot"></span>' + (p.live ? 'Live' : 'Active') + '</div>' : '') +
+        (p.stats ? '<div class="project-stats" style="margin-top:0.5rem;">' + p.stats + '</div>' : '') +
+      '</div>' +
+      '<div class="project-body">' +
+        '<div class="project-desc">' + p.description + '</div>' +
+        '<div class="project-tech">' + p.tech.map(function(t) { return '<span>' + t + '</span>'; }).join('') + '</div>' +
+        '<div class="project-link">' +
+          '<a href="' + p.url + '" target="_blank">GitHub →</a>' +
+          (p.live ? '<a href="' + p.live + '" target="_blank">Live →</a>' : '') +
+        '</div>' +
+      '</div>';
     pc.appendChild(div);
   });
 
-  // ── Render postmortems ──
-  const pmc = document.getElementById('postmortems-container');
-  portfolioData.postmortems.forEach(pm => {
-    const div = document.createElement('div');
+  // ── Postmortems ──
+  var pmc = document.getElementById('postmortems-container');
+  portfolioData.postmortems.forEach(function(pm) {
+    var div = document.createElement('div');
     div.className = 'pm-card reveal';
-    div.innerHTML = `
-      <div class="pm-date">${pm.date}</div>
-      <h4>${pm.title}</h4>
-      <p>${pm.summary}</p>
-      <div class="pm-finding">Finding: ${pm.findings}</div>
-      <div class="project-link" style="margin-top:0.75rem;"><a href="${pm.url}" target="_blank">Full postmortem →</a></div>`;
+    div.innerHTML =
+      '<div class="pm-meta">' +
+        '<div class="pm-date">' + pm.date + '</div>' +
+        '<div class="pm-severity">● HIGH SEVERITY</div>' +
+      '</div>' +
+      '<h4>' + pm.title + '</h4>' +
+      '<p>' + pm.summary + '</p>' +
+      '<div class="pm-section">Key Finding</div>' +
+      '<div class="pm-finding">' + pm.findings + '</div>' +
+      '<div class="project-link" style="margin-top:0.9rem;"><a href="' + pm.url + '" target="_blank">Full postmortem →</a></div>';
     pmc.appendChild(div);
   });
 
-  // ── Render lab ──
-  const lc = document.getElementById('lab-container');
-  portfolioData.experiments.forEach(exp => {
-    const div = document.createElement('div');
+  // ── Lab ──
+  var lc = document.getElementById('lab-container');
+  portfolioData.experiments.forEach(function(exp) {
+    var div = document.createElement('div');
     div.className = 'lab-item reveal';
-    div.innerHTML = `
-      <h4>${exp.name}</h4>
-      <p>${exp.desc}</p>
-      <div class="lab-tech">${exp.tech}</div>
-      ${exp.url ? `<div class="project-link" style="margin-top:0.5rem;"><a href="${exp.url}" target="_blank">View →</a></div>` : ''}`;
+    div.innerHTML =
+      '<h4>' + exp.name + '</h4>' +
+      '<p>' + exp.desc + '</p>' +
+      '<div class="lab-tech">' + exp.tech + '</div>' +
+      (exp.url ? '<div class="project-link" style="margin-top:0.5rem;"><a href="' + exp.url + '" target="_blank">View →</a></div>' : '');
     lc.appendChild(div);
   });
 
-  // ── Render stack ──
-  const sc = document.getElementById('stack-container');
-  Object.entries(portfolioData.stack).forEach(([group, items]) => {
-    const div = document.createElement('div');
+  // ── Stack ──
+  var sc = document.getElementById('stack-container');
+  Object.entries(portfolioData.stack).forEach(function(kv) {
+    var group = kv[0], items = kv[1];
+    var div = document.createElement('div');
     div.className = 'stack-group reveal';
-    div.innerHTML = `
-      <h4>${group}</h4>
-      <ul>${items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+    div.innerHTML =
+      '<h4>' + group + '</h4>' +
+      '<ul>' + items.map(function(i) { return '<li>' + i + '</li>'; }).join('') + '</ul>';
     sc.appendChild(div);
   });
 
-  // ── Render timeline ──
-  const tc = document.getElementById('timeline-container');
-  portfolioData.timeline.forEach(tl => {
-    const div = document.createElement('div');
+  // ── Timeline ──
+  var tc = document.getElementById('timeline-container');
+  portfolioData.timeline.forEach(function(tl) {
+    var div = document.createElement('div');
     div.className = 'tl-item reveal';
-    div.innerHTML = `<div class="tl-date">${tl.period}</div><div class="tl-event">${tl.event}</div>`;
+    div.innerHTML = '<div class="tl-date">' + tl.period + '</div><div class="tl-event">' + tl.event + '</div>';
     tc.appendChild(div);
   });
 
   // ── Scroll reveal ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
 
   // ── Active nav on scroll ──
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-links a');
+  function updateNav() {
+    var current = '';
+    sections.forEach(function(s) {
+      if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
     });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : 'var(--text-dim)';
+    navLinks.forEach(function(a) {
+      if (a.getAttribute('href') === '#' + current) { a.classList.add('active'); }
+      else { a.classList.remove('active'); }
+    });
+  }
+  window.addEventListener('scroll', updateNav);
+
+  // ── Scroll progress bar ──
+  var progressBar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = docHeight > 0 ? (scrollTop / docHeight * 100) + '%' : '0%';
+  });
+
+  // ── Mobile nav toggle ──
+  var navToggle = document.getElementById('nav-toggle');
+  var navLinksEl = document.getElementById('nav-links');
+  navToggle.addEventListener('click', function() {
+    navLinksEl.classList.toggle('open');
+    navToggle.textContent = navLinksEl.classList.contains('open') ? 'Close' : 'Menu';
+  });
+  navLinksEl.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      navLinksEl.classList.remove('open');
+      navToggle.textContent = 'Menu';
     });
   });
 </script>

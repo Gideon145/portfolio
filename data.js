@@ -127,6 +127,18 @@ I'm currently preparing for my MSc in Cyber Security at the University of Aberde
     "Security Domains": ["Threat Detection", "Incident Response", "Malware Analysis", "Cloud Security", "IoT Security"],
   },
 
+  // ── Recognition ──
+  recognition: [
+    { label: "OKX.AI Inaugural Hackathon", detail: "Winner — Parry Protocol, delta-neutral DeFi security agent", url: "https://github.com/Gideon145/parry-protocol" },
+    { label: "SigmaHQ Contributor", detail: "PR #6214 — Mirai C2 detection rules deployed in Splunk, Sentinel, QRadar, CrowdStrike", url: "https://github.com/SigmaHQ/sigma/pull/6214" },
+    { label: "MIT Media Lab", detail: "Contributor — payment protocol infrastructure for agent-to-agent economic systems", url: null },
+    { label: "OKX.AI Pioneer", detail: "Among the first developers on the world's first agent-to-agent economic marketplace — deployed 6 autonomous security agents", url: null },
+    { label: "ChainGPT Audited", detail: "Argus smart contracts passed ChainGPT security audit — 5/5 Circle primitives", url: "https://github.com/Gideon145/argus" },
+    { label: "8 Open-Source Security Projects", detail: "Detection tooling, fuzzers, firewalls, malware analysis — all public on GitHub", url: "https://github.com/Gideon145" },
+    { label: "Incoming MSc Cyber Security", detail: "University of Aberdeen — September 2026", url: null },
+    { label: "Google Cybersecurity Certificate", detail: "Completed June 2025", url: null },
+  ],
+
   // ── Timeline ──
   timeline: [
     { period: "Sep 2026", event: "Begin MSc Cyber Security at University of Aberdeen" },
