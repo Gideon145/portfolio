@@ -131,49 +131,54 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
   // ── Recognition ──
   recognition: [
     {
-      label: "OKX.AI Inaugural Hackathon — Winner",
-      detail: "Won the inaugural OKX.AI global hackathon with Parry Protocol, a delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. Competed against builders worldwide on the world's first agent-to-agent economic marketplace. The winning submission demonstrated autonomous on-chain financial security through algorithmic rebalancing — a working DeFi security primitive shipped under hackathon conditions, not a slide deck.",
+      label: "OKX.AI Inaugural Hackathon, Winner",
+      detail: "Won the inaugural OKX.AI global hackathon with Parry Protocol, a delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. Competed against builders worldwide on the world's first agent-to-agent economic marketplace. The winning submission demonstrated autonomous on-chain financial security through algorithmic rebalancing, a working DeFi security primitive shipped under hackathon conditions, not a slide deck.",
       url: "https://github.com/Gideon145/parry-protocol",
     },
     {
-      label: "OKX.AI — Founding Developer & Pioneer",
-      detail: "Among the earliest developers building on OKX.AI before its public launch. Deployed six autonomous security agents on the platform during its formative stages — agents that independently discovered counterparties, negotiated service contracts, streamed payments via the platform's native payment channels, and settled disputes entirely on-chain without human intermediation. This was infrastructure work on a platform that went on to define the agent-to-agent economy category.",
+      label: "OKX.AI Founding Developer & Pioneer",
+      detail: "Among the earliest developers building on OKX.AI before its public launch. Deployed six autonomous security agents on the platform during its formative stages: agents that independently discovered counterparties, negotiated service contracts, streamed payments via the platform's native payment channels, and settled disputes entirely on-chain without human intermediation. This was infrastructure work on a platform that went on to define the agent-to-agent economy category.",
+      links: [
+        { label: "Agent 5047", url: "https://www.okx.ai/agents/5047" },
+        { label: "Agent 6201", url: "https://www.okx.ai/agents/6201" },
+        { label: "Agent 5062", url: "https://www.okx.ai/agents/5062" },
+      ],
       url: null,
     },
     {
-      label: "MIT Media Lab — Protocol Contributor",
-      detail: "Contributed to payment protocol infrastructure research at the MIT Media Lab, one of the world's most prestigious interdisciplinary research laboratories. Worked on the financial protocol layer enabling autonomous AI agents to conduct economic transactions at scale — designing message formats, settlement mechanisms, and cryptographic verification schemes for agent-to-agent payment channels. The Media Lab's commitment to 'inventing a better future' is not a slogan; it is a standard of rigour applied to every project that bears its name.",
+      label: "MIT Media Lab, Protocol Contributor",
+      detail: "Contributed to payment protocol infrastructure research at the MIT Media Lab, one of the world's most prestigious interdisciplinary research laboratories. Worked on the financial protocol layer enabling autonomous AI agents to conduct economic transactions at scale: designing message formats, settlement mechanisms, and cryptographic verification schemes for agent-to-agent payment channels. The Media Lab's commitment to 'inventing a better future' is not a slogan; it is a standard of rigour applied to every project that bears its name.",
       url: null,
     },
     {
-      label: "SigmaHQ — Merged Detection Rule Contributor",
-      detail: "Authored original Mirai botnet C2 detection rules that were formally reviewed, accepted, and merged into the main SigmaHQ repository — the industry-standard open detection rule format with over ten thousand GitHub stars. This is not a personal side project; it is a contribution to shared security infrastructure depended upon by SOC teams running Splunk, Microsoft Sentinel, IBM QRadar, Elastic Security, and CrowdStrike Falcon in production environments protecting Fortune 500 enterprises, government agencies, and critical infrastructure operators worldwide.",
+      label: "SigmaHQ, Merged Detection Rule Contributor",
+      detail: "Authored original Mirai botnet C2 detection rules that were formally reviewed, accepted, and merged into the main SigmaHQ repository, the industry-standard open detection rule format with over ten thousand GitHub stars. This is not a personal side project; it is a contribution to shared security infrastructure depended upon by SOC teams running Splunk, Microsoft Sentinel, IBM QRadar, Elastic Security, and CrowdStrike Falcon in production environments protecting Fortune 500 enterprises, government agencies, and critical infrastructure operators worldwide.",
       url: "https://github.com/SigmaHQ/sigma/pull/6214",
     },
     {
-      label: "ChainGPT — Perfect 5/5 Security Audit",
-      detail: "The Argus smart contracts underwent a professional third-party security audit by ChainGPT and received a perfect score of five out of five across all Circle primitive assessment categories: correctness, access control, token handling, event emission, and upgrade safety. Independent validation that the contract architecture is secure by design — not merely functional, but demonstrably resilient against the attack vectors covered by the audit scope.",
+      label: "ChainGPT, Perfect 5/5 Security Audit",
+      detail: "The Argus smart contracts underwent a professional third-party security audit by ChainGPT and received a perfect score of five out of five across all Circle primitive assessment categories: correctness, access control, token handling, event emission, and upgrade safety. Independent validation that the contract architecture is secure by design, not merely functional, but demonstrably resilient against the attack vectors covered by the audit scope.",
       url: "https://github.com/Gideon145/argus",
     },
     {
-      label: "TrustGuard — Peer-Reviewed Original Contribution",
-      detail: "Designed and built TrustGuard, an ELO-based reputation and risk scoring system for autonomous AI agents, and submitted it to the NandaTown agent infrastructure project. The core maintainer reviewed the submission and explicitly described it as a 'genuinely different angle' from all existing trust models in the repository — not a variation on prior art, but a novel approach. All eleven adversarial test scenarios passed on the first submission, validating Byzantine fault tolerance, Sybil resistance, and collusion detection under realistic attack conditions.",
+      label: "TrustGuard, Peer-Reviewed Original Contribution",
+      detail: "Designed and built TrustGuard, an ELO-based reputation and risk scoring system for autonomous AI agents, and submitted it to the NandaTown agent infrastructure project. The core maintainer reviewed the submission and explicitly described it as a 'genuinely different angle' from all existing trust models in the repository, not a variation on prior art, but a novel approach. All eleven adversarial test scenarios passed on the first submission, validating Byzantine fault tolerance, Sybil resistance, and collusion detection under realistic attack conditions.",
       url: "https://github.com/projnanda/nandatown/pull/218",
     },
     {
-      label: "University of Aberdeen — MSc Cyber Security",
-      detail: "Currently completing a Master of Science in Cyber Security at the University of Aberdeen, founded in 1495 — one of only five ancient universities in the United Kingdom alongside Oxford, Cambridge, St Andrews, and Glasgow. The programme covers advanced topics in network security, cryptography, threat intelligence, secure software engineering, digital forensics, and security operations centre management.",
+      label: "University of Aberdeen, MSc Cyber Security",
+      detail: "Currently completing a Master of Science in Cyber Security at the University of Aberdeen, founded in 1495, one of only five ancient universities in the United Kingdom alongside Oxford, Cambridge, St Andrews, and Glasgow. The programme covers advanced topics in network security, cryptography, threat intelligence, secure software engineering, digital forensics, and security operations centre management.",
       url: null,
     },
     {
       label: "Google Cybersecurity Certificate",
       detail: "Earned the Google Cybersecurity Certificate, an industry-recognised professional qualification covering the NIST Cybersecurity Framework, incident detection and response, network security fundamentals, Linux command-line and SQL for security operations, and Python automation for security workflows. Completed June 2025 through Coursera's hands-on lab-based curriculum.",
-      url: null,
+      url: "https://www.coursera.org/professional-certificates/google-cybersecurity",
     },
     {
-      label: "Fortinet NSE 1, 2 & 3 — Network Security",
-      detail: "Completed all three foundational levels of the Fortinet Network Security Expert certification programme. NSE 1 covers the current threat landscape and cybersecurity fundamentals. NSE 2 introduces Fortinet's security-driven networking architecture and the Security Fabric. NSE 3 provides hands-on training in FortiGate firewall deployment, security policy configuration, and basic network protection — practical network security administration skills applicable across vendor platforms.",
-      url: null,
+      label: "Fortinet NSE 1, 2 and 3, Network Security",
+      detail: "Completed all three foundational levels of the Fortinet Network Security Expert certification programme. NSE 1 covers the current threat landscape and cybersecurity fundamentals. NSE 2 introduces Fortinet's security-driven networking architecture and the Security Fabric. NSE 3 provides hands-on training in FortiGate firewall deployment, security policy configuration, and basic network protection. Practical network security administration skills applicable across vendor platforms.",
+      url: "https://www.fortinet.com/training/cybersecurity-professionals",
     },
   ],
 

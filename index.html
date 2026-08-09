@@ -398,7 +398,7 @@
         <p>I am a cybersecurity engineer based in Aberdeen, Scotland, currently completing my MSc in Cyber Security at the University of Aberdeen — a research institution founded in 1495 with five centuries of academic tradition behind it. I build detection and response tooling that ships to production environments, not just proof-of-concept repositories.</p>
         <p>My technical focus spans three interconnected domains. First, AI and LLM security — I have built prompt injection firewalls, genetic algorithm fuzzers that discover novel jailbreak techniques, and autonomous SOC analysts that ingest raw logs and map findings to the MITRE ATT&CK framework. Second, threat detection engineering — I write Sigma rules that run inside Splunk, Microsoft Sentinel, IBM QRadar, and CrowdStrike Falcon, and I have authored original YARA and Snort signatures for malware detection. Third, blockchain protocol security — I have shipped audited smart contracts, designed multi-agent oracle systems, and built economic security primitives for decentralised finance.</p>
         <p>Before dedicating myself to cybersecurity full-time, I was one of the earliest developers on OKX.AI, the world's first agent-to-agent economic marketplace — a platform where autonomous AI agents discover each other, negotiate contracts, stream payments, and settle disputes on-chain without human intermediation. I deployed six autonomous security agents on the platform and won its inaugural global hackathon with Parry Protocol, a delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. I also contributed payment protocol infrastructure at the MIT Media Lab, working on the financial rails that enable agent-to-agent commerce at scale.</p>
-        <p>My open-source work has been accepted into production security infrastructure. My Mirai botnet C2 detection rules were merged into SigmaHQ (10,900+ GitHub stars), the industry-standard detection rule repository used by SOC teams worldwide. My Argus smart contracts passed a ChainGPT security audit with a perfect score of five out of five Circle primitives, and the platform has served 350+ users across more than 1,400 scans. I also built TrustGuard, an ELO-based reputation and risk scoring system for autonomous agents — the core reviewer described it as a 'genuinely different angle' from existing approaches, and it passed all eleven adversarial test scenarios on first submission.</p>
+        <p>My open-source work has been accepted into production security infrastructure. My Mirai botnet C2 detection rules were merged into SigmaHQ (10,900+ GitHub stars), the industry-standard detection rule repository used by SOC teams worldwide. My Argus smart contracts passed a ChainGPT security audit with a perfect score of five out of five, across all Circle primitive categories, and the platform has served 350+ users across more than 1,400 scans. I also built TrustGuard, an ELO-based reputation and risk scoring system for autonomous agents. The core reviewer described it as a 'genuinely different angle' from existing approaches, and it passed all eleven adversarial test scenarios on first submission.</p>
         <p>I hold the Google Cybersecurity Certificate and Fortinet NSE 1 through 3 certifications. I am actively seeking security engineering roles in the United Kingdom where I can apply my skills in detection engineering, AI security, and threat intelligence to protect real systems and real users.</p>
       </div>
       <div class="about-side reveal">
@@ -645,10 +645,20 @@
     portfolioData.recognition.forEach(function(r) {
       var div = document.createElement('div');
       div.className = 'rec-item reveal';
+      var linksHtml = '';
+      if (r.links && r.links.length) {
+        linksHtml = '<div class="rec-links">' + r.links.map(function(l) {
+          return '<a href="' + l.url + '" target="_blank">' + (l.label || 'View') + ' →</a>';
+        }).join(' ');
+        if (r.url) linksHtml += ' <a href="' + r.url + '" target="_blank">View →</a>';
+        linksHtml += '</div>';
+      } else if (r.url) {
+        linksHtml = '<a href="' + r.url + '" target="_blank">View →</a>';
+      }
       div.innerHTML =
         '<div class="rec-label">' + r.label + '</div>' +
         '<div class="rec-detail">' + r.detail + '</div>' +
-        (r.url ? '<a href="' + r.url + '" target="_blank">View →</a>' : '');
+        linksHtml;
       rc.appendChild(div);
     });
   }
