@@ -98,6 +98,15 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       stats: "OKX.AI Hackathon Winner · Delta-neutral strategy",
       url: "https://github.com/Gideon145/parry-protocol",
     },
+    {
+      name: "Detection Engineering Lab",
+      tag: "Full-Cycle SOC Detection & Response",
+      description: "A complete detection engineering project demonstrating the full security operations lifecycle: Sigma rule development for Windows and Active Directory environments, structured alert triage investigations with MITRE ATT&CK mapping, a documented incident response workflow from Kerberoasting to domain controller compromise, and rule tuning documentation showing false positive reduction from 94 alerts/day down to 3. The lab includes ten Sigma detection rules covering twelve ATT&CK techniques across execution, credential access, lateral movement, persistence, and exfiltration tactics. Five documented investigation cases include true positives, one false positive analysis with tuning applied, and one full incident response report covering a complete attack chain — credential phishing, BloodHound reconnaissance, Kerberoasting, PsExec lateral movement, LSASS credential dumping, NTDS.dit extraction, containment, and post-incident remediation with new detection rules deployed. An ATT&CK Navigator layer file visualises current detection coverage across the enterprise matrix. Designed to run on an Elastic Stack with Windows Event Log, Sysmon, and PowerShell log sources.",
+      tech: ["Sigma", "MITRE ATT&CK", "Elastic Stack", "Incident Response", "Detection Engineering"],
+      stats: "10 Sigma rules · 5 investigations · 1 full IR report · 12 ATT&CK techniques",
+      url: "https://github.com/Gideon145/detection-engineering-lab",
+      highlight: true,
+    },
   ],
 
   // ── Postmortems ──
