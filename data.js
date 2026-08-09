@@ -137,6 +137,7 @@ I'm currently preparing for my MSc in Cyber Security at the University of Aberde
     { label: "8 Open-Source Security Projects", detail: "Detection tooling, fuzzers, firewalls, malware analysis — all public on GitHub", url: "https://github.com/Gideon145" },
     { label: "Incoming MSc Cyber Security", detail: "University of Aberdeen — September 2026", url: null },
     { label: "Google Cybersecurity Certificate", detail: "Completed June 2025", url: null },
+    { label: "NandaTown TrustGuard", detail: "Contributed ELO reputation + risk scoring plugin — 11 adversarial tests, reviewer called it 'real work... genuinely different angle'", url: "https://github.com/projnanda/nandatown/pull/218" },
   ],
 
   // ── Timeline ──
