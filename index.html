@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gideon Opukeme — Cybersecurity Engineer</title>
+<meta name="description" content="Cybersecurity engineer building detection and response tooling at the intersection of AI security, threat intelligence, and protocol design.">
+<style>
+  /* ═══════════════════════════════════════════════════════════════
+     Portfolio — Gideon Opukeme
+     Technical Studio aesthetic. No gradients. No glass. No glow.
+     ═══════════════════════════════════════════════════════════════ */
+
+  :root {
+    --bg: #0d0d12;
+    --surface: #14141c;
+    --border: #1f1f2a;
+    --text: #e4ded5;
+    --text-dim: #8a857c;
+    --text-faint: #4a4640;
+    --accent: #c4956a;
+    --accent-dim: #5a4030;
+    --red: #d4786e;
+    --green: #7a9a6e;
+    --font-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Monaco', monospace;
+    --font-text: 'Charter', 'Georgia', 'Times New Roman', serif;
+    --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --max-w: 1100px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-text);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ── Typography ── */
+  h1, h2, h3, h4 { font-family: var(--font-ui); font-weight: 500; letter-spacing: -0.02em; }
+  h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.1; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 2rem; color: var(--accent); }
+  h3 { font-size: 1.15rem; font-weight: 500; }
+  p { font-size: 1.05rem; color: var(--text-dim); max-width: 65ch; }
+  a { color: var(--accent); text-decoration: none; transition: opacity 0.15s; }
+  a:hover { opacity: 0.7; }
+  .mono { font-family: var(--font-mono); font-size: 0.82rem; }
+  .dim { color: var(--text-dim); }
+  .faint { color: var(--text-faint); }
+
+  /* ── Layout ── */
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+  section { padding: 5rem 0; border-top: 1px solid var(--border); }
+  section:first-of-type { border-top: none; padding-top: 0; }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1rem 2rem;
+    background: rgba(13,13,18,0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--font-ui);
+  }
+  .nav-name { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--font-mono); }
+  .nav-links a:hover { color: var(--text); opacity: 1; }
+
+  /* ── Hero ── */
+  .hero { padding: 8rem 0 4rem; min-height: 70vh; display: flex; align-items: flex-end; }
+  .hero-content { max-width: 800px; }
+  .hero h1 { margin-bottom: 0.5rem; white-space: pre-line; }
+  .hero-tagline { font-size: 1.1rem; color: var(--text-dim); margin-top: 1rem; line-height: 1.5; font-family: var(--font-ui); }
+  .hero-meta { display: flex; gap: 1.5rem; margin-top: 2rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-faint); }
+  .hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+  /* ── About ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .about-text p { margin-bottom: 1.2rem; }
+  .about-side { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); line-height: 1.8; }
+  .about-side .label { color: var(--text-dim); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+
+  /* ── Projects ── */
+  .project { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .project:last-child { border-bottom: none; }
+  .project-header { grid-column: 1; }
+  .project-name { font-size: 1.4rem; font-weight: 500; color: var(--text); font-family: var(--font-ui); }
+  .project-tag { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.2rem; }
+  .project-body { grid-column: 2; }
+  .project-desc { color: var(--text-dim); margin-bottom: 0.75rem; font-size: 0.95rem; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
+  .project-tech span { font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.55rem; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }
+  .project-stats { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-faint); margin-bottom: 0.5rem; }
+  .project-link { font-family: var(--font-mono); font-size: 0.7rem; }
+  .project-link a { margin-right: 1rem; }
+
+  /* ── Postmortems ── */
+  .pm-card { padding: 1.75rem; background: var(--surface); border: 1px solid var(--border); margin-bottom: 1rem; }
+  .pm-card .pm-date { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+  .pm-card h4 { font-size: 1.1rem; margin-bottom: 0.5rem; font-family: var(--font-ui); }
+  .pm-card p { font-size: 0.9rem; }
+  .pm-card .pm-finding { font-family: var(--font-mono); font-size: 0.72rem; color: var(--red); margin-top: 0.75rem; padding: 0.5rem 0.75rem; background: rgba(212,120,110,0.06); border-left: 2px solid var(--red); }
+
+  /* ── Lab ── */
+  .lab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.75rem; }
+  .lab-item { padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); }
+  .lab-item h4 { font-size: 0.95rem; font-family: var(--font-ui); margin-bottom: 0.3rem; }
+  .lab-item p { font-size: 0.82rem; }
+  .lab-item .lab-tech { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-faint); margin-top: 0.5rem; }
+
+  /* ── Stack ── */
+  .stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+  .stack-group h4 { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; }
+  .stack-group ul { list-style: none; }
+  .stack-group li { font-size: 0.9rem; color: var(--text-dim); padding: 0.2rem 0; }
+  .stack-group li::before { content: "— "; color: var(--text-faint); }
+
+  /* ── Timeline ── */
+  .tl-item { display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.9rem; }
+  .tl-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-faint); padding-top: 0.15rem; }
+  .tl-event { color: var(--text-dim); }
+
+  /* ── Contact ── */
+  .contact-links { display: flex; gap: 2rem; font-family: var(--font-mono); font-size: 0.85rem; }
+  .contact-section p { margin-bottom: 1.5rem; }
+
+  /* ── Footer ── */
+  footer { padding: 2rem 0; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-faint); display: flex; justify-content: space-between; }
+
+  /* ── Scroll reveal ── */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .container { padding: 0 1.25rem; }
+    section { padding: 3.5rem 0; }
+    .hero { padding: 6rem 0 3rem; min-height: auto; }
+    .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .project { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.75rem 0; }
+    .tl-item { grid-template-columns: 90px 1fr; gap: 1rem; }
+    nav { padding: 0.75rem 1.25rem; }
+    .nav-links { gap: 0.75rem; }
+    .nav-links a { font-size: 0.7rem; }
+    .contact-links { flex-direction: column; gap: 0.5rem; }
+    .stack-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <span class="nav-name">Gideon Opukeme</span>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#postmortems">Postmortems</a>
+    <a href="#stack">Stack</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="container hero-content reveal">
+    <h1>I build security tools<br>that actually work.</h1>
+    <p class="hero-tagline">Cybersecurity engineer. Incoming MSc Cyber Security at Aberdeen.<br>Former OKX.AI pioneer. MIT Media Lab contributor.</p>
+    <div class="hero-meta">
+      <span>● Nigeria → Aberdeen (Sep 2026)</span>
+      <span>● Available for UK roles</span>
+      <span>● <a href="https://github.com/Gideon145">github/Gideon145</a></span>
+    </div>
+  </div>
+</section>
+
+<!-- ── About ── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a cybersecurity engineer who builds detection and response tooling. My work spans AI/LLM security, threat detection engineering, and blockchain protocol security.</p>
+        <p>I don't just study security — I build working tools. An AI-powered SOC analyst that triages real logs. A prompt injection firewall with 30+ detection signatures. A genetic algorithm fuzzer that discovers LLM jailbreaks. A Mirai botnet detection toolkit with original YARA and Snort rules.</p>
+        <p>Previously, I was one of the earliest developers on OKX.AI, the world's first agent-to-agent economic marketplace. I deployed 6 autonomous security agents and won the platform's inaugural hackathon. I also contributed to MIT Media Lab's payment protocol infrastructure.</p>
+        <p>My detection rules are deployed in production SOCs via SigmaHQ — used by Splunk, Microsoft Sentinel, IBM QRadar, and CrowdStrike. I'm currently preparing for my MSc in Cyber Security at the University of Aberdeen and seeking UK-based security engineering roles.</p>
+      </div>
+      <div class="about-side reveal">
+        <div class="label">Location</div>
+        <p style="color:var(--text-dim);margin-bottom:1rem;">Nigeria<br>→ Aberdeen, UK (Sep 2026)</p>
+        <div class="label">Focus</div>
+        <p style="color:var(--text-dim);margin-bottom:1rem;">AI/LLM Security<br>Detection Engineering<br>Threat Intelligence<br>Protocol Security</p>
+        <div class="label">Certifications</div>
+        <p style="color:var(--text-dim);">Google Cybersecurity<br>Fortinet NSE 1–3<br>FCF Cybersecurity<br>Cisco Intro to Cyber</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Projects ── -->
+<section id="work">
+  <div class="container reveal">
+    <h2>Work</h2>
+  </div>
+  <div class="container" id="projects-container"></div>
+</section>
+
+<!-- ── Postmortems ── -->
+<section id="postmortems">
+  <div class="container reveal">
+    <h2>Postmortems</h2>
+    <div id="postmortems-container"></div>
+  </div>
+</section>
+
+<!-- ── Lab ── -->
+<section id="lab">
+  <div class="container reveal">
+    <h2>Lab & Experiments</h2>
+    <div class="lab-grid" id="lab-container"></div>
+  </div>
+</section>
+
+<!-- ── Stack ── -->
+<section id="stack">
+  <div class="container reveal">
+    <h2>Stack</h2>
+    <div class="stack-grid" id="stack-container"></div>
+  </div>
+</section>
+
+<!-- ── Timeline ── -->
+<section id="timeline">
+  <div class="container reveal">
+    <h2>Timeline</h2>
+    <div id="timeline-container"></div>
+  </div>
+</section>
+
+<!-- ── Contact ── -->
+<section id="contact" class="contact-section">
+  <div class="container reveal">
+    <h2>Contact</h2>
+    <p>Open to UK-based security engineering roles from late 2026. Reach out on any platform.</p>
+    <div class="contact-links">
+      <a href="https://github.com/Gideon145">GitHub</a>
+      <a href="https://linkedin.com/in/gideon-opukeme-755723238">LinkedIn</a>
+      <a href="https://x.com/og_xavierrr">X / Twitter</a>
+      <a href="mailto:hello@axara.dev">hello@axara.dev</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;width:100%;">
+    <span>© 2026 Gideon Opukeme</span>
+    <span>Built without frameworks. No AI templates.</span>
+  </div>
+</footer>
+
+<!-- ── Data + Render ── -->
+<script src="data.js"></script>
+<script>
+  // ── Render projects ──
+  const pc = document.getElementById('projects-container');
+  portfolioData.projects.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'project reveal';
+    div.innerHTML = `
+      <div class="project-header">
+        <div class="project-name">${p.name}</div>
+        <div class="project-tag">${p.tag}</div>
+        ${p.stats ? `<div class="project-stats" style="margin-top:0.5rem;">${p.stats}</div>` : ''}
+      </div>
+      <div class="project-body">
+        <div class="project-desc">${p.description}</div>
+        <div class="project-tech">${p.tech.map(t => `<span>${t}</span>`).join('')}</div>
+        <div class="project-link">
+          <a href="${p.url}" target="_blank">GitHub →</a>
+          ${p.live ? `<a href="${p.live}" target="_blank">Live →</a>` : ''}
+        </div>
+      </div>`;
+    pc.appendChild(div);
+  });
+
+  // ── Render postmortems ──
+  const pmc = document.getElementById('postmortems-container');
+  portfolioData.postmortems.forEach(pm => {
+    const div = document.createElement('div');
+    div.className = 'pm-card reveal';
+    div.innerHTML = `
+      <div class="pm-date">${pm.date}</div>
+      <h4>${pm.title}</h4>
+      <p>${pm.summary}</p>
+      <div class="pm-finding">Finding: ${pm.findings}</div>
+      <div class="project-link" style="margin-top:0.75rem;"><a href="${pm.url}" target="_blank">Full postmortem →</a></div>`;
+    pmc.appendChild(div);
+  });
+
+  // ── Render lab ──
+  const lc = document.getElementById('lab-container');
+  portfolioData.experiments.forEach(exp => {
+    const div = document.createElement('div');
+    div.className = 'lab-item reveal';
+    div.innerHTML = `
+      <h4>${exp.name}</h4>
+      <p>${exp.desc}</p>
+      <div class="lab-tech">${exp.tech}</div>
+      ${exp.url ? `<div class="project-link" style="margin-top:0.5rem;"><a href="${exp.url}" target="_blank">View →</a></div>` : ''}`;
+    lc.appendChild(div);
+  });
+
+  // ── Render stack ──
+  const sc = document.getElementById('stack-container');
+  Object.entries(portfolioData.stack).forEach(([group, items]) => {
+    const div = document.createElement('div');
+    div.className = 'stack-group reveal';
+    div.innerHTML = `
+      <h4>${group}</h4>
+      <ul>${items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+    sc.appendChild(div);
+  });
+
+  // ── Render timeline ──
+  const tc = document.getElementById('timeline-container');
+  portfolioData.timeline.forEach(tl => {
+    const div = document.createElement('div');
+    div.className = 'tl-item reveal';
+    div.innerHTML = `<div class="tl-date">${tl.period}</div><div class="tl-event">${tl.event}</div>`;
+    tc.appendChild(div);
+  });
+
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Active nav on scroll ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : 'var(--text-dim)';
+    });
+  });
+</script>
+</body>
+</html>
