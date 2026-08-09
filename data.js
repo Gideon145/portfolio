@@ -168,6 +168,8 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       detail: "Argus ranked among the top five most-sold Autonomous Service Providers on the OKX.AI marketplace, with 5,700 total sales of on-chain security audit services. This is real volume from real users paying for autonomous smart contract audits, not a testnet demo. The 5/5 ChainGPT audit score, 350+ users, and 1,421 completed scans all contributed to this market position.",
       url: "https://www.okx.ai/agents/5047",
     },
+    {
+      label: "OKX.AI Founding Developer & Pioneer",
       detail: "Among the earliest developers building on OKX.AI before its public launch. Deployed six autonomous security agents on the platform during its formative stages: agents that independently discovered counterparties, negotiated service contracts, streamed payments via the platform's native payment channels, and settled disputes entirely on-chain without human intermediation. This was infrastructure work on a platform that went on to define the agent-to-agent economy category.",
       links: [
         { label: "Agent 5047", url: "https://www.okx.ai/agents/5047" },
