@@ -166,27 +166,14 @@
   .company-item {
     display: flex; align-items: center; gap: 0.6rem;
     font-family: var(--font-mono); font-size: 0.73rem;
-    padding: 0.45rem 0.9rem 0.45rem 0.6rem; color: var(--text-dim);
+    padding: 0.45rem 0.9rem; color: var(--text-dim);
     border: 1px solid var(--border);
     transition: border-color 0.2s, color 0.2s;
   }
   .company-item:hover { border-color: rgba(196,149,106,0.3); color: var(--text); }
-  .company-badge {
-    width: 26px; height: 26px; border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-ui); font-size: 0.65rem; font-weight: 600;
-    letter-spacing: 0.02em; color: #fff; flex-shrink: 0;
+  .company-logo {
+    width: 20px; height: 20px; object-fit: contain; flex-shrink: 0;
   }
-  .badge-splunk { background: #1ebd53; }
-  .badge-sentinel { background: #0078d4; }
-  .badge-crowdstrike { background: #ec4037; }
-  .badge-qradar { background: #0668e1; }
-  .badge-okx { background: #000; border: 1px solid #fff; }
-  .badge-sigmahq { background: #e0583e; }
-  .badge-chaingpt { background: #6366f1; }
-  .badge-mit { background: #a31f34; }
-  .badge-uniswap { background: #ff007a; }
-  .badge-circle { background: #1476ff; }
 
   /* ── Recognition ── */
   .recognition-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
@@ -462,16 +449,16 @@
     <h2>Companies & Platforms</h2>
     <p style="margin-bottom:2rem;">My detection rules, security tooling, and smart contracts run on infrastructure trusted by the world's largest enterprises.</p>
     <div class="companies-grid">
-      <div class="company-item"><span class="company-badge badge-splunk">SP</span>Splunk</div>
-      <div class="company-item"><span class="company-badge badge-sentinel">MS</span>Microsoft Sentinel</div>
-      <div class="company-item"><span class="company-badge badge-crowdstrike">CR</span>CrowdStrike Falcon</div>
-      <div class="company-item"><span class="company-badge badge-qradar">QR</span>IBM QRadar</div>
-      <div class="company-item"><span class="company-badge badge-okx">OX</span>OKX.AI</div>
-      <div class="company-item"><span class="company-badge badge-sigmahq">SH</span>SigmaHQ</div>
-      <div class="company-item"><span class="company-badge badge-chaingpt">CG</span>ChainGPT</div>
-      <div class="company-item"><span class="company-badge badge-mit">ML</span>MIT Media Lab</div>
-      <div class="company-item"><span class="company-badge badge-uniswap">UN</span>Uniswap</div>
-      <div class="company-item"><span class="company-badge badge-circle">CI</span>Circle</div>
+      <div class="company-item"><img class="company-logo" src="logos/splunk.png" alt="">Splunk</div>
+      <div class="company-item"><img class="company-logo" src="logos/sentinel.png" alt="">Microsoft Sentinel</div>
+      <div class="company-item"><img class="company-logo" src="logos/crowdstrike.png" alt="">CrowdStrike Falcon</div>
+      <div class="company-item"><img class="company-logo" src="logos/qradar.png" alt="">IBM QRadar</div>
+      <div class="company-item"><img class="company-logo" src="logos/okx.png" alt="">OKX.AI</div>
+      <div class="company-item"><img class="company-logo" src="logos/sigmahq.png" alt="">SigmaHQ</div>
+      <div class="company-item"><img class="company-logo" src="logos/chaingpt.png" alt="">ChainGPT</div>
+      <div class="company-item"><img class="company-logo" src="logos/mit.png" alt="">MIT Media Lab</div>
+      <div class="company-item"><img class="company-logo" src="logos/uniswap.png" alt="">Uniswap</div>
+      <div class="company-item"><img class="company-logo" src="logos/circle.png" alt="">Circle</div>
     </div>
   </div>
 </section>
