@@ -148,13 +148,10 @@
     line-height: 1.9; padding-top: 0.2rem;
   }
   .about-avatar {
-    width: 72px; height: 72px; border-radius: 50%;
-    background: var(--surface); border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
+    width: 80px; height: 80px; border-radius: 50%;
+    border: 1px solid var(--border);
+    object-fit: cover;
     margin-bottom: 1.25rem;
-    font-family: var(--font-ui); font-size: 1.5rem; font-weight: 500;
-    color: var(--accent); letter-spacing: -0.02em;
-    user-select: none;
   }
   .about-side .label {
     color: var(--text-dim); font-size: 0.62rem; text-transform: uppercase;
@@ -430,7 +427,7 @@
         <p>My open-source work has been accepted into production infrastructure. My <strong>Mirai botnet C2 detection rules were merged into SigmaHQ</strong> (10,900+ GitHub stars), the industry-standard detection rule repository depended upon by SOC teams worldwide. My <strong>Argus smart contracts passed a ChainGPT security audit</strong> with a perfect five-out-of-five score across all Circle primitive categories, serving 350+ users across more than 1,400 scans. I built <strong>TrustGuard</strong>, an ELO-based reputation and risk scoring system for autonomous agents that a core reviewer called a <strong>"genuinely different angle"</strong> from existing approaches, passing all eleven adversarial test scenarios on first submission. I hold the <strong>Google Cybersecurity Certificate</strong> and <strong>Fortinet NSE 1 through 3</strong> certifications, and I am actively seeking security engineering roles where I can apply my skills in detection engineering, AI security, and threat intelligence to protect real systems and real users.</p>
       </div>
       <div class="about-side reveal">
-        <div class="about-avatar">GO</div>
+        <img class="about-avatar" src="avatar.jpg" alt="Gideon Opukeme">
         <div class="label">Location</div>
         <p style="color:var(--text-dim);margin-bottom:1.25rem;">Aberdeen<br>Scotland, UK</p>
         <div class="label">Focus</div>
