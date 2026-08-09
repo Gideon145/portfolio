@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gideon Opukeme — Cybersecurity Engineer</title>
 <meta name="description" content="Cybersecurity engineer building detection and response tooling at the intersection of AI security, threat intelligence, and protocol design.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d0d12'/><text x='16' y='22' text-anchor='middle' font-family='system-ui' font-weight='600' font-size='18' fill='%23c4956a'>GO</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -290,6 +291,20 @@
   .stack-group li { font-size: 0.92rem; color: var(--text-dim); padding: 0.22rem 0; }
   .stack-group li::before { content: "— "; color: var(--text-faint); }
 
+  /* ── Back to top ── */
+  #back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 150;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(20,20,28,0.85); border: 1px solid var(--border);
+    color: var(--text-dim); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; opacity: 0; pointer-events: none;
+    transition: opacity 0.3s, border-color 0.2s, color 0.2s;
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+  #back-to-top.visible { opacity: 1; pointer-events: auto; }
+  #back-to-top:hover { border-color: rgba(196,149,106,0.4); color: var(--text); }
+
   /* ── Contact ── */
   .contact-links { display: flex; gap: 2.25rem; font-family: var(--font-mono); font-size: 0.85rem; flex-wrap: wrap; }
   .contact-section p { margin-bottom: 1.75rem; }
@@ -530,6 +545,8 @@
   </div>
 </footer>
 
+<button id="back-to-top" title="Back to top" aria-label="Back to top">↑</button>
+
 <!-- ═══════════════════════════════════════════════════════
      AMBIENT BACKGROUND
      Autonomous network graph. No mouse tracking. No trails.
@@ -736,6 +753,7 @@
         '<div class="project-link">' +
           '<a href="' + p.url + '" target="_blank">GitHub →</a>' +
           (p.live ? '<a href="' + p.live + '" target="_blank">Live →</a>' : '') +
+          (p.url.indexOf('github.com/Gideon145/') > -1 ? '<img class="star-badge" src="https://img.shields.io/github/stars/' + p.url.split('github.com/')[1].replace(/\/$/, '') + '?style=flat&color=c4956a&label=" alt="" style="height:16px;vertical-align:middle;margin-left:0.6rem;">' : '') +
         '</div>' +
       '</div>';
     pc.appendChild(div);
@@ -749,7 +767,7 @@
     div.innerHTML =
       '<div class="pm-meta">' +
         '<div class="pm-date">' + pm.date + '</div>' +
-        '<div class="pm-severity">�, � HIGH SEVERITY</div>' +
+        '<div class="pm-severity">HIGH SEVERITY</div>' +
       '</div>' +
       '<h4>' + pm.title + '</h4>' +
       '<p>' + pm.summary + '</p>' +
@@ -853,6 +871,16 @@
       navLinksEl.classList.remove('open');
       navToggle.textContent = 'Menu';
     });
+  });
+
+  // ── Back to top ──
+  var btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 600) { btt.classList.add('visible'); }
+    else { btt.classList.remove('visible'); }
+  });
+  btt.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 </script>
 </body>
