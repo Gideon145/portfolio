@@ -27,7 +27,7 @@ My work sits at the intersection of AI security, threat detection engineering, a
 
 Before focusing on cybersecurity full-time, I was one of the earliest developers on OKX.AI — the world's first agent-to-agent economic marketplace. I deployed 6 autonomous security agents, won the platform's inaugural hackathon with Parry Protocol, and contributed payment protocol infrastructure at MIT Media Lab. I also built TrustGuard, an ELO-based reputation and risk scoring system for autonomous agents that a core reviewer described as "genuinely different angle" from existing approaches.
 
-My detection rules are deployed in production SOCs via SigmaHQ and run inside Splunk, Microsoft Sentinel, IBM QRadar, and CrowdStrike Falcon. I've contributed to open-source security projects with 10,000+ collective GitHub stars, shipped contracts audited by ChainGPT with 5/5 Circle primitives, and built tooling used by 350+ users.
+My detection rules are written in Sigma format, the open standard that runs inside Splunk, Microsoft Sentinel, IBM QRadar, Elastic Security, and CrowdStrike Falcon, and have been reviewed by maintainers at both SigmaHQ and Elastic. I've contributed to open-source security projects with 10,000+ collective GitHub stars, shipped contracts audited by ChainGPT with 5/5 Circle primitives, and built tooling used by 350+ users.
 
 I'm actively seeking UK-based security engineering roles where I can continue building detection, response, and AI security infrastructure.`,
 
@@ -153,7 +153,7 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     { name: "Network Monitor", desc: "24/7 ping-based availability monitor with email alerting and uptime dashboards", tech: "Python · Cron · SMTP", url: "https://github.com/Gideon145/network-monitor" },
     { name: "Phish Analyzer", desc: "CLI email forensics tool — SPF/DKIM/DMARC validation, VirusTotal lookup, URL defanging", tech: "Python · VirusTotal API", url: "https://github.com/Gideon145/phish-analyzer" },
     { name: "ELK SIEM Lab", desc: "Full SIEM stack with 500 synthetic security events, custom detection rules, and Kibana dashboards", tech: "Docker · Elasticsearch · Kibana", url: "https://github.com/Gideon145/elk-siem-lab" },
-    { name: "TrustGuard", desc: "ELO-based agent reputation system with risk scoring, denylist enforcement, and Sybil resistance — 11 tests", tech: "Python · Game Theory · Agent Security", url: "https://github.com/projnanda/nandatown/pull/218" },
+    { name: "TrustGuard", desc: "ELO-based agent reputation system with risk scoring, denylist enforcement, and Sybil resistance — 11 tests", tech: "Python · Game Theory · Agent Security", url: "https://github.com/Gideon145/trustguard" },
   ],
 
   // ── Stack ──
@@ -193,9 +193,13 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       url: null,
     },
     {
-      label: "SigmaHQ, Merged Detection Rule Contributor",
-      detail: "Authored original Mirai botnet C2 detection rules that were formally reviewed, accepted, and merged into the main SigmaHQ repository, the industry-standard open detection rule format with over ten thousand GitHub stars. This is not a personal side project; it is a contribution to shared security infrastructure depended upon by SOC teams running Splunk, Microsoft Sentinel, IBM QRadar, Elastic Security, and CrowdStrike Falcon in production environments protecting Fortune 500 enterprises, government agencies, and critical infrastructure operators worldwide.",
-      url: "https://github.com/SigmaHQ/sigma/pull/6214",
+      label: "SigmaHQ & Elastic, Detection Rule Contributor",
+      detail: "Authored original Mirai botnet detection rules in Sigma format and submitted them to SigmaHQ, the industry-standard open detection rule repository with over ten thousand GitHub stars, where maintainers reviewed the detection logic and provided detailed technical feedback on rule specificity and correlation support. Also submitted a Linux botnet binary-download detection rule to Elastic's official detection-rules repository, where it passed CI and the contributor licence check and remains under review by Elastic's threat research team.",
+      links: [
+        { label: "SigmaHQ PR #6214", url: "https://github.com/SigmaHQ/sigma/pull/6214" },
+        { label: "Elastic PR #6647", url: "https://github.com/elastic/detection-rules/pull/6647" },
+      ],
+      url: "https://github.com/Gideon145/mirai-detector",
     },
     {
       label: "ChainGPT, Perfect 5/5 Security Audit",
@@ -203,9 +207,9 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       url: "https://github.com/Gideon145/argus",
     },
     {
-      label: "TrustGuard, Peer-Reviewed Original Contribution",
-      detail: "Designed and built TrustGuard, an ELO-based reputation and risk scoring system for autonomous AI agents, and submitted it to the NandaTown agent infrastructure project. The core maintainer reviewed the submission and explicitly described it as a 'genuinely different angle' from all existing trust models in the repository, not a variation on prior art, but a novel approach. All eleven adversarial test scenarios passed on the first submission, validating Byzantine fault tolerance, Sybil resistance, and collusion detection under realistic attack conditions.",
-      url: "https://github.com/projnanda/nandatown/pull/218",
+      label: "TrustGuard, Maintainer-Reviewed Trust Architecture",
+      detail: "Designed and built TrustGuard, an ELO-based reputation and risk scoring system for autonomous AI agents, and submitted it to the NandaTown agent infrastructure project. The maintainer engaged in a full technical review of the implementation, described the approach as a 'genuinely different angle' from existing trust models, and provided detailed architectural feedback on scope, reporter admission policy, and collusion controls. The work continues as a standalone project incorporating that feedback.",
+      url: "https://github.com/Gideon145/trustguard",
     },
     {
       label: "University of Aberdeen, MSc Cyber Security",
