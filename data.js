@@ -218,7 +218,7 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     {
       label: "Google Cybersecurity Certificate",
       detail: "Earned the Google Cybersecurity Certificate, an industry-recognised professional qualification covering the NIST Cybersecurity Framework, incident detection and response, network security fundamentals, Linux command-line and SQL for security operations, and Python automation for security workflows. Completed June 2025 through Coursera's hands-on lab-based curriculum.",
-      url: "https://coursera.org/verify/professional-cert/BFZ93KQRDQC7",
+      url: "https://www.coursera.org/account/accomplishments/professional-cert/BFZ93KQRDQC7",
     },
     {
       label: "Fortinet, Certified Fundamentals and NSE 3",
