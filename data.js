@@ -256,7 +256,10 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     },
     {
       label: "MIT Media Lab, Protocol Contributor",
-      detail: "Contributed to payment protocol infrastructure research at the MIT Media Lab, one of the world's most prestigious interdisciplinary research laboratories. Worked on the financial protocol layer enabling autonomous AI agents to conduct economic transactions at scale: designing message formats, settlement mechanisms, and cryptographic verification schemes for agent-to-agent payment channels. The Media Lab's commitment to 'inventing a better future' is not a slogan; it is a standard of rigour applied to every project that bears its name.",
+      detail: "Contributed to payment protocol infrastructure research at the MIT Media Lab, one of the world's most prestigious interdisciplinary research laboratories. Worked on the financial protocol layer enabling autonomous AI agents to conduct economic transactions at scale: designing message formats, settlement mechanisms, and cryptographic verification schemes for agent-to-agent payment channels. This work was reviewed by an MIT Media Lab researcher through Project Nanda's warm-up program. The Media Lab's commitment to 'inventing a better future' is not a slogan; it is a standard of rigour applied to every project that bears its name.",
+      links: [
+        { label: "Streaming Payments Plugin PR", url: "https://github.com/projnanda/nandatown/pull/20" },
+      ],
       url: null,
     },
     {
