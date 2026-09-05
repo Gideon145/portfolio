@@ -211,7 +211,7 @@
     display: block;
   }
   .about-side .label {
-    color: var(--text-dim); font-size: 0.62rem; text-transform: uppercase;
+    color: var(--accent); font-size: 0.62rem; text-transform: uppercase;
     letter-spacing: 0.12em; margin-bottom: 0.5rem;
   }
   .about-side p { font-size: 0.82rem; }
@@ -486,7 +486,13 @@
     .logo-card img { height: 74px; max-width: 150px; }
     .container { padding: 0 1rem; }
     nav { padding: 0.65rem 1rem; }
-    .pm-card { padding: 1.25rem; }
+    .pm-card { padding: 0.9rem 1rem; }
+    .pm-toggle { gap: 0.5rem; }
+    .pm-toggle .pm-title { font-size: 0.95rem; line-height: 1.35; }
+    .pm-card .pm-meta { gap: 0.5rem; margin-bottom: 0.4rem; font-size: 0.62rem; }
+    .pm-toggle .pm-chevron { font-size: 1.05rem; }
+    .pm-card p { font-size: 0.82rem; }
+    .pm-card .pm-finding { font-size: 0.68rem; padding: 0.5rem 0.7rem; }
     .lab-grid { grid-template-columns: 1fr; }
     .recognition-list { gap: 0.4rem; }
     .rec-item { padding: 1rem 0.5rem 1rem 0; }
@@ -576,9 +582,6 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-text reveal">
-        <div class="about-intro">
-          <div class="about-identity"><strong>Gideon Opukeme</strong>, Cybersecurity Engineer, Aberdeen, Scotland</div>
-        </div>
         <p>I am Gideon Opukeme, a <strong>cybersecurity engineer</strong> based in Aberdeen, Scotland, currently completing an <strong>MSc in Cyber Security at the University of Aberdeen</strong>. I build <strong>detection and response tooling</strong>: an LLM prompt injection firewall, a genetic algorithm fuzzer that discovers jailbreak bypasses, an autonomous SOC analyst, and Sigma detection rules written for Splunk, Sentinel, QRadar and Elastic environments.</p>
         <p>Before cybersecurity I was among the <strong>earliest developers on OKX.AI</strong>, deployed six autonomous security agents, and <strong>won the OKX Build X Season 2 global hackathon</strong> with Parry Protocol. I've contributed detection rules to SigmaHQ and Elastic, shipped smart contracts with a <strong>perfect ChainGPT audit</strong>, and hold Google and Fortinet certifications.</p>
       </div>
