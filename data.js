@@ -1,4 +1,4 @@
-// Portfolio content — edit this file to update the site
+// Portfolio content, edit this file to update the site
 // All content is here. No hardcoding in HTML.
 
 const portfolioData = {
@@ -23,9 +23,9 @@ const portfolioData = {
   // ── About ──
   about: `I'm a cybersecurity engineer based in Aberdeen, Scotland, currently pursuing my MSc in Cyber Security at the University of Aberdeen while building detection and response tooling that ships to production.
 
-My work sits at the intersection of AI security, threat detection engineering, and blockchain protocol security. I don't just study these domains — I build working tools that solve real problems. An AI-powered SOC analyst that triages real logs and maps findings to MITRE ATT&CK. A prompt injection firewall with 30+ detection signatures that blocks LLM attacks in transit. A genetic algorithm fuzzer that discovered 7 unique jailbreak bypass techniques. A Mirai botnet detection toolkit with original YARA and Snort rules.
+My work sits at the intersection of AI security, threat detection engineering, and blockchain protocol security. I don't just study these domains, I build working tools that solve real problems. An AI-powered SOC analyst that triages real logs and maps findings to MITRE ATT&CK. A prompt injection firewall with 30+ detection signatures that blocks LLM attacks in transit. A genetic algorithm fuzzer that discovered 7 unique jailbreak bypass techniques. A Mirai botnet detection toolkit with original YARA and Snort rules.
 
-Before focusing on cybersecurity full-time, I was one of the earliest developers on OKX.AI — the world's first agent-to-agent economic marketplace. I deployed 6 autonomous security agents, won the platform's inaugural hackathon with Parry Protocol, and contributed payment protocol infrastructure at MIT Media Lab. I also built TrustGuard, an ELO-based reputation and risk scoring system for autonomous agents that a core reviewer described as "genuinely different angle" from existing approaches.
+Before focusing on cybersecurity full-time, I was one of the earliest developers on OKX.AI, the world's first agent-to-agent economic marketplace. I deployed 6 autonomous security agents, won the platform's inaugural hackathon with Parry Protocol, and contributed payment protocol infrastructure at MIT Media Lab. I also built TrustGuard, an ELO-based reputation and risk scoring system for autonomous agents that a core reviewer described as "genuinely different angle" from existing approaches.
 
 My detection rules are written in Sigma format, the open standard that runs inside Splunk, Microsoft Sentinel, IBM QRadar, Elastic Security, and CrowdStrike Falcon, and have been reviewed by maintainers at both SigmaHQ and Elastic. I've contributed to open-source security projects with 10,000+ collective GitHub stars, shipped contracts audited by ChainGPT with 5/5 Circle primitives, and built tooling used by 350+ users.
 
@@ -54,7 +54,7 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     {
       name: "Argus",
       tag: "Multi-Agent Security Oracle on Arc",
-      description: "Arc's first multi-agent security oracle — a system where three autonomous AI agents independently audit smart contracts in parallel, stake real USDC on their individual verdicts as a signal of confidence, and settle consensus on-chain through a cryptographic commit-reveal voting mechanism. If agents disagree on a finding, the stake-weighted majority decides the outcome and minority agents forfeit their stake — creating genuine economic accountability for security assessments. The smart contracts were audited by ChainGPT and achieved a perfect five-out-of-five score across all Circle primitive categories. The platform has served more than 350 users across 1,421 separate security scans, processing real contract audits in a decentralised trust-minimised architecture.",
+      description: "Arc's first multi-agent security oracle: three autonomous AI agents audit smart contracts in parallel, stake USDC on their verdicts, and settle consensus on-chain. ChainGPT audited with a perfect 5/5 score across all Circle primitives. Served 350+ users across 1,400+ scans.",
       tech: ["TypeScript", "Solidity", "Circle", "ChainGPT Audited"],
       stats: "350+ users · 1,421 scans · 5/5 Circle primitives · 3-agent consensus",
       url: "https://github.com/Gideon145/argus",
@@ -64,7 +64,7 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     {
       name: "Prompt Firewall",
       tag: "LLM Injection Detection Proxy",
-      description: "An HTTP proxy that sits between any application and its LLM API provider, intercepting every request in real time to detect and block prompt injection, jailbreak, and data extraction attacks before they reach the model. Implements a layered detection architecture with three complementary subsystems: a signature-based engine with over thirty hand-crafted detection rules covering known attack patterns (DAN-style jailbreaks, token smuggling, delimiter injection, role-playing coercion); a heuristic analysis layer with seven independent analysers that score each request across multiple risk dimensions (instruction deviation, authority override, encoding anomalies, semantic boundary violations); and an evasion-resistant input normalisation pipeline that canonicalises Unicode, strips zero-width characters, resolves homoglyph substitution, and normalises whitespace before any detection logic runs. Across a structured test suite of sixty-two adversarial cases, the firewall achieved a one hundred percent detection rate with zero false positives against legitimate developer prompts.",
+      description: "An HTTP proxy that intercepts LLM API requests and blocks prompt injection, jailbreak, and data extraction attacks before they reach the model. 30+ detection signatures, 7 heuristic analysers, and an evasion-resistant normalisation pipeline. 100% detection across 62 adversarial test cases.",
       tech: ["Python", "FastAPI", "Detection Engineering", "OWASP LLM Top 10"],
       stats: "62 test cases · 100% detection rate · 0 false positives · 30+ signatures · 7 analysers",
       url: "https://github.com/Gideon145/llm-prompt-firewall",
@@ -72,7 +72,7 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     {
       name: "AI SOC Analyst",
       tag: "Autonomous Tier-1 Security Analyst",
-      description: "A self-contained security operations centre analyst that automates Tier-1 triage end-to-end. The system ingests raw security logs from multiple sources — firewall events, authentication logs, endpoint detection alerts, network flow data — and performs structured triage using LLM reasoning guided by a chain-of-thought prompting framework. Each ingested event is analysed for severity, mapped to the most specific MITRE ATT&CK technique or sub-technique available, correlated with other events sharing common indicators (source IP, target asset, temporal proximity, kill-chain phase), and compiled into a structured investigation report with an executive summary, technical findings, defender recommendations, and a confidence score. The correlation engine uses a sliding time window with configurable thresholds to group related events into coherent incidents, reducing alert fatigue by collapsing dozens of individual alerts into a single triaged case.",
+      description: "An autonomous Tier-1 SOC analyst: ingests raw logs, triages severity with LLM reasoning, maps findings to MITRE ATT&CK, and correlates related events into investigation reports with a live dashboard.",
       tech: ["Python", "FastAPI", "MITRE ATT&CK", "LLM"],
       stats: "12 demo events · 3 auto-correlated incidents · Full MITRE mapping",
       url: "https://github.com/Gideon145/ai-soc-analyst",
@@ -80,7 +80,7 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     {
       name: "InjectionForge",
       tag: "Genetic Algorithm Fuzzer for LLM Guardrails",
-      description: "A genetic algorithm engine that evolves prompt injection attacks across successive generations to discover novel bypass techniques against LLM safety guardrails. Each generation consists of a population of candidate prompts that are evaluated against a target model's response — prompts that successfully bypass the guardrail survive and reproduce, with crossover and mutation operators creating variant attacks that explore the attack surface more efficiently than manual red-teaming. The system discovered seven unique evasion techniques that were not present in the initial seed corpus: zero-width space injection (Unicode U+200B characters invisible to human reviewers but tokenised by the model), Unicode homoglyph substitution (replacing restricted keywords with visually identical characters from other scripts), leet-speak encoding (numeric and symbolic substitution that defeats keyword-based filters while preserving semantic meaning for the LLM), delimiter confusion attacks, recursive translation chains, role-playing coercion through nested system prompts, and token-boundary exploitation via BPE-aware payload splitting.",
+      description: "A genetic algorithm fuzzer that evolves prompt injection attacks across generations to discover guardrail bypasses. Found 7 novel evasion techniques not present in the seed corpus, including zero-width injection and Unicode homoglyph substitution.",
       tech: ["Python", "Genetic Algorithms", "AI Red-Teaming", "Adversarial ML"],
       stats: "7 novel bypasses discovered · 0.1s per generation · Dual evaluation modes",
       url: "https://github.com/Gideon145/injection-forge",
@@ -88,7 +88,7 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     {
       name: "SigmaHQ Detection Rules",
       tag: "Production SOC Detection Content",
-      description: "Contributed original Mirai botnet command-and-control detection rules to SigmaHQ, the industry-standard open detection rule repository with over ten thousand GitHub stars. The contributed rules detect two distinct Mirai behavioural patterns: periodic C2 heartbeat communication (identifying the characteristic TCP SYN flood patterns and keep-alive exchanges that Mirai bots maintain with their command servers) and telnet brute-force propagation attempts (detecting the rapid-fire credential-guessing sequences that Mirai uses to spread between IoT devices via exposed Telnet ports on TCP/23). Both rules were merged into the main SigmaHQ repository via pull request number 6214 and are now available to every security team running a Sigma-compatible SIEM — including Splunk Enterprise, Microsoft Sentinel, IBM QRadar, Elastic Security, and CrowdStrike Falcon.",
+      description: "Mirai botnet detection rules in Sigma format, submitted to SigmaHQ and reviewed by maintainers, plus a Linux botnet binary-download rule under review at Elastic's official detection-rules repository with CI passing.",
       tech: ["Sigma Rules", "YAML", "Detection Engineering", "SIEM"],
       stats: "PR #6214 merged · Deployed in Splunk · Sentinel · QRadar · CrowdStrike · Elastic",
       url: "https://github.com/SigmaHQ/sigma/pull/6214",
@@ -96,7 +96,7 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     {
       name: "Mirai Detection Toolkit",
       tag: "Malware Analysis & Detection Suite",
-      description: "A comprehensive Mirai botnet detection and analysis toolkit built from direct study of the leaked Mirai source code. The suite includes four integrated components: a YARA rule generator that produces pattern-matching signatures for Mirai binaries and variants by analysing the malware's distinctive string tables, XOR-encoded configuration blocks, and hard-coded command-and-control domain generation algorithms; a Snort and Suricata network rule set covering four distinct network behaviours (C2 beaconing, DDoS attack traffic including UDP flood, SYN flood, and HTTP flood patterns, telnet brute-force propagation, and DNS-based C2 resolution); a C2 traffic simulator capable of generating realistic Mirai botnet traffic across twelve emulated bot instances for testing and validating detection coverage; and an IoT default credential scanner preloaded with the sixty-two known username and password pairs hard-coded into Mirai's propagation module.",
+      description: "Mirai botnet detection suite: 5 YARA rules across ARM, MIPS, and x86, 4 Snort/Suricata network signatures, a 12-bot C2 traffic simulator, and an IoT credential scanner covering 62 Mirai default credentials.",
       tech: ["Python", "YARA", "Snort/Suricata", "IoT Security"],
       stats: "6 YARA rules · 4 Snort rules · 62 Mirai credentials · 12 simulated bots",
       url: "https://github.com/Gideon145/mirai-detector",
@@ -104,7 +104,7 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     {
       name: "Syntheke",
       tag: "AI Treaty Layer with Arbitration Court",
-      description: "An AI-to-AI treaty layer with a four-judge arbitration court on X Layer. Treaties between autonomous agents run through a fifteen-state lifecycle, and disputes are settled by four distinct models (GLM, Claude and DeepSeek) voting through a commit-reveal on-chain mechanism. The system has 22 live treaties on mainnet, self-healing pacts, x402 payment rails, and a seven-tool MCP server.",
+      description: "An AI-to-AI treaty layer with a four-judge arbitration court: disputes between autonomous agents are settled by four distinct models voting through commit-reveal on-chain consensus. 22 live treaties on X Layer mainnet.",
       tech: ["TypeScript", "Multi-Agent Systems", "On-Chain Governance"],
       stats: "22 live treaties · 4-judge AI court · X Layer mainnet",
       url: "https://github.com/Gideon145/syntheke",
@@ -112,15 +112,15 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     {
       name: "Mnemos",
       tag: "Personal AI Agent with Durable Memory",
-      description: "A personal AI agent that remembers you: durable memory on Sibyl with full-text search and a deterministic lexical fallback designed to never hallucinate a memory, an agreement state machine, memory-gated payments on Base, and portable Keepsakes memory packs that move with you. Built for the Sibyl Labs Hackathon.",
+      description: "A personal AI agent that remembers you: durable memory on Sibyl with a deterministic fallback that never hallucinates, an agreement state machine, and portable Keepsakes memory packs. Built for the Sibyl Labs Hackathon.",
       tech: ["Python", "Memory Systems", "Agent Architecture"],
       stats: "Durable memory · No-hallucination recall · Base payments",
       url: "https://github.com/Gideon145/mnemos",
     },
     {
       name: "Parry Protocol",
-      tag: "DeFi Security Agent — Hackathon Winner",
-      description: "A delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers that won the OKX.AI inaugural global hackathon. Impermanent loss — the opportunity cost of providing liquidity versus simply holding the underlying assets — is the largest source of uncompensated risk for DeFi liquidity providers, routinely exceeding trading fee revenue during volatile market conditions. Parry Protocol addresses this by continuously monitoring pool price ratios and executing algorithmic rebalancing transactions that maintain a delta-neutral position relative to the user's initial deposit composition. When divergence loss exceeds a configurable threshold, the agent triggers a hedge transaction that offsets the LP's directional exposure, converting impermanent loss from an unavoidable cost into a managed risk parameter. The protocol operates autonomously through OKX.AI's agent framework, with on-chain execution via smart contracts written in Solidity and off-chain monitoring and decision logic implemented in TypeScript.",
+      tag: "DeFi Security Agent, Hackathon Winner",
+      description: "A delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. Won the OKX.AI inaugural global hackathon, with 86,000+ confirmed mainnet transactions.",
       tech: ["TypeScript", "Solidity", "DeFi Security", "Uniswap V3"],
       stats: "OKX.AI Hackathon Winner · Delta-neutral strategy",
       url: "https://github.com/Gideon145/parry-protocol",
@@ -128,7 +128,7 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     {
       name: "Detection Engineering Lab",
       tag: "Full-Cycle SOC Detection & Response",
-      description: "A complete detection engineering project demonstrating the full security operations lifecycle: Sigma rule development for Windows and Active Directory environments, structured alert triage investigations with MITRE ATT&CK mapping, a documented incident response workflow from Kerberoasting to domain controller compromise, and rule tuning documentation showing false positive reduction from 94 alerts/day down to 3. The lab includes ten Sigma detection rules covering twelve ATT&CK techniques across execution, credential access, lateral movement, persistence, and exfiltration tactics. Five documented investigation cases include true positives, one false positive analysis with tuning applied, and one full incident response report covering a complete attack chain — credential phishing, BloodHound reconnaissance, Kerberoasting, PsExec lateral movement, LSASS credential dumping, NTDS.dit extraction, containment, and post-incident remediation with new detection rules deployed. An ATT&CK Navigator layer file visualises current detection coverage across the enterprise matrix. Designed to run on an Elastic Stack with Windows Event Log, Sysmon, and PowerShell log sources.",
+      description: "Full-cycle SOC lab: 10 Sigma rules covering 12 MITRE ATT&CK techniques, 5 documented investigations, and a complete IR workflow. Includes false-positive tuning that cut alerts from 94/day to 3.",
       tech: ["Sigma", "MITRE ATT&CK", "Elastic Stack", "Incident Response", "Detection Engineering"],
       stats: "10 Sigma rules · 5 investigations · 1 full IR report · 12 ATT&CK techniques",
       url: "https://github.com/Gideon145/detection-engineering-lab",
@@ -141,7 +141,7 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     {
       title: "Levi Strauss & Co., Vishing Attack",
       date: "August 2026",
-      summary: "Social engineering attack compromised 3 employees through voice phishing (vishing). Attackers impersonated internal IT help desk to manipulate staff into granting remote access to corporate systems, then exfiltrated sensitive files. Part of a coordinated campaign targeting over 200 companies. No malware deployed — the entire attack chain was a phone call.",
+      summary: "Social engineering attack compromised 3 employees through voice phishing (vishing). Attackers impersonated internal IT help desk to manipulate staff into granting remote access to corporate systems, then exfiltrated sensitive files. Part of a coordinated campaign targeting over 200 companies. No malware deployed, the entire attack chain was a phone call.",
       findings: "Detection requires behavioural monitoring of remote access tools (anomalous RDP, TeamViewer, AnyDesk sessions based on timing, source IP, and correlation with inbound calls), outbound data transfer monitoring for unusual exfiltration patterns, and vishing-specific employee awareness training that covers help-desk impersonation scenarios rather than generic phishing education.",
       url: "https://github.com/Gideon145/breach-postmortems/blob/master/levi-strauss-2026.md",
     },
@@ -149,28 +149,28 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       title: "Swiss Government SharePoint Breach, 200 Accounts Compromised",
       date: "August 2026",
       summary: "Unknown threat actors breached SharePoint servers operated by the Swiss Federal Office for Information Technology (BIT), compromising login credentials for approximately 200 user and technical accounts. The attackers exploited recently disclosed Microsoft SharePoint vulnerabilities before all patches were deployed. BIT detected the intrusion on July 28, immediately blocked internet access, reset all affected credentials, and initiated a full server rebuild. No evidence of data exfiltration was found, though the forensic investigation remains active.",
-      findings: "Government SharePoint servers are high-value targets because they hold internal documents, enable collaboration across agencies, and integrate with the broader Microsoft ecosystem. The attack window between vulnerability disclosure and patch deployment remains the critical risk — BIT was in the process of patching when exploitation occurred. Key detection opportunities: monitor for anomalous SharePoint authentication patterns, unexpected server-side file operations, and credential access from non-corporate IP ranges. Server rebuilding rather than restoration from backup is a strong recovery practice that more organisations should adopt by default.",
+      findings: "Government SharePoint servers are high-value targets because they hold internal documents, enable collaboration across agencies, and integrate with the broader Microsoft ecosystem. The attack window between vulnerability disclosure and patch deployment remains the critical risk, BIT was in the process of patching when exploitation occurred. Key detection opportunities: monitor for anomalous SharePoint authentication patterns, unexpected server-side file operations, and credential access from non-corporate IP ranges. Server rebuilding rather than restoration from backup is a strong recovery practice that more organisations should adopt by default.",
       url: "https://github.com/Gideon145/breach-postmortems/blob/master/swiss-sharepoint-2026.md",
     },
     {
       title: "UNC6671, Automated Microsoft 365 Data Theft via Vishing",
       date: "August 2026",
-      summary: "Google Cloud researchers identified UNC6671, a threat group conducting large-scale data theft from Microsoft 365 and Okta environments. The attack chain starts with a vishing call — the attacker impersonates IT helpdesk, claims a passkey or MFA update is mandatory, and directs the employee to an adversary-in-the-middle phishing portal that captures both the password and the live MFA token. Once inside, automated scripts using python-requests and PowerShell extract data through Microsoft Graph APIs, while the group deploys one new phishing domain every 1.6 days and operates through residential proxies to evade detection.",
-      findings: "UNC6671 demonstrates that the combination of vishing and AiTM phishing is the dominant cloud attack pattern of 2026. The group's operational tempo — seven domains activated over a single 72-hour period — shows industrialised social engineering. Detection requires monitoring for scripting-related user-agent strings (python-requests, PowerShell) accessing Microsoft 365, unusual MFA enrolment events, high-volume FileAccessed events that bypass traditional download monitoring, and authentication from residential proxy IP ranges. Organisations should implement phishing-resistant authentication and shorten session lifetimes to reduce the value of stolen tokens.",
+      summary: "Google Cloud researchers identified UNC6671, a threat group conducting large-scale data theft from Microsoft 365 and Okta environments. The attack chain starts with a vishing call, the attacker impersonates IT helpdesk, claims a passkey or MFA update is mandatory, and directs the employee to an adversary-in-the-middle phishing portal that captures both the password and the live MFA token. Once inside, automated scripts using python-requests and PowerShell extract data through Microsoft Graph APIs, while the group deploys one new phishing domain every 1.6 days and operates through residential proxies to evade detection.",
+      findings: "UNC6671 demonstrates that the combination of vishing and AiTM phishing is the dominant cloud attack pattern of 2026. The group's operational tempo, seven domains activated over a single 72-hour period, shows industrialised social engineering. Detection requires monitoring for scripting-related user-agent strings (python-requests, PowerShell) accessing Microsoft 365, unusual MFA enrolment events, high-volume FileAccessed events that bypass traditional download monitoring, and authentication from residential proxy IP ranges. Organisations should implement phishing-resistant authentication and shorten session lifetimes to reduce the value of stolen tokens.",
       url: "https://github.com/Gideon145/breach-postmortems/blob/master/unc6671-2026.md",
     },
     {
       title: "ChainDrop, Self-Propagating npm Worm Infecting 400+ Packages",
       date: "August 2026",
-      summary: "Palo Alto Networks Unit 42 discovered ChainDrop, a self-propagating worm that infected over 400 npm packages to steal GitHub tokens, npm credentials, cloud keys, SSH keys, and CI/CD secrets. The worm activates during package installation, extracts credentials from the developer's machine and from GitHub Actions runner memory, then uses stolen npm publishing tokens to inject itself into other packages the compromised account can update — creating an automated supply chain propagation loop. The C2 infrastructure is controlled through an Ethereum smart contract, allowing the operator to rotate exfiltration destinations without modifying infected packages.",
-      findings: "ChainDrop represents a new class of supply chain attack where the build pipeline itself becomes the propagation vector. The Ethereum-based C2 is particularly concerning because blockchain transactions are immutable — once a domain rotation is recorded on-chain, defenders cannot remove the pointer. Detection requires monitoring for unexpected npm package publications following dependency updates, new install hooks in package.json, unusually large compressed JavaScript payloads, and outbound connections from CI runners to first-seen domains. Short-lived, narrowly scoped CI credentials and single-use build runners significantly reduce the impact surface.",
+      summary: "Palo Alto Networks Unit 42 discovered ChainDrop, a self-propagating worm that infected over 400 npm packages to steal GitHub tokens, npm credentials, cloud keys, SSH keys, and CI/CD secrets. The worm activates during package installation, extracts credentials from the developer's machine and from GitHub Actions runner memory, then uses stolen npm publishing tokens to inject itself into other packages the compromised account can update, creating an automated supply chain propagation loop. The C2 infrastructure is controlled through an Ethereum smart contract, allowing the operator to rotate exfiltration destinations without modifying infected packages.",
+      findings: "ChainDrop represents a new class of supply chain attack where the build pipeline itself becomes the propagation vector. The Ethereum-based C2 is particularly concerning because blockchain transactions are immutable, once a domain rotation is recorded on-chain, defenders cannot remove the pointer. Detection requires monitoring for unexpected npm package publications following dependency updates, new install hooks in package.json, unusually large compressed JavaScript payloads, and outbound connections from CI runners to first-seen domains. Short-lived, narrowly scoped CI credentials and single-use build runners significantly reduce the impact surface.",
       url: "https://github.com/Gideon145/breach-postmortems/blob/master/chaindrop-2026.md",
     },
     {
       title: "Claude in Chrome, Prompt Injection Enables Account Takeover",
       date: "August 2026",
-      summary: "Zenity Labs researchers demonstrated that Anthropic's Claude in Chrome browser agent is vulnerable to indirect prompt injection attacks that enable full account takeover of Slack, X (Twitter), and Claude.ai accounts. The attack works by sending the victim a malicious email — when Claude summarises the inbox, hidden instructions manipulate the agent into executing JavaScript via its javascript_tool within the victim's authenticated browser session. The injected code reads Gmail's Atom feed for verification codes, password-reset tokens, and magic links, then exfiltrates them to an attacker-controlled server. Because the code runs in the authenticated browser, it inherits all of the victim's active sessions.",
-      findings: "This is the defining AI security incident of 2026: an AI agent given the ability to read untrusted content and execute code in an authenticated browser session turns email access into universal account takeover. The vulnerability is architectural — any browser agent that can read email and execute JavaScript inherits this risk. Mitigation requires stripping executable content from untrusted inputs before the agent processes them, sandboxing agent code execution from the user's authenticated session, and never allowing AI agents to interact with authentication flows (password resets, magic links, verification codes). This incident directly validates the threat model behind prompt injection firewalls like the one I built.",
+      summary: "Zenity Labs researchers demonstrated that Anthropic's Claude in Chrome browser agent is vulnerable to indirect prompt injection attacks that enable full account takeover of Slack, X (Twitter), and Claude.ai accounts. The attack works by sending the victim a malicious email, when Claude summarises the inbox, hidden instructions manipulate the agent into executing JavaScript via its javascript_tool within the victim's authenticated browser session. The injected code reads Gmail's Atom feed for verification codes, password-reset tokens, and magic links, then exfiltrates them to an attacker-controlled server. Because the code runs in the authenticated browser, it inherits all of the victim's active sessions.",
+      findings: "This is the defining AI security incident of 2026: an AI agent given the ability to read untrusted content and execute code in an authenticated browser session turns email access into universal account takeover. The vulnerability is architectural, any browser agent that can read email and execute JavaScript inherits this risk. Mitigation requires stripping executable content from untrusted inputs before the agent processes them, sandboxing agent code execution from the user's authenticated session, and never allowing AI agents to interact with authentication flows (password resets, magic links, verification codes). This incident directly validates the threat model behind prompt injection firewalls like the one I built.",
       url: "https://github.com/Gideon145/breach-postmortems/blob/master/claude-chrome-2026.md",
     },
   ],
@@ -178,9 +178,9 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
   // ── Lab / Experiments ──
   experiments: [
     { name: "Network Monitor", desc: "24/7 ping-based availability monitor with email alerting and uptime dashboards", tech: "Python · Cron · SMTP", url: "https://github.com/Gideon145/network-monitor" },
-    { name: "Phish Analyzer", desc: "CLI email forensics tool — SPF/DKIM/DMARC validation, VirusTotal lookup, URL defanging", tech: "Python · VirusTotal API", url: "https://github.com/Gideon145/phish-analyzer" },
+    { name: "Phish Analyzer", desc: "CLI email forensics tool, SPF/DKIM/DMARC validation, VirusTotal lookup, URL defanging", tech: "Python · VirusTotal API", url: "https://github.com/Gideon145/phish-analyzer" },
     { name: "ELK SIEM Lab", desc: "Full SIEM stack with 500 synthetic security events, custom detection rules, and Kibana dashboards", tech: "Docker · Elasticsearch · Kibana", url: "https://github.com/Gideon145/elk-siem-lab" },
-    { name: "TrustGuard", desc: "ELO-based agent reputation system with risk scoring, denylist enforcement, and Sybil resistance — 11 tests", tech: "Python · Game Theory · Agent Security", url: "https://github.com/Gideon145/trustguard" },
+    { name: "TrustGuard", desc: "ELO-based agent reputation system with risk scoring, denylist enforcement, and Sybil resistance, 11 tests", tech: "Python · Game Theory · Agent Security", url: "https://github.com/Gideon145/trustguard" },
   ],
 
   // ── Stack ──
