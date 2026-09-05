@@ -75,7 +75,7 @@
   /* ── Layout ── */
   .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
   section { padding: 6rem 0; border-top: 1px solid var(--border); }
-  section:first-of-type { border-top: none; padding-top: 0; }
+  section:first-of-type { border-top: none; }
 
   /* ── Nav ── */
   nav {
@@ -99,18 +99,23 @@
   /* ── Mobile nav toggle ── */
   .nav-toggle {
     display: none; background: none; border: none; cursor: pointer;
-    padding: 0.4rem; color: var(--text-dim); font-family: var(--font-mono);
-    font-size: 0.75rem; letter-spacing: 0.06em;
+    padding: 0.4rem; color: var(--text-dim);
   }
   .nav-toggle:hover { color: var(--text); }
+  .hamburger {
+    display: inline-flex; flex-direction: column; gap: 4px;
+    width: 20px; align-items: stretch;
+  }
+  .hamburger span { height: 1.5px; background: var(--text-dim); display: block; transition: background 0.2s; }
+  .nav-toggle:hover .hamburger span { background: var(--text); }
 
   /* ── Hero ── */
   .hero {
     padding: 10rem 0 6rem; min-height: 80vh; display: flex;
     align-items: flex-end; position: relative;
   }
-  .hero-content { max-width: 880px; }
-  .hero h1 { margin-bottom: 1.5rem; white-space: pre-line; font-weight: 700; }
+  .hero-content { max-width: 880px; overflow: visible; }
+  .hero h1 { margin-bottom: 1.5rem; white-space: pre-line; font-weight: 700; overflow-wrap: break-word; }
   .hero h1 .word { display: inline-block; opacity: 0; animation: wordIn 0.7s cubic-bezier(.22,.61,.36,1) forwards; }
   @keyframes wordIn { from { opacity: 0; transform: translateY(12px); filter: blur(4px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
   .hero-tagline {
@@ -149,10 +154,11 @@
     line-height: 1.9; padding-top: 0.2rem;
   }
   .about-avatar {
-    width: 80px; height: 80px; border-radius: 50%;
+    width: 150px; height: 150px; border-radius: 50%;
     border: 1px solid var(--border);
     object-fit: cover;
     margin-bottom: 1.25rem;
+    display: block;
   }
   .about-side .label {
     color: var(--text-dim); font-size: 0.62rem; text-transform: uppercase;
@@ -161,22 +167,34 @@
   .about-side p { font-size: 0.82rem; }
 
   /* ── Companies ── */
-  .companies-grid {
-    display: flex; flex-wrap: wrap; gap: 0.75rem;
+  .logo-marquee {
+    overflow: hidden; position: relative;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    padding: 1.5rem 0 2rem;
   }
-  .company-item {
-    display: flex; align-items: center; gap: 0.6rem;
-    font-family: var(--font-mono); font-size: 0.73rem;
-    padding: 0.5rem 0.9rem; color: var(--text-dim);
+  .logo-track {
+    display: flex; align-items: center; gap: 2rem;
+    width: max-content;
+    animation: marquee 36s linear infinite;
+  }
+  .logo-track:hover { animation-play-state: paused; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .logo-card {
+    background: rgba(255,255,255,0.05);
     border: 1px solid var(--border);
-    background: rgba(30,30,36,0.6);
-    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    border-radius: 16px;
+    height: 110px; min-width: 170px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.1rem 1.6rem;
+    flex-shrink: 0;
+    transition: border-color 0.25s, background 0.25s;
   }
-  .company-item:hover { border-color: rgba(196,149,106,0.3); color: var(--text); background: rgba(255,255,255,0.06); }
-  .company-logo {
-    height: 28px; max-width: 100px; object-fit: contain; flex-shrink: 0;
-    mix-blend-mode: multiply; opacity: 0.9;
-  }
+  .logo-card:hover { border-color: rgba(196,149,106,0.35); background: rgba(255,255,255,0.08); }
+  .logo-card img { height: 58px; width: auto; max-width: 170px; object-fit: contain; display: block; }
 
   /* ── Recognition ── */
   .recognition-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
@@ -320,7 +338,19 @@
   #back-to-top:hover { border-color: rgba(196,149,106,0.4); color: var(--text); }
 
   /* ── Contact ── */
-  .contact-links { display: flex; gap: 2.25rem; font-family: var(--font-mono); font-size: 0.85rem; flex-wrap: wrap; }
+  .contact-links {
+    display: flex; gap: 2.25rem; font-family: var(--font-mono);
+    font-size: 0.85rem; flex-wrap: wrap; align-items: center;
+  }
+  .contact-links a {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    color: var(--text-dim); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-links a:hover { color: var(--text); }
+  .contact-links svg { width: 15px; height: 15px; flex-shrink: 0; }
+  .contact-links .contact-loc { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-faint); }
+  .contact-links .contact-loc svg { width: 15px; height: 15px; }
   .contact-section p { margin-bottom: 1.75rem; }
 
   /* ── Footer ── */
@@ -381,9 +411,13 @@
   @media (max-width: 480px) {
     section { padding: 2.75rem 0; }
     .hero { padding: 5rem 0 2.5rem; }
-    .hero h1 { font-size: 1.9rem; }
+    .hero h1 { font-size: clamp(1.55rem, 8.4vw, 2rem); line-height: 1.18; }
     .hero-tagline { font-size: 0.95rem; }
     .hero-meta { gap: 0.75rem; font-size: 0.68rem; }
+    .about-avatar { width: 110px; height: 110px; margin-left: auto; margin-right: auto; }
+    .about-side { text-align: center; }
+    .logo-card { height: 90px; min-width: 140px; padding: 0.9rem 1.2rem; }
+    .logo-card img { height: 44px; max-width: 130px; }
     .container { padding: 0 1rem; }
     nav { padding: 0.65rem 1rem; }
     .pm-card { padding: 1.25rem; }
@@ -419,7 +453,9 @@
 <!-- ════════════════════ Navigation ════════════════════ -->
 <nav>
   <span class="nav-name">Gideon Opukeme</span>
-  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">Menu</button>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+    <span class="hamburger"><span></span><span></span><span></span></span>
+  </button>
   <div class="nav-links" id="nav-links">
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
@@ -440,9 +476,9 @@
     <div class="hero-status"><span class="dot"></span>Available for security engineering roles</div>
     <p class="hero-tagline">Cybersecurity Engineer. MSc Cyber Security, University of Aberdeen. Former OKX.AI pioneer. MIT Media Lab contributor.</p>
     <div class="hero-meta">
-      <span>�, � Aberdeen, Scotland, UK</span>
-      <span>�, � <a href="https://github.com/Gideon145">github/Gideon145</a></span>
-      <span>�, � <a href="mailto:opukemegideon@gmail.com">opukemegideon@gmail.com</a></span>
+      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Aberdeen, Scotland, UK</span>
+      <span><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> <a href="https://github.com/Gideon145">github/Gideon145</a></span>
+      <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg> <a href="mailto:opukemegideon@gmail.com">opukemegideon@gmail.com</a></span>
     </div>
   </div>
 </section>
@@ -458,9 +494,8 @@
         <div class="about-intro">
           <div class="about-identity"><strong>Gideon Opukeme</strong>, Cybersecurity Engineer, Aberdeen, Scotland</div>
         </div>
-        <p>I am Gideon Opukeme, a <strong>cybersecurity engineer</strong> based in Aberdeen, Scotland, currently completing my <strong>MSc in Cyber Security at the University of Aberdeen</strong>, a research institution founded in 1495. I build <strong>detection and response tooling that ships to production environments</strong>, not proof-of-concept repositories. My work spans <strong>AI and LLM security</strong>: prompt injection firewalls, genetic algorithm fuzzers that discover novel jailbreak techniques, and autonomous SOC analysts that ingest raw logs and map findings to MITRE ATT&CK. <strong>Threat detection engineering</strong>: Sigma rules written for the format used by Splunk, Microsoft Sentinel, IBM QRadar, Elastic Security, and CrowdStrike Falcon, plus original YARA and Snort signatures for malware detection. <strong>Blockchain protocol security</strong>: audited smart contracts, multi-agent oracle systems, and economic security primitives for decentralised finance.</p>
-        <p>Before dedicating myself to cybersecurity, I was one of the <strong>earliest developers on OKX.AI</strong>, the world's first agent-to-agent economic marketplace where autonomous AI agents discover each other, negotiate contracts, stream payments, and settle disputes on-chain without human intermediation. I deployed <strong>six autonomous security agents</strong> on the platform and <strong>won its inaugural global hackathon</strong> with Parry Protocol, a delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. I also contributed <strong>payment protocol infrastructure at the MIT Media Lab</strong>, working on the financial rails that enable agent-to-agent commerce at scale.</p>
-        <p>My open-source work has been reviewed by maintainers at SigmaHQ and Elastic. My <strong>Mirai botnet detection rules were submitted to SigmaHQ</strong>, the industry-standard open detection rule repository depended upon by SOC teams worldwide, where maintainers gave detailed technical feedback on rule specificity, and a <strong>Linux botnet detection rule is under review at Elastic's official detection-rules repository</strong> with CI passing. My <strong>Argus smart contracts passed a ChainGPT security audit</strong> with a perfect five-out-of-five score across all Circle primitive categories, serving 350+ users across more than 1,400 scans. I built <strong>TrustGuard</strong>, an ELO-based reputation and risk scoring system for autonomous agents that a maintainer called a <strong>"genuinely different angle"</strong> from existing approaches. I hold the <strong>Google Cybersecurity Certificate</strong> and <strong>Fortinet NSE 1 through 3</strong> certifications, and I am actively seeking security engineering roles where I can apply my skills in detection engineering, AI security, and threat intelligence to protect real systems and real users.</p>
+        <p>I am Gideon Opukeme, a <strong>cybersecurity engineer</strong> based in Aberdeen, Scotland, currently completing an <strong>MSc in Cyber Security at the University of Aberdeen</strong>. I build <strong>detection and response tooling</strong>: an LLM prompt injection firewall, a genetic algorithm fuzzer that discovers jailbreak bypasses, an autonomous SOC analyst, and Sigma detection rules written for Splunk, Sentinel, QRadar and Elastic environments.</p>
+        <p>Before cybersecurity I was among the <strong>earliest developers on OKX.AI</strong>, deployed six autonomous security agents, and <strong>won the platform's inaugural global hackathon</strong> with Parry Protocol. I've contributed detection rules to SigmaHQ and Elastic, shipped smart contracts with a <strong>perfect ChainGPT audit</strong>, and hold Google and Fortinet certifications.</p>
       </div>
       <div class="about-side reveal">
         <img class="about-avatar" src="avatar.jpg" alt="Gideon Opukeme">
@@ -478,22 +513,10 @@
 <!-- ════════════════════ Companies ════════════════════ -->
 <section id="companies">
   <div class="container reveal">
-    <h2>Companies & Platforms</h2>
-    <p style="margin-bottom:2rem;">My detection rules, security tooling, and smart contracts run on infrastructure trusted by the world's largest enterprises.</p>
-    <div class="companies-grid">
-      <div class="company-item"><img class="company-logo" src="logos/splunk.png" alt="">Splunk</div>
-      <div class="company-item"><img class="company-logo" src="logos/microsoft sentinel.png" alt="">Microsoft Sentinel</div>
-      <div class="company-item"><img class="company-logo" src="logos/crowdstrike.png" alt="">CrowdStrike Falcon</div>
-      <div class="company-item"><img class="company-logo" src="logos/ibm.png" alt="">IBM QRadar</div>
-      <div class="company-item"><img class="company-logo" src="logos/okx.png" alt="">OKX.AI</div>
-      <div class="company-item"><img class="company-logo" src="logos/sigma.png" alt="">SigmaHQ</div>
-      <div class="company-item"><img class="company-logo" src="logos/chaingpt.png" alt="">ChainGPT</div>
-      <div class="company-item"><img class="company-logo" src="logos/mit lab.png" alt="">MIT Media Lab</div>
-      <div class="company-item"><img class="company-logo" src="logos/uniswap (2).png" alt="">Uniswap</div>
-      <div class="company-item"><img class="company-logo" src="logos/circle.png" alt="">Circle</div>
-      <div class="company-item"><img class="company-logo" src="logos/arc.png" alt="">Arc</div>
-    </div>
+    <h2>Companies &amp; Platforms</h2>
+    <p style="margin-bottom:1rem;">Detection rules, security tooling, and smart contracts built across infrastructure trusted by the world's largest enterprises.</p>
   </div>
+  <div class="logo-marquee" id="logo-marquee"></div>
 </section>
 
 <!-- ════════════════════ Recognition ════════════════════ -->
@@ -548,12 +571,13 @@
 <section id="contact" class="contact-section">
   <div class="container reveal">
     <h2>Contact</h2>
-    <p>Open to UK-based security engineering roles from late 2026. Reach out on any platform.</p>
+    <p>Open to security engineering roles. Reach out on any platform.</p>
     <div class="contact-links">
-      <a href="https://github.com/Gideon145">GitHub</a>
-      <a href="https://linkedin.com/in/gideon-opukeme-755723238">LinkedIn</a>
-      <a href="https://instagram.com/og_xix">Instagram</a>
-      <a href="mailto:opukemegideon@gmail.com">opukemegideon@gmail.com</a>
+      <a href="mailto:opukemegideon@gmail.com"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg> opukemegideon@gmail.com</a>
+      <a href="mailto:g.opukeme.26@abdn.ac.uk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg> g.opukeme.26@abdn.ac.uk</a>
+      <a href="https://linkedin.com/in/gideon-opukeme-755723238"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg> LinkedIn</a>
+      <a href="https://github.com/Gideon145"><svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a>
+      <span class="contact-loc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Aberdeen, Scotland, UK</span>
     </div>
   </div>
 </section>
@@ -771,6 +795,20 @@
         '<div class="exp-details">' + exp.details + '</div>';
       ec.appendChild(div);
     });
+  }
+
+  // ── Companies marquee ──
+  var lm = document.getElementById('logo-marquee');
+  if (lm) {
+    var logos = [
+      'logos/splunk.png', 'logos/sentinel.webp', 'logos/crowdstrike.png',
+      'logos/ibm.png', 'logos/okx.svg', 'logos/chaingpt.jpg',
+      'logos/mitlab.png', 'logos/uniswap.jpg', 'logos/circle.webp', 'logos/arc.jpg'
+    ];
+    var cardsHtml = logos.map(function(src) {
+      return '<div class="logo-card"><img src="' + src + '" alt=""></div>';
+    }).join('');
+    lm.innerHTML = '<div class="logo-track">' + cardsHtml + cardsHtml + '</div>';
   }
 
   // ── Projects ──
