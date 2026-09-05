@@ -114,8 +114,40 @@
     padding: 7rem 0 4rem; min-height: 100vh; display: flex;
     align-items: center; position: relative;
   }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 4rem; align-items: center; width: 100%;
+  }
+  .hero-portrait img {
+    width: 280px; height: 280px; border-radius: 24px; object-fit: cover;
+    border: 2px solid rgba(196,149,106,0.45);
+    box-shadow: 0 24px 70px rgba(0,0,0,0.55), 0 0 0 1px rgba(196,149,106,0.15);
+    transform: rotate(2deg);
+    display: block;
+  }
+  .hero-portrait .portrait-caption {
+    text-align: center; margin-top: 0.9rem;
+    font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-faint);
+    letter-spacing: 0.04em;
+  }
+  .hero-stats { display: flex; gap: 2.75rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .hero-stat .stat-num {
+    font-family: var(--font-ui); font-size: 1.75rem; font-weight: 600;
+    color: var(--text); letter-spacing: -0.02em; line-height: 1.1;
+  }
+  .hero-stat .stat-label {
+    font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim);
+    margin-top: 0.35rem; max-width: 150px; line-height: 1.45;
+  }
   .hero-content { max-width: 880px; overflow: visible; }
   .hero h1 { margin-bottom: 1.5rem; white-space: pre-line; font-weight: 700; overflow-wrap: break-word; }
+
+  /* ── Landing gate ── */
+  body.locked main > section:not(.hero) { display: none; }
+  body.locked footer { display: none; }
+  body.locked .nav-links, body.locked .nav-toggle { display: none; }
+  body.locked .scroll-hint { display: none; }
+  body.locked #back-to-top { display: none; }
   .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
   .hero-cta a {
     font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em;
@@ -406,6 +438,9 @@
     .container { padding: 0 1.2rem; }
     section { padding: 3.5rem 0; }
     .hero { padding: 7rem 0 3rem; min-height: auto; align-items: center; }
+    .hero-grid { grid-template-columns: 1fr; gap: 2.25rem; }
+    .hero-portrait img { width: 190px; height: 190px; margin: 0 auto; }
+    .hero-stats { gap: 1.5rem; }
     .scroll-hint { display: none; }
     h1 { font-size: clamp(2rem, 8vw, 3rem); }
     h2 { font-size: 1.3rem; margin-bottom: 1.75rem; }
@@ -463,7 +498,7 @@
   }
 </style>
 </head>
-<body id="top" data-bg-state="hero-section">
+<body id="top" data-bg-state="hero-section" class="locked">
 
 <div id="scroll-progress"></div>
 <canvas id="bg-canvas"></canvas>
@@ -492,17 +527,30 @@
 <!-- ════════════════════ Hero ════════════════════ -->
 <section class="hero" id="hero-section">
   <div class="container hero-content reveal">
-    <h1 id="hero-heading">I build security tools<br>that actually work.</h1>
-    <div class="hero-status"><span class="dot"></span>Available for security engineering roles</div>
-    <p class="hero-tagline">Cybersecurity Engineer. MSc Cyber Security, University of Aberdeen. Former OKX.AI pioneer. MIT Media Lab contributor.</p>
-    <div class="hero-cta">
-      <a href="#work" class="primary">See my work</a>
-      <a href="#contact">Get in touch</a>
-    </div>
-    <div class="hero-meta">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1 id="hero-heading">I build security tools<br>that actually work.</h1>
+        <div class="hero-status"><span class="dot"></span>Available for security engineering roles</div>
+        <p class="hero-tagline">Cybersecurity Engineer. MSc Cyber Security, University of Aberdeen. Former OKX.AI pioneer. MIT Media Lab contributor.</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="stat-num">1st</div><div class="stat-label">Winner, OKX.AI Inaugural Global Hackathon</div></div>
+          <div class="hero-stat"><div class="stat-num">5/5</div><div class="stat-label">ChainGPT Security Audit score</div></div>
+          <div class="hero-stat"><div class="stat-num">350+</div><div class="stat-label">Users on Argus, my multi-agent security oracle</div></div>
+        </div>
+        <div class="hero-cta">
+          <a href="#work" class="primary">See my work</a>
+          <a href="#contact">Get in touch</a>
+        </div>
+        <div class="hero-meta">
       <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Aberdeen, Scotland, UK</span>
       <span><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> <a href="https://github.com/Gideon145">github/Gideon145</a></span>
       <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg> <a href="mailto:opukemegideon@gmail.com">opukemegideon@gmail.com</a></span>
+        </div>
+      </div>
+      <div class="hero-portrait">
+        <img src="profile.jpg" alt="Gideon Opukeme">
+        <div class="portrait-caption">Aberdeen &middot; MSc Cyber Security</div>
+      </div>
     </div>
   </div>
   <div class="scroll-hint">SCROLL</div>
@@ -861,6 +909,38 @@
       '</div>';
     pc.appendChild(div);
   });
+
+  // ── Landing gate: unlock site on CTA ──
+  (function() {
+    function unlockSite() {
+      document.body.classList.remove('locked');
+      try { sessionStorage.setItem('portfolioUnlocked', '1'); } catch (e) {}
+    }
+    try {
+      if (sessionStorage.getItem('portfolioUnlocked') === '1') {
+        document.body.classList.remove('locked');
+      }
+    } catch (e) {}
+
+    var workCta = document.querySelector('.hero-cta a[href="#work"]');
+    var contactCta = document.querySelector('.hero-cta a[href="#contact"]');
+    if (workCta) {
+      workCta.addEventListener('click', function(e) {
+        e.preventDefault();
+        unlockSite();
+        var target = document.getElementById('about');
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+    if (contactCta) {
+      contactCta.addEventListener('click', function(e) {
+        e.preventDefault();
+        unlockSite();
+        var target = document.getElementById('contact');
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  })();
 
   // ── Postmortems ──
   var pmc = document.getElementById('postmortems-container');
