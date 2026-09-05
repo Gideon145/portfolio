@@ -25,7 +25,7 @@ const portfolioData = {
 
 My work sits at the intersection of AI security, threat detection engineering, and blockchain protocol security. I don't just study these domains, I build working tools that solve real problems. An AI-powered SOC analyst that triages real logs and maps findings to MITRE ATT&CK. A prompt injection firewall with 30+ detection signatures that blocks LLM attacks in transit. A genetic algorithm fuzzer that discovered 7 unique jailbreak bypass techniques. A Mirai botnet detection toolkit with original YARA and Snort rules.
 
-Before focusing on cybersecurity full-time, I was one of the earliest developers on OKX.AI, the world's first agent-to-agent economic marketplace. I deployed 6 autonomous security agents, won the platform's inaugural hackathon with Parry Protocol, and contributed payment protocol infrastructure at MIT Media Lab. I also built TrustGuard, an ELO-based reputation and risk scoring system for autonomous agents that a core reviewer described as "genuinely different angle" from existing approaches.
+Before focusing on cybersecurity full-time, I was one of the earliest developers on OKX.AI, the world's first agent-to-agent economic marketplace. I deployed 6 autonomous security agents, won OKX Build X Season 2 with Parry Protocol, and contributed payment protocol infrastructure at MIT Media Lab. I also built TrustGuard, an ELO-based reputation and risk scoring system for autonomous agents that a core reviewer described as "genuinely different angle" from existing approaches.
 
 My detection rules are written in Sigma format, the open standard that runs inside Splunk, Microsoft Sentinel, IBM QRadar, Elastic Security, and CrowdStrike Falcon, and have been reviewed by maintainers at both SigmaHQ and Elastic. I've contributed to open-source security projects with 10,000+ collective GitHub stars, shipped contracts audited by ChainGPT with 5/5 Circle primitives, and built tooling used by 350+ users.
 
@@ -108,21 +108,23 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       tech: ["TypeScript", "Multi-Agent Systems", "On-Chain Governance"],
       stats: "22 live treaties · 4-judge AI court · X Layer mainnet",
       url: "https://github.com/Gideon145/syntheke",
+      live: "https://syntheke.xyz",
     },
     {
       name: "Mnemos",
       tag: "Personal AI Agent with Durable Memory",
-      description: "A personal AI agent that remembers you: durable memory on Sibyl with a deterministic fallback that never hallucinates, an agreement state machine, and portable Keepsakes memory packs. Built for the Sibyl Labs Hackathon.",
+      description: "A personal AI agent that remembers you: durable memory on Sibyl with a deterministic fallback that never hallucinates, an agreement state machine, and portable Keepsakes memory packs.",
       tech: ["Python", "Memory Systems", "Agent Architecture"],
       stats: "Durable memory · No-hallucination recall · Base payments",
       url: "https://github.com/Gideon145/mnemos",
+      live: "https://mnemosagent.xyz",
     },
     {
       name: "Parry Protocol",
-      tag: "DeFi Security Agent, Hackathon Winner",
-      description: "A delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. Won the OKX.AI inaugural global hackathon, with 86,000+ confirmed mainnet transactions.",
+      tag: "DeFi Security Agent, OKX Build X Winner",
+      description: "A delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. Won the OKX Build X Season 2 global hackathon, with 86,000+ confirmed mainnet transactions.",
       tech: ["TypeScript", "Solidity", "DeFi Security", "Uniswap V3"],
-      stats: "OKX.AI Hackathon Winner · Delta-neutral strategy",
+      stats: "OKX Build X Season 2 Winner · Delta-neutral strategy",
       url: "https://github.com/Gideon145/parry-protocol",
     },
     {
@@ -195,8 +197,8 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
   // ── Recognition ──
   recognition: [
     {
-      label: "OKX.AI Inaugural Hackathon, Winner",
-      detail: "Won the inaugural OKX.AI global hackathon with Parry Protocol, a delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. Competed against builders worldwide on the world's first agent-to-agent economic marketplace. The winning submission demonstrated autonomous on-chain financial security through algorithmic rebalancing, a working DeFi security primitive shipped under hackathon conditions, not a slide deck.",
+      label: "OKX Build X Season 2, Hackathon Winner",
+      detail: "Won the OKX Build X Season 2 global hackathon with Parry Protocol, a delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. Competed against builders worldwide. The winning submission demonstrated autonomous on-chain financial security through algorithmic rebalancing, a working DeFi security primitive shipped under hackathon conditions, not a slide deck.",
       url: "https://github.com/Gideon145/parry-protocol",
     },
     {
