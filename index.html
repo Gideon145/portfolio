@@ -194,6 +194,20 @@
     line-height: 1.5;
   }
   .rec-item a { font-size: 0.68rem; font-family: var(--font-mono); }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 1.5rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-item .exp-left .exp-role { font-size: 1.02rem; font-weight: 600; font-family: var(--font-ui); color: var(--text); }
+  .exp-item .exp-left .exp-company { font-size: 0.82rem; color: var(--accent); margin-top: 0.2rem; }
+  .exp-item .exp-left .exp-meta { font-size: 0.72rem; color: var(--text-faint); font-family: var(--font-mono); margin-top: 0.5rem; }
+  .exp-item .exp-details { font-size: 0.88rem; color: var(--text-dim); line-height: 1.65; }
+  @media (max-width: 720px) {
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.1rem 0; }
+  }
 
   /* ── Projects ── */
   .project {
@@ -408,6 +422,7 @@
   <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">Menu</button>
   <div class="nav-links" id="nav-links">
     <a href="#about">About</a>
+    <a href="#experience">Experience</a>
     <a href="#companies">Companies</a>
     <a href="#recognition">Recognition</a>
     <a href="#work">Work</a>
@@ -487,6 +502,14 @@
     <h2>Recognition</h2>
     <div class="recognition-list" id="recognition-container"></div>
   </div>
+</section>
+
+<!-- ════════════════════ Experience ════════════════════ -->
+<section id="experience">
+  <div class="container reveal">
+    <h2>Experience</h2>
+  </div>
+  <div class="container" id="experience-container"></div>
 </section>
 
 <!-- ════════════════════ Projects ════════════════════ -->
@@ -730,6 +753,23 @@
         '<div class="rec-detail">' + r.detail + '</div>' +
         linksHtml;
       rc.appendChild(div);
+    });
+  }
+
+  // ── Experience ──
+  var ec = document.getElementById('experience-container');
+  if (portfolioData.experience && ec) {
+    portfolioData.experience.forEach(function(exp) {
+      var div = document.createElement('div');
+      div.className = 'exp-item reveal';
+      div.innerHTML =
+        '<div class="exp-left">' +
+          '<div class="exp-role">' + exp.role + '</div>' +
+          '<div class="exp-company">' + exp.company + '</div>' +
+          '<div class="exp-meta">' + exp.period + ' · ' + exp.location + '</div>' +
+        '</div>' +
+        '<div class="exp-details">' + exp.details + '</div>';
+      ec.appendChild(div);
     });
   }
 

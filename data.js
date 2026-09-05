@@ -31,6 +31,24 @@ My detection rules are written in Sigma format, the open standard that runs insi
 
 I'm actively seeking UK-based security engineering roles where I can continue building detection, response, and AI security infrastructure.`,
 
+  // ── Experience ──
+  experience: [
+    {
+      role: "Junior Security Engineer",
+      company: "Handi Digital Solutions",
+      location: "Lagos, Nigeria",
+      period: "Jul 2026 – Present",
+      details: "First security hire at an early-stage service marketplace. Implementing application security controls across the platform's iOS, Android and web applications, and conducting code reviews and vulnerability assessments across the TypeScript/Node.js backend and React Native mobile apps.",
+    },
+    {
+      role: "IT Support",
+      company: "Hendrique Consultants Limited",
+      location: "Abuja, Nigeria",
+      period: "Aug 2025 – Aug 2026",
+      details: "Provided day-to-day IT support for a consulting firm: troubleshooting hardware and software faults, managing user access and system file organisation, and coordinating meetings. Streamlined routine IT workflows, improving staff productivity.",
+    },
+  ],
+
   // ── Projects ──
   projects: [
     {
