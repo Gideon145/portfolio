@@ -21,7 +21,7 @@
     --border: #1f1f2a;
     --text: #e4ded5;
     --text-dim: #8a857c;
-    --text-faint: #4a4640;
+    --text-faint: #57534c;
     --accent: #c4956a;
     --accent-dim: #5a4030;
     --red: #d4786e;
@@ -142,12 +142,6 @@
   .hero-content { max-width: 880px; overflow: visible; }
   .hero h1 { margin-bottom: 1.5rem; white-space: pre-line; font-weight: 700; overflow-wrap: break-word; }
 
-  /* ── Landing gate ── */
-  body.locked main > section:not(.hero) { display: none; }
-  body.locked footer { display: none; }
-  body.locked .nav-links, body.locked .nav-toggle { display: none; }
-  body.locked .scroll-hint { display: none; }
-  body.locked #back-to-top { display: none; }
   .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
   .hero-cta a {
     font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em;
@@ -515,7 +509,7 @@
   }
 </style>
 </head>
-<body id="top" data-bg-state="hero-section" class="locked">
+<body id="top" data-bg-state="hero-section">
 
 <div id="scroll-progress"></div>
 <canvas id="bg-canvas"></canvas>
@@ -548,15 +542,16 @@
       <div class="hero-text">
         <h1 id="hero-heading">I build security tools<br>that actually work.</h1>
         <div class="hero-status"><span class="dot"></span>Available for security engineering roles</div>
-        <p class="hero-tagline">Cybersecurity Engineer. MSc Cyber Security, University of Aberdeen. Former OKX.AI pioneer. MIT Media Lab contributor.</p>
+        <p class="hero-tagline">Cybersecurity Engineer. MSc Cyber Security, University of Aberdeen. Early OKX.AI contributor. MIT Media Lab contributor.</p>
         <div class="hero-stats">
-          <div class="hero-stat"><div class="stat-num">Winner</div><div class="stat-label">OKX Build X Season 2 global hackathon</div></div>
-          <div class="hero-stat"><div class="stat-num">5/5</div><div class="stat-label">ChainGPT Security Audit score</div></div>
-          <div class="hero-stat"><div class="stat-num">350+</div><div class="stat-label">Users on Argus, my multi-agent security oracle</div></div>
-          <div class="hero-stat"><div class="stat-num">MIT</div><div class="stat-label">Media Lab contributor, Massachusetts Institute of Technology</div></div>
+          <div class="hero-stat"><div class="stat-num">PR #6214</div><div class="stat-label">Detection rule merged into SigmaHQ</div></div>
+          <div class="hero-stat"><div class="stat-num">94 → 3</div><div class="stat-label">False positives cut per day in Detection Lab</div></div>
+          <div class="hero-stat"><div class="stat-num">100%</div><div class="stat-label">Detection rate across 62 adversarial LLM cases</div></div>
+          <div class="hero-stat"><div class="stat-num">5/5</div><div class="stat-label">ChainGPT security audit score</div></div>
         </div>
         <div class="hero-cta">
           <a href="#work" class="primary">See my work</a>
+          <a href="cv.pdf" download>Download CV</a>
           <a href="#contact">Get in touch</a>
         </div>
         <div class="hero-meta">
@@ -656,7 +651,7 @@
 <section id="contact" class="contact-section">
   <div class="container reveal">
     <h2>Contact</h2>
-    <p>Open to security engineering roles. Reach out on any platform.</p>
+    <p>Open to security engineering roles. UK Student visa (valid to January 2028), available part-time during term and full-time after graduation. Reach out on any platform.</p>
     <div class="contact-links">
       <a href="mailto:opukemegideon@gmail.com"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg> opukemegideon@gmail.com</a>
       <a href="mailto:g.opukeme.26@abdn.ac.uk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg> g.opukeme.26@abdn.ac.uk</a>
@@ -923,37 +918,7 @@
     pc.appendChild(div);
   });
 
-  // ── Landing gate: unlock site on CTA ──
-  (function() {
-    function unlockSite() {
-      document.body.classList.remove('locked');
-      try { sessionStorage.setItem('portfolioUnlocked', '1'); } catch (e) {}
-    }
-    try {
-      if (sessionStorage.getItem('portfolioUnlocked') === '1') {
-        document.body.classList.remove('locked');
-      }
-    } catch (e) {}
-
-    var workCta = document.querySelector('.hero-cta a[href="#work"]');
-    var contactCta = document.querySelector('.hero-cta a[href="#contact"]');
-    if (workCta) {
-      workCta.addEventListener('click', function(e) {
-        e.preventDefault();
-        unlockSite();
-        var target = document.getElementById('about');
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-      });
-    }
-    if (contactCta) {
-      contactCta.addEventListener('click', function(e) {
-        e.preventDefault();
-        unlockSite();
-        var target = document.getElementById('contact');
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-      });
-    }
-  })();
+  // ── Landing gate removed: full site is public ──
 
   // ── Postmortems (accordion) ──
   var pmc = document.getElementById('postmortems-container');

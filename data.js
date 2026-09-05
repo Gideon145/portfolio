@@ -17,7 +17,7 @@ const portfolioData = {
   // ── Hero ──
   hero: {
     primary: "I build security tools\nthat actually work.",
-    secondary: "Cybersecurity Engineer. MSc Cyber Security, University of Aberdeen. Former OKX.AI pioneer. MIT Media Lab contributor.",
+    secondary: "Cybersecurity Engineer. MSc Cyber Security, University of Aberdeen. Early OKX.AI contributor. MIT Media Lab contributor.",
   },
 
   // ── About ──
@@ -52,38 +52,13 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
   // ── Projects ──
   projects: [
     {
-      name: "Argus",
-      tag: "Multi-Agent Security Oracle on Arc",
-      description: "Arc's first multi-agent security oracle: three autonomous AI agents audit smart contracts in parallel, stake USDC on their verdicts, and settle consensus on-chain. ChainGPT audited with a perfect 5/5 score across all Circle primitives. Served 350+ users across 1,400+ scans.",
-      tech: ["TypeScript", "Solidity", "Circle", "ChainGPT Audited"],
-      stats: "350+ users · 1,421 scans · 5/5 Circle primitives · 3-agent consensus",
-      url: "https://github.com/Gideon145/argus",
-      live: "https://argusarc.xyz",
+      name: "Detection Engineering Lab",
+      tag: "Full-Cycle SOC Detection & Response",
+      description: "Full-cycle SOC lab: 10 Sigma rules covering 12 MITRE ATT&CK techniques, 5 documented investigations, and a complete IR workflow. Includes false-positive tuning that cut alerts from 94/day to 3.",
+      tech: ["Sigma", "MITRE ATT&CK", "Elastic Stack", "Incident Response", "Detection Engineering"],
+      stats: "10 Sigma rules · 5 investigations · 1 full IR report · 12 ATT&CK techniques",
+      url: "https://github.com/Gideon145/detection-engineering-lab",
       highlight: true,
-    },
-    {
-      name: "Prompt Firewall",
-      tag: "LLM Injection Detection Proxy",
-      description: "An HTTP proxy that intercepts LLM API requests and blocks prompt injection, jailbreak, and data extraction attacks before they reach the model. 30+ detection signatures, 7 heuristic analysers, and an evasion-resistant normalisation pipeline. 100% detection across 62 adversarial test cases.",
-      tech: ["Python", "FastAPI", "Detection Engineering", "OWASP LLM Top 10"],
-      stats: "62 test cases · 100% detection rate · 0 false positives · 30+ signatures · 7 analysers",
-      url: "https://github.com/Gideon145/llm-prompt-firewall",
-    },
-    {
-      name: "AI SOC Analyst",
-      tag: "Autonomous Tier-1 Security Analyst",
-      description: "An autonomous Tier-1 SOC analyst: ingests raw logs, triages severity with LLM reasoning, maps findings to MITRE ATT&CK, and correlates related events into investigation reports with a live dashboard.",
-      tech: ["Python", "FastAPI", "MITRE ATT&CK", "LLM"],
-      stats: "12 demo events · 3 auto-correlated incidents · Full MITRE mapping",
-      url: "https://github.com/Gideon145/ai-soc-analyst",
-    },
-    {
-      name: "InjectionForge",
-      tag: "Genetic Algorithm Fuzzer for LLM Guardrails",
-      description: "A genetic algorithm fuzzer that evolves prompt injection attacks across generations to discover guardrail bypasses. Found 7 novel evasion techniques not present in the seed corpus, including zero-width injection and Unicode homoglyph substitution.",
-      tech: ["Python", "Genetic Algorithms", "AI Red-Teaming", "Adversarial ML"],
-      stats: "7 novel bypasses discovered · 0.1s per generation · Dual evaluation modes",
-      url: "https://github.com/Gideon145/injection-forge",
     },
     {
       name: "SigmaHQ Detection Rules",
@@ -98,8 +73,42 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       tag: "Malware Analysis & Detection Suite",
       description: "Mirai botnet detection suite: 5 YARA rules across ARM, MIPS, and x86, 4 Snort/Suricata network signatures, a 12-bot C2 traffic simulator, and an IoT credential scanner covering 62 Mirai default credentials.",
       tech: ["Python", "YARA", "Snort/Suricata", "IoT Security"],
-      stats: "6 YARA rules · 4 Snort rules · 62 Mirai credentials · 12 simulated bots",
+      stats: "5 YARA rules · 4 Snort rules · 62 Mirai credentials · 12 simulated bots",
       url: "https://github.com/Gideon145/mirai-detector",
+    },
+    {
+      name: "Prompt Firewall",
+      tag: "LLM Injection Detection Proxy",
+      description: "An HTTP proxy that intercepts LLM API requests and blocks prompt injection, jailbreak, and data extraction attacks before they reach the model. 30+ detection signatures, 7 heuristic analysers, and an evasion-resistant normalisation pipeline. 100% detection across 62 adversarial test cases.",
+      tech: ["Python", "FastAPI", "Detection Engineering", "OWASP LLM Top 10"],
+      stats: "62 test cases · 100% detection rate · 0 false positives · 30+ signatures · 7 analysers",
+      url: "https://github.com/Gideon145/llm-prompt-firewall",
+    },
+    {
+      name: "AI SOC Analyst",
+      tag: "Autonomous Tier-1 Security Analyst",
+      description: "An autonomous Tier-1 SOC analyst: ingests raw logs, triages severity with LLM reasoning, maps findings to MITRE ATT&CK, and correlates related events into investigation reports with a live dashboard.",
+      tech: ["Python", "FastAPI", "MITRE ATT&CK", "LLM"],
+      stats: "12 event types · 3 auto-correlated incidents · Full MITRE mapping",
+      url: "https://github.com/Gideon145/ai-soc-analyst",
+    },
+    {
+      name: "InjectionForge",
+      tag: "Genetic Algorithm Fuzzer for LLM Guardrails",
+      description: "A genetic algorithm fuzzer that evolves prompt injection attacks across generations to discover guardrail bypasses. Found 7 novel evasion techniques not present in the seed corpus, including zero-width injection and Unicode homoglyph substitution.",
+      tech: ["Python", "Genetic Algorithms", "AI Red-Teaming", "Adversarial ML"],
+      stats: "7 novel bypasses discovered · 0.1s per generation · Dual evaluation modes",
+      url: "https://github.com/Gideon145/injection-forge",
+    },
+    {
+      name: "Argus",
+      tag: "Multi-Agent Security Oracle on Arc",
+      description: "Arc's first multi-agent security oracle: three autonomous AI agents audit smart contracts in parallel, stake USDC on their verdicts, and settle consensus on-chain. ChainGPT audited with a perfect 5/5 score across all Circle primitives. Served 360+ users across 1,637+ scans.",
+      tech: ["TypeScript", "Solidity", "Circle", "ChainGPT Audited"],
+      stats: "360+ users · 1,637+ scans · 5/5 Circle primitives · 3-agent consensus",
+      url: "https://github.com/Gideon145/argus",
+      live: "https://argusarc.dev",
+      highlight: true,
     },
     {
       name: "Syntheke",
@@ -126,15 +135,6 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       tech: ["TypeScript", "Solidity", "DeFi Security", "Uniswap V3"],
       stats: "OKX Build X Season 2 Winner · Delta-neutral strategy",
       url: "https://github.com/Gideon145/parry-protocol",
-    },
-    {
-      name: "Detection Engineering Lab",
-      tag: "Full-Cycle SOC Detection & Response",
-      description: "Full-cycle SOC lab: 10 Sigma rules covering 12 MITRE ATT&CK techniques, 5 documented investigations, and a complete IR workflow. Includes false-positive tuning that cut alerts from 94/day to 3.",
-      tech: ["Sigma", "MITRE ATT&CK", "Elastic Stack", "Incident Response", "Detection Engineering"],
-      stats: "10 Sigma rules · 5 investigations · 1 full IR report · 12 ATT&CK techniques",
-      url: "https://github.com/Gideon145/detection-engineering-lab",
-      highlight: true,
     },
   ],
 
@@ -197,31 +197,6 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
   // ── Recognition ──
   recognition: [
     {
-      label: "OKX Build X Season 2, Hackathon Winner",
-      detail: "Won the OKX Build X Season 2 global hackathon with Parry Protocol, a delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. Competed against builders worldwide. The winning submission demonstrated autonomous on-chain financial security through algorithmic rebalancing, a working DeFi security primitive shipped under hackathon conditions, not a slide deck.",
-      url: "https://github.com/Gideon145/parry-protocol",
-    },
-    {
-      label: "Argus, Top 5 ASP on OKX.AI Marketplace",
-      detail: "Argus ranked among the top five most-sold Autonomous Service Providers on the OKX.AI marketplace, with 5,700 total sales of on-chain security audit services. This is real volume from real users paying for autonomous smart contract audits, not a testnet demo. The 5/5 ChainGPT audit score, 350+ users, and 1,421 completed scans all contributed to this market position.",
-      url: "https://www.okx.ai/agents/5047",
-    },
-    {
-      label: "OKX.AI Founding Developer & Pioneer",
-      detail: "Among the earliest developers building on OKX.AI before its public launch. Deployed six autonomous security agents on the platform during its formative stages: agents that independently discovered counterparties, negotiated service contracts, streamed payments via the platform's native payment channels, and settled disputes entirely on-chain without human intermediation. This was infrastructure work on a platform that went on to define the agent-to-agent economy category.",
-      links: [
-        { label: "Agent 5047", url: "https://www.okx.ai/agents/5047" },
-        { label: "Agent 6201", url: "https://www.okx.ai/agents/6201" },
-        { label: "Agent 5062", url: "https://www.okx.ai/agents/5062" },
-      ],
-      url: null,
-    },
-    {
-      label: "MIT Media Lab, Protocol Contributor",
-      detail: "Contributed to payment protocol infrastructure research at the MIT Media Lab, one of the world's most prestigious interdisciplinary research laboratories. Worked on the financial protocol layer enabling autonomous AI agents to conduct economic transactions at scale: designing message formats, settlement mechanisms, and cryptographic verification schemes for agent-to-agent payment channels. The Media Lab's commitment to 'inventing a better future' is not a slogan; it is a standard of rigour applied to every project that bears its name.",
-      url: null,
-    },
-    {
       label: "SigmaHQ & Elastic, Detection Rule Contributor",
       detail: "Authored original Mirai botnet detection rules in Sigma format and submitted them to SigmaHQ, the industry-standard open detection rule repository with over ten thousand GitHub stars, where maintainers reviewed the detection logic and provided detailed technical feedback on rule specificity and correlation support. Also submitted a Linux botnet binary-download detection rule to Elastic's official detection-rules repository, where it passed CI and the contributor licence check and remains under review by Elastic's threat research team.",
       links: [
@@ -234,11 +209,6 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       label: "ChainGPT, Perfect 5/5 Security Audit",
       detail: "The Argus smart contracts underwent a professional third-party security audit by ChainGPT and received a perfect score of five out of five across all Circle primitive assessment categories: correctness, access control, token handling, event emission, and upgrade safety. Independent validation that the contract architecture is secure by design, not merely functional, but demonstrably resilient against the attack vectors covered by the audit scope.",
       url: "https://github.com/Gideon145/argus",
-    },
-    {
-      label: "TrustGuard, Maintainer-Reviewed Trust Architecture",
-      detail: "Designed and built TrustGuard, an ELO-based reputation and risk scoring system for autonomous AI agents, and submitted it to the NandaTown agent infrastructure project. The maintainer engaged in a full technical review of the implementation, described the approach as a 'genuinely different angle' from existing trust models, and provided detailed architectural feedback on scope, reporter admission policy, and collusion controls. The work continues as a standalone project incorporating that feedback.",
-      url: "https://github.com/Gideon145/trustguard",
     },
     {
       label: "University of Aberdeen, MSc Cyber Security",
@@ -263,6 +233,39 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       label: "Cisco, Introduction to Cybersecurity",
       detail: "Earned the Introduction to Cybersecurity certification from Cisco, issued June 2025. Covers foundational cybersecurity concepts including threat analysis, network security basics, cryptography fundamentals, and security operations principles. Verifiable through Cisco's Credly digital credential platform.",
       url: "https://www.credly.com/badges/fe94bd0d-1f05-46be-bc9c-7ec157a14a93/public_url",
+    },
+    {
+      label: "OKX Build X Season 2, Hackathon Winner",
+      detail: "Won the OKX Build X Season 2 global hackathon with Parry Protocol, a delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. Competed against builders worldwide. The winning submission demonstrated autonomous on-chain financial security through algorithmic rebalancing, a working DeFi security primitive shipped under hackathon conditions, not a slide deck.",
+      url: "https://github.com/Gideon145/parry-protocol",
+    },
+    {
+      label: "Argus, Top 5 ASP on OKX.AI Marketplace",
+      detail: "Argus ranked among the top five most-sold Autonomous Service Providers on the OKX.AI marketplace, with 5,700 total sales of on-chain security audit services. This is real volume from real users paying for autonomous smart contract audits, not a testnet demo. The 5/5 ChainGPT audit score, 360+ users, and 1,637+ completed scans all contributed to this market position.",
+      url: "https://www.okx.ai/agents/5047",
+    },
+    {
+      label: "OKX.AI, Early Developer & Contributor",
+      detail: "Among the earliest developers building on OKX.AI before its public launch. Deployed six autonomous security agents on the platform during its formative stages: agents that independently discovered counterparties, negotiated service contracts, streamed payments via the platform's native payment channels, and settled disputes entirely on-chain without human intermediation. This was infrastructure work on a platform that went on to define the agent-to-agent economy category.",
+      links: [
+        { label: "Agent 5047", url: "https://www.okx.ai/agents/5047" },
+        { label: "Agent 6201", url: "https://www.okx.ai/agents/6201" },
+        { label: "Agent 5062", url: "https://www.okx.ai/agents/5062" },
+      ],
+      url: null,
+    },
+    {
+      label: "MIT Media Lab, Protocol Contributor",
+      detail: "Contributed to payment protocol infrastructure research at the MIT Media Lab, one of the world's most prestigious interdisciplinary research laboratories. Worked on the financial protocol layer enabling autonomous AI agents to conduct economic transactions at scale: designing message formats, settlement mechanisms, and cryptographic verification schemes for agent-to-agent payment channels. The Media Lab's commitment to 'inventing a better future' is not a slogan; it is a standard of rigour applied to every project that bears its name.",
+      url: null,
+    },
+    {
+      label: "TrustGuard, Maintainer-Reviewed Trust Architecture",
+      detail: "Designed and built TrustGuard, an ELO-based reputation and risk scoring system for autonomous AI agents, and submitted it to the NandaTown agent infrastructure project. The maintainer engaged in a full technical review of the implementation, described the approach as a 'genuinely different angle' from existing trust models, and provided detailed architectural feedback on scope, reporter admission policy, and collusion controls. The work continues as a standalone project incorporating that feedback.",
+      links: [
+        { label: "NandaTown PR #218", url: "https://github.com/projnanda/nandatown/pull/218" },
+      ],
+      url: "https://github.com/Gideon145/trustguard",
     },
   ],
 
