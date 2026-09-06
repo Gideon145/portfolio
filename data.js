@@ -126,7 +126,7 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       tech: ["Python", "Memory Systems", "Agent Architecture"],
       stats: "Durable memory · No-hallucination recall · Base payments",
       url: "https://github.com/Gideon145/mnemos",
-      live: "https://mnemosagent.xyz",
+      live: "https://trymnemos.xyz",
     },
     {
       name: "Parry Protocol",
