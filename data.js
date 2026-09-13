@@ -25,7 +25,7 @@ const portfolioData = {
 
 My work sits at the intersection of AI security, threat detection engineering, and blockchain protocol security. I don't just study these domains, I build working tools that solve real problems. An AI-powered SOC analyst that triages real logs and maps findings to MITRE ATT&CK. A prompt injection firewall with 30+ detection signatures that blocks LLM attacks in transit. A genetic algorithm fuzzer that discovered 7 unique jailbreak bypass techniques. A Mirai botnet detection toolkit with original YARA and Snort rules.
 
-Before focusing on cybersecurity full-time, I was one of the earliest developers on OKX.AI, the world's first agent-to-agent economic marketplace. I deployed 6 autonomous security agents, won OKX Build X Season 2 with Parry Protocol, and contributed payment protocol infrastructure at MIT Media Lab. I also built TrustGuard, an ELO-based reputation and risk scoring system for autonomous agents that a core reviewer described as "genuinely different angle" from existing approaches.
+Before focusing on cybersecurity full-time, I was one of the earliest developers on OKX.AI, the world's first agent-to-agent economic marketplace. I deployed 6 autonomous security agents, placed 3rd in the X Layer Arena at OKX Build X Season 2 with Parry Protocol, and contributed payment protocol infrastructure at MIT Media Lab. I also built TrustGuard, an ELO-based reputation and risk scoring system for autonomous agents that a core reviewer described as "genuinely different angle" from existing approaches.
 
 My detection rules are written in Sigma format, the open standard that runs inside Splunk, Microsoft Sentinel, IBM QRadar, Elastic Security, and CrowdStrike Falcon, and have been reviewed by maintainers at both SigmaHQ and Elastic. I've contributed to open-source security projects with 10,000+ collective GitHub stars, shipped contracts audited by ChainGPT with 5/5 Circle primitives, and built tooling used by 350+ users.
 
@@ -61,12 +61,12 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       highlight: true,
     },
     {
-      name: "SigmaHQ Detection Rules",
+      name: "SigmaHQ & Elastic Detection Rules",
       tag: "Production SOC Detection Content",
       description: "Mirai botnet detection rules in Sigma format, submitted to SigmaHQ and reviewed by maintainers, plus a Linux botnet binary-download rule under review at Elastic's official detection-rules repository with CI passing.",
       tech: ["Sigma Rules", "YAML", "Detection Engineering", "SIEM"],
-      stats: "PR #6214 merged · Deployed in Splunk · Sentinel · QRadar · CrowdStrike · Elastic",
-      url: "https://github.com/SigmaHQ/sigma/pull/6214",
+      stats: "Reviewed by SigmaHQ maintainers · Elastic rule under review",
+      url: "https://github.com/elastic/detection-rules/pull/6647",
     },
     {
       name: "Mirai Detection Toolkit",
@@ -130,10 +130,10 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
     },
     {
       name: "Parry Protocol",
-      tag: "DeFi Security Agent, OKX Build X Winner",
-      description: "A delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. Won the OKX Build X Season 2 global hackathon, with 86,000+ confirmed mainnet transactions.",
+      tag: "DeFi Security Agent, OKX Build X 3rd Place",
+      description: "A delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. Placed 3rd in the X Layer Arena at OKX Build X Season 2, with 86,000+ confirmed mainnet transactions.",
       tech: ["TypeScript", "Solidity", "DeFi Security", "Uniswap V3"],
-      stats: "OKX Build X Season 2 Winner · Delta-neutral strategy",
+      stats: "OKX Build X Season 2 · 3rd Place, X Layer Arena",
       url: "https://github.com/Gideon145/parry-protocol",
     },
   ],
@@ -235,8 +235,11 @@ I'm actively seeking UK-based security engineering roles where I can continue bu
       url: "https://www.credly.com/badges/fe94bd0d-1f05-46be-bc9c-7ec157a14a93/public_url",
     },
     {
-      label: "OKX Build X Season 2, Hackathon Winner",
-      detail: "Won the OKX Build X Season 2 global hackathon with Parry Protocol, a delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers. Competed against builders worldwide. The winning submission demonstrated autonomous on-chain financial security through algorithmic rebalancing, a working DeFi security primitive shipped under hackathon conditions, not a slide deck.",
+      label: "OKX Build X Season 2, 3rd Place X Layer Arena",
+      detail: "Placed 3rd in the X Layer Arena at OKX Build X Season 2 with Parry Protocol, a delta-neutral impermanent loss protection agent for Uniswap V3 liquidity providers, announced by OKX's official X Layer account among 300+ submissions. The submission demonstrated autonomous on-chain financial security through algorithmic rebalancing, a working DeFi security primitive shipped under hackathon conditions, not a slide deck.",
+      links: [
+        { label: "Official 3rd place announcement", url: "https://x.com/xlayerofficial/status/2046945713796645048" },
+      ],
       url: "https://github.com/Gideon145/parry-protocol",
     },
     {
